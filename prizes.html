@@ -37,7 +37,7 @@
             color: white;
             background: transparent;
             border: none;
-            padding: 12px 16px;
+            padding: 12px 2px;
             font-size: 1.25rem;
             cursor: pointer;
             transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
@@ -153,6 +153,28 @@
                 /* Adjust the distance of the float */
             }
         }
+        
+        .floating-element {
+
+inset: 0;
+z-index: 0;
+opacity: 1;
+filter: brightness(0.9);
+animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+
+0%,
+100% {
+    transform: translateY(0);
+}
+
+50% {
+    transform: translateY(-10px);
+    /* Adjust the distance of the float */
+}
+}
     </style>
 </head>
 
@@ -178,6 +200,12 @@
             class="w-40 object-contain" />
     </div>
 
+    <!-- //mascot1 -->
+    <div class="relative floating-element">
+        <div class="absolute top-4 right-4 z-50">
+            <img src="./images/mascot1.png" alt="Mascot" class="w-20">
+        </div>
+    </div>
     <!-- Timer -->
     <!-- <div class="absolute top-2 right-2 z-10 bg-white bg-opacity-20 text-gray-800 rounded shadow-md px-6 py-2 max-w-[400px]">
         <div class="flex items-center justify-between">
