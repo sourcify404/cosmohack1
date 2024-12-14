@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hackathon 2024</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.48/build/spline-viewer.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    body.loading {
+      overflow: hidden;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      background-color: #000;
+      color: #fff;
+    }
+
+    .content-wrapper {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      text-align: center;
+      z-index: 10;
+      position: relative;
+    }
+
+    .floating-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 15px 0;
+            border-radius: 20px 20px 0 0;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            z-index: 50;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .floating-bar button {
+            color: white;
+            background: transparent;
+            border: none;
+            padding: 12px 16px;
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            align-items: center;
+            border-radius: 10px;
+        }
+
+        .floating-bar button i {
+            margin-right: 8px;
+            font-size: 1.6rem;
+        }
+
+        .floating-bar button span {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .floating-bar button:hover {
+            color: #ff6f61;
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+
+        @media (max-width: 480px) {
+            .floating-bar button span {
+                display: none;
+            }
+
+            .floating-bar button i {
+                font-size: 1.2rem;
+                margin-bottom: 0;
+            }
+        }
+
+    .theme-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 1.5rem;
+      margin: 1rem;
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .theme-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .theme-card.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+  </style>
+</head>
+<body class="loading">
+  <div id="preloader" class="fixed inset-0 flex items-center justify-center bg-black z-50">
+    <div class="flex flex-col items-center">
+      <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-purple-500 border-opacity-75"></div>
+      <p class="mt-4 text-white text-lg">Loading...</p>
+    </div>
+  </div>
+
+  <spline-viewer 
+    url="https://prod.spline.design/zjQ4mTT0jVltwy-y/scene.splinecode" 
+    class="fixed inset-0 w-full h-full z-0">
+  </spline-viewer>
+
+  <header class="fixed top-0 left-0 right-0 z-20 flex justify-between items-center p-4">
+    <img src="https://cosmohack.vercel.app/Assets/Logo-B-removebg-preview.png" alt="Logo" class="h-12 w-12 object-contain rounded-full border-2 border-white" />
+    <div class="absolute top-2 right-2 z-10 bg-purple-700 text-white rounded shadow-md px-2 py-1 max-w-[180px]">
+        <div class="text-right">
+            <p class="text-xs font-semibold uppercase tracking-wide">Registration Ends In:</p>
+            <p id="countdown" class="text-sm font-bold text-yellow-300 mt-1"></p>
+        </div>
+    </div>
+  </header>
+
+  <main id="content" class="content-wrapper hidden">
+
+    <section id="themes" class="mt-8 mb-10 w-full max-w-4xl">
+      <h2 class="text-3xl md:text-4xl font-bold mb-8">Hackathon Themes</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="theme-card">
+          <i class="fas fa-rocket text-4xl mb-4 text-purple-400"></i>
+          <h3 class="text-xl font-semibold mb-2">Space Exploration</h3>
+          <p>Develop innovative solutions for space travel, colonization, and resource utilization.</p>
+        </div>
+        <div class="theme-card">
+          <i class="fas fa-microchip text-4xl mb-4 text-blue-400"></i>
+          <h3 class="text-xl font-semibold mb-2">AI and Machine Learning</h3>
+          <p>Create cutting-edge AI applications for space technology and data analysis.</p>
+        </div>
+        <div class="theme-card">
+          <i class="fas fa-satellite text-4xl mb-4 text-green-400"></i>
+          <h3 class="text-xl font-semibold mb-2">Satellite Technology</h3>
+          <p>Design next-generation satellite systems for communication, observation, and research.</p>
+        </div>
+        <div class="theme-card">
+          <i class="fas fa-user-astronaut text-4xl mb-4 text-red-400"></i>
+          <h3 class="text-xl font-semibold mb-2">Human Space Habitation</h3>
+          <p>Tackle challenges of long-term human presence in space and on other planets.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="mt-20 p-8 fixed bottom-20 w-full text-center text-sm text-white/80 z-10 hidden">
+   
+  </footer>
+
+  <nav class="floating-bar">
+    <a href="index.html">
+      <button>
+        <i class="fas fa-home"></i>
+        <span class="ml-2">Home</span>
+      </button>
+    </a>
+    <a href="Sponsors.html">
+      <button>
+        <i class="fas fa-gift"></i>
+        <span class="ml-2">Sponsors</span>
+      </button>
+    </a>
+    <a href="./Timeline.html">
+      <button>
+        <i class="fas fa-calendar-alt"></i>
+        <span class="ml-2">Timeline</span>
+      </button>
+    </a>
+    <a href="ProblemStatements.html">
+      <button>
+        <i class="fas fa-palette"></i>
+        <span class="ml-2">Theme</span>
+      </button>
+    </a>
+    <a href="Aboutus.html">
+      <button>
+        <i class="fas fa-envelope"></i>
+        <span class="ml-2">About</span>
+      </button>
+    </a>
+    <a href="Faq.html">
+      <button>
+        <i class="fas fa-question-circle"></i>
+        <span class="ml-2">FAQ</span>
+      </button>
+    </a>
+  </nav>
+
+  <script>
+    window.addEventListener('load', function() {
+      setTimeout(() => {
+        document.getElementById('preloader').style.opacity = '0';
+        document.getElementById('preloader').style.transition = 'opacity 0.5s ease';
+        setTimeout(() => {
+          document.getElementById('preloader').style.display = 'none';
+          document.getElementById('content').classList.remove('hidden');
+          document.getElementById('footer').classList.remove('hidden');
+          document.body.classList.remove('loading');
+          animateThemeCards();
+        }, 500);
+      }, 3000);
+    });
+
+    const countdownElement = document.getElementById('countdown');
+    const endDate = new Date('Feb 21, 2025 00:00:00').getTime();
+    
+    setInterval(() => {
+      const now = new Date().getTime();
+      const distance = endDate - now;
+
+      if (distance <= 0) {
+        countdownElement.innerHTML = "Registration Closed";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      
+      countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }, 1000);
+
+    function animateThemeCards() {
+      const cards = document.querySelectorAll('.theme-card');
+      cards.forEach((card, index) => {
+        setTimeout(() => {
+          card.classList.add('animate');
+        }, index * 200);
+      });
+    }
+  </script>
+</body>
+</html>
+
