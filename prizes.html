@@ -84,10 +84,7 @@
             padding-bottom: 100px;
             /* Ensure space for floating bar */
             overflow: auto;
-            padding-top: 30px;
-            /* Increased padding-top for better spacing */
-            margin-top: 40px;
-            /* Space above content */
+           
         }
 
         /* Content Text Adjustments */
@@ -125,7 +122,6 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 20px;
             /* Adjust to ensure it takes up space between navbar and footer */
         }
 
@@ -171,7 +167,7 @@
     </div>
 
     <!-- Spline Viewer Background -->
-    <spline-viewer url="https://prod.spline.design/zjQ4mTT0jVltwy-y/scene.splinecode"
+    <spline-viewer url="https://prod.spline.design/gUM0MMafVnsa5OK6/scene.splinecode"
         class="absolute inset-0 w-full h-full z-0 opacity-55 brightness-30">
     </spline-viewer>
 
@@ -200,35 +196,38 @@
     <!-- Main Content -->
     <div id="content"
         class="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center hidden content-wrapper">
-        <div class="flex flex-col items-center justify-center h-full px-4 text-center">
-            <img src="https://cosmohack.vercel.app/Assets/Logo-B-removebg-preview.png" alt="" class="floating-element">
-        </div>
-        <div class="z-10 bg-white bg-opacity-20 text-gray-800 rounded shadow-md px-4 py-2 max-w-[400px] md:px-6">
-            <div class="flex flex-col md:flex-row items-center justify-between text-center md:text-left">
-                <p class="text-base md:text-lg font-semibold uppercase tracking-wide text-white mb-2 md:mb-0">
-                    Feb 21-22 2025 <i class="fa-solid fa-hourglass-end fa-flip" style="color: #B197FC;"></i>&nbsp;
-                </p>
-                <p id="countdown" class="text-base md:text-lg font-bold text-yellow-500">
-                    26 : 02 : 07 : 10
-                </p>
+        <!-- Prizes Section -->
+    <section id="prizes" class="relative z-10 px-6 py-32  rounded-lg shadow-md max-w-6xl mx-auto">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">
+            Prizes
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Prize Card 1 -->
+            <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-lg shadow-lg p-6 text-center">
+                <i class="fas fa-trophy text-5xl text-yellow-400 mb-4"></i>
+                <h3 class="text-2xl font-semibold mb-2 text-white">1st Place</h3>
+                <p class="text-xl font-bold text-yellow-300">$5,000</p>
+                <p class="text-gray-300 mt-2">Cash prize + internship opportunities with top space companies.</p>
+            </div>
+
+            <!-- Prize Card 2 -->
+            <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-lg shadow-lg p-6 text-center">
+                <i class="fas fa-medal text-5xl text-gray-400 mb-4"></i>
+                <h3 class="text-2xl font-semibold mb-2 text-white">2nd Place</h3>
+                <p class="text-xl font-bold text-yellow-300">$3,000</p>
+                <p class="text-gray-300 mt-2">Cash prize + networking opportunities with industry leaders.</p>
+            </div>
+
+            <!-- Prize Card 3 -->
+            <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-lg shadow-lg p-6 text-center">
+                <i class="fas fa-award text-5xl text-orange-400 mb-4"></i>
+                <h3 class="text-2xl font-semibold mb-2 text-white">3rd Place</h3>
+                <p class="text-xl font-bold text-yellow-300">$1,500</p>
+                <p class="text-gray-300 mt-2">Cash prize + certificates of excellence.</p>
             </div>
         </div>
-        
-        <p class="text-lg md:text-2xl mb-6 drop-shadow-lg">
-            Innovate. Collaborate. Compete. Shape the future with your code!
-        </p>
-        
-        <div class="flex gap-4">
-            <a href="#register"
-                class="bg-white text-purple-500 px-6 py-3 rounded-lg font-medium shadow-md hover:bg-purple-500 hover:text-white transition-all">
-                Register Now
-            </a>
-            
-            <!-- <a href="#schedule"
-                class="bg-purple-600 px-6 py-3 rounded-lg font-medium shadow-md hover:bg-purple-700 transition-all">
-                View Schedule
-            </a> -->
-        </div>
+    </section>
+
     </div>
 
     <!-- Footer -->
