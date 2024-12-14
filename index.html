@@ -8,6 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.48/build/spline-viewer.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         /* Prevent scrolling during preload */
         body.loading {
@@ -93,14 +94,12 @@
         .content-wrapper h1 {
             font-size: 2.5rem;
             /* Larger heading on mobile */
-            margin-top: 60px;
             /* More top margin for better spacing */
         }
 
         .content-wrapper p {
             font-size: 1.3rem;
             /* Slightly larger text on mobile */
-            margin-top: 15px;
             /* Increased margin for better spacing */
         }
 
@@ -179,17 +178,23 @@
 
     <!-- Logo -->
     <div class="absolute top-4 left-4 z-10 flex items-center">
-        <img src="./images/CosmoHACK-Round-W.png" alt="Logo"
-            class="h-12 w-12 object-contain rounded-full border-2 border-white" />
+        <img src="https://cosmohack.vercel.app/Assets/Logo-B-removebg-preview.png" alt="Logo"
+            class="w-40 object-contain" />
     </div>
 
     <!-- Timer -->
-    <div class="absolute top-2 right-2 z-10 bg-purple-700 text-white rounded shadow-md px-2 py-1 max-w-[180px]">
-        <div class="text-right">
-            <p class="text-xs font-semibold uppercase tracking-wide">Registration Ends In:</p>
-            <p id="countdown" class="text-sm font-bold text-yellow-300 mt-1"></p>
+    <!-- <div class="absolute top-2 right-2 z-10 bg-white bg-opacity-20 text-gray-800 rounded shadow-md px-6 py-2 max-w-[400px]">
+        <div class="flex items-center justify-between">
+            <p class="text-lg font-semibold uppercase tracking-wide text-white">
+                Jan 10-12 2025 ||&nbsp;
+            </p>
+            <p id="countdown" class="text-lg font-bold text-yellow-500">
+                 26 : 02 : 07 : 10
+            </p>
         </div>
-    </div>
+    </div> -->
+    
+    
     
 
     <!-- Main Content -->
@@ -198,21 +203,31 @@
         <div class="flex flex-col items-center justify-center h-full px-4 text-center">
             <img src="https://cosmohack.vercel.app/Assets/Logo-B-removebg-preview.png" alt="" class="floating-element">
         </div>
-        <!-- <h1 class="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">
-      CosmoHack
-    </h1> -->
+        <div class="z-10 bg-white bg-opacity-20 text-gray-800 rounded shadow-md px-4 py-2 max-w-[400px] md:px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between text-center md:text-left">
+                <p class="text-base md:text-lg font-semibold uppercase tracking-wide text-white mb-2 md:mb-0">
+                    Feb 21-22 2025 <i class="fa-solid fa-hourglass-end fa-flip" style="color: #B197FC;"></i>&nbsp;
+                </p>
+                <p id="countdown" class="text-base md:text-lg font-bold text-yellow-500">
+                    26 : 02 : 07 : 10
+                </p>
+            </div>
+        </div>
+        
         <p class="text-lg md:text-2xl mb-6 drop-shadow-lg">
             Innovate. Collaborate. Compete. Shape the future with your code!
         </p>
+        
         <div class="flex gap-4">
             <a href="#register"
                 class="bg-white text-purple-500 px-6 py-3 rounded-lg font-medium shadow-md hover:bg-purple-500 hover:text-white transition-all">
                 Register Now
             </a>
-            <a href="#schedule"
+            
+            <!-- <a href="#schedule"
                 class="bg-purple-600 px-6 py-3 rounded-lg font-medium shadow-md hover:bg-purple-700 transition-all">
                 View Schedule
-            </a>
+            </a> -->
         </div>
     </div>
 
@@ -223,6 +238,7 @@
 
     <!-- Floating Bar (Navbar alternative with glass effect) -->
     <nav class="floating-bar">
+
         <a href="index.html">
             <button>
                 <i class="fas fa-home"></i>
@@ -231,7 +247,7 @@
         </a>
         <a href="Sponsors.html">
             <button>
-                <i class="fas fa-gift"></i>
+                <i class="fa-solid fa-sack-dollar"></i>
                 <span class="ml-2">Sponsors</span>
             </button>
         </a>
@@ -243,13 +259,17 @@
         </a>
         <a href="ProblemStatements.html">
             <button>
-                <i class="fas fa-palette"></i>
-                <span class="ml-2">Theme</span>
+                <i class="fa-solid fa-road" style="color: #ffffff;"></i><span>Tracks</span>
+            </button>
+        </a>
+        <a href="ProblemStatements.html">
+            <button>
+                <i class="fa-solid fa-trophy"></i><span>Prizes</span>
             </button>
         </a>
         <a href="Aboutus.html">
             <button>
-                <i class="fas fa-envelope"></i>
+                <i class="fa-solid fa-people-group"></i>
                 <span class="ml-2">About</span>
             </button>
         </a>
@@ -274,7 +294,7 @@
 
                 // Remove loading class from body
                 document.body.classList.remove('loading');
-            }, 3000); // Delay of 3 seconds before hiding the preloader
+            },); // Delay of 3 seconds before hiding the preloader
         };
 
         // Countdown timer for registration
@@ -299,6 +319,8 @@
         }, 1000);
     </script>
 
+    //devfolio JavaScript
+    <script defer async src="https://apply.devfolio.co/v2/sdk.js"></script>
 </body>
 
 </html>
