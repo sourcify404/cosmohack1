@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hackathon 2024 Sponsors</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.48/build/spline-viewer.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      min-height: 100vh;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      background-color: #000;
+      color: #fff;
+    }
+
+    .content-wrapper {
+      flex-grow: 1;
+      overflow-y: auto;
+      padding: 20px;
+      position: relative;
+      z-index: 10;
+      opacity: 1;
+      transition: opacity 0.5s ease;
+    }
+
+    .floating-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 10px 0;
+      box-shadow: 0 -2px 10px rgba(255, 255, 255, 0.1);
+      z-index: 1000;
+    }
+
+    .floating-bar button {
+      color: white;
+      background: transparent;
+      border: none;
+      padding: 8px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 80px;
+    }
+
+    .floating-bar button i {
+      font-size: 1.2rem;
+      margin-bottom: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .floating-bar {
+        padding: 5px 0;
+      }
+
+      .floating-bar button {
+        font-size: 0.7rem;
+      }
+
+      .floating-bar button i {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .floating-bar button span {
+        display: none;
+      }
+
+      .floating-bar button i {
+        font-size: 1.2rem;
+        margin-bottom: 0;
+      }
+    }
+
+    .sponsor-category {
+      margin-bottom: 2rem;
+    }
+
+    .sponsor-logo {
+      transition: transform 0.3s ease;
+    }
+
+    .sponsor-logo:hover {
+      transform: scale(1.05);
+    }
+
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+
+    footer {
+      margin-bottom: 70px;
+    }
+  </style>
+</head>
+<body>
+  <div id="preloader">
+    <div class="flex flex-col items-center">
+      <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-purple-500 border-opacity-75"></div>
+      <p class="mt-4 text-white text-lg">Loading...</p>
+    </div>
+  </div>
+
+  <spline-viewer 
+    url="https://prod.spline.design/YoRRcQcu6gAMHEeZ/scene.splinecode" 
+    class="fixed inset-0 w-full h-full z-0">
+  </spline-viewer>
+
+  <div class="content-wrapper">
+    <header class="flex justify-between items-center p-4">
+      <img src="https://cosmohack.vercel.app/Assets/Logo-B-removebg-preview.png" alt="Logo" class="h-12 w-12 object-contain rounded-full border-2 border-white" />
+      <div class="text-right">
+        <p class="text-lg font-bold">Registration Ends In:</p>
+        <p id="countdown" class="text-2xl font-semibold text-purple-300"></p>
+      </div>
+    </header>
+
+    <main class="mt-8">
+      <h1 class="text-4xl font-bold mb-6 text-center">Our Sponsors</h1>
+      
+      <div class="sponsor-category">
+        <h2 class="text-2xl font-bold mb-4 text-center text-purple-300">Platinum Sponsors</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="sponsor-logo flex items-center justify-center bg-white bg-opacity-10 rounded-lg p-4">
+            <img src="/placeholder.svg?height=100&width=200" alt="Platinum Sponsor 1" class="max-h-24">
+          </div>
+          <div class="sponsor-logo flex items-center justify-center bg-white bg-opacity-10 rounded-lg p-4">
+            <img src="/placeholder.svg?height=100&width=200" alt="Platinum Sponsor 2" class="max-h-24">
+          </div>
+          <div class="sponsor-logo flex items-center justify-center bg-white bg-opacity-10 rounded-lg p-4">
+            <img src="/placeholder.svg?height=100&width=200" alt="Platinum Sponsor 3" class="max-h-24">
+          </div>
+        </div>
+      </div>
+
+      <div class="sponsor-category">
+        <h2 class="text-2xl font-bold mb-4 text-center text-yellow-300">Gold Sponsors</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div class="sponsor-logo flex items-center justify-center bg-white bg-opacity-10 rounded-lg p-4">
+            <img src="/placeholder.svg?height=80&width=160" alt="Gold Sponsor 1" class="max-h-20">
+          </div>
+          <div class="sponsor-logo flex items-center justify-center bg-white bg-opacity-10 rounded-lg p-4">
+            <img src="/placeholder.svg?height=80&width=160" alt="Gold Sponsor 2" class="max-h-20">
+          </div>
+          <div class="sponsor-logo flex items-center justify-center bg-white bg-opacity-10 rounded-lg p-4">
+            <img src="/placeholder.svg?height=80&width=160" alt="Gold Sponsor 3" class="max-h-20">
+          </div>
+          <div class="sponsor-logo flex items-center justify-center bg-white bg-opacity-10 rounded-lg p-4">
+            <img src="/placeholder.svg?height=80&width=160" alt="Gold Sponsor 4" class="max-h-20">
+          </div>
+        </div>
+      </div>
+
+      <div class="sponsor-category">
+        <h2 class="text-2xl font-bold mb-4 text-center text-gray-300">Silver Sponsors</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+          <div class="sponsor-logo flex items-center justify-center bg-white bg-opacity-10 rounded-lg p-3">
+            <img src="/placeholder.svg?height=60&width=120" alt="Silver Sponsor 1" class="max-h-16">
+          </div>
+          <div class="sponsor-logo flex items-center justify-center bg-white bg-opacity-10 rounded-lg p-3">
+            <img src="/placeholder.svg?height=60&width=120" alt="Silver Sponsor 2" class="max-h-16">
+          </div>
+          <div class="sponsor-logo flex items-center justify-center bg-white bg-opacity-10 rounded-lg p-3">
+            <img src="/placeholder.svg?height=60&width=120" alt="Silver Sponsor 3" class="max-h-16">
+          </div>
+          <div class="sponsor-logo flex items-center justify-center bg-white bg-opacity-10 rounded-lg p-3">
+            <img src="/placeholder.svg?height=60&width=120" alt="Silver Sponsor 4" class="max-h-16">
+          </div>
+          <div class="sponsor-logo flex items-center justify-center bg-white bg-opacity-10 rounded-lg p-3">
+            <img src="/placeholder.svg?height=60&width=120" alt="Silver Sponsor 5" class="max-h-16">
+          </div>
+          <div class="sponsor-logo flex items-center justify-center bg-white bg-opacity-10 rounded-lg p-3">
+            <img src="/placeholder.svg?height=60&width=120" alt="Silver Sponsor 6" class="max-h-16">
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="text-center text-sm text-white/80 mt-8 mb-20">
+      © 2024 Hackathon. All Rights Reserved.
+    </footer>
+  </div>
+
+  <nav class="floating-bar">
+    <button aria-label="Home">
+      <i class="fas fa-home"></i>
+      <span>Home</span>
+    </button>
+    <button aria-label="Sponsors">
+      <i class="fas fa-gift"></i>
+      <span>Sponsors</span>
+    </button>
+    <button aria-label="Timeline">
+      <i class="fas fa-calendar-alt"></i>
+      <span>Timeline</span>
+    </button>
+    <button aria-label="Theme">
+      <i class="fas fa-palette"></i>
+      <span>Theme</span>
+    </button>
+    <button aria-label="Contact">
+      <i class="fas fa-envelope"></i>
+      <span>Contact</span>
+    </button>
+    <button aria-label="FAQ">
+      <i class="fas fa-question-circle"></i>
+      <span>FAQ</span>
+    </button>
+  </nav>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Preloader
+    setTimeout(() => {
+      const preloader = document.getElementById('preloader');
+      const content = document.querySelector('.content-wrapper');
+      
+      if (preloader && content) {
+        gsap.to(preloader, {
+          opacity: 0,
+          duration: 0.5,
+          onComplete: () => {
+            preloader.style.display = 'none';
+            content.style.opacity = '1';
+          }
+        });
+      }
+    }, 3000);
+
+    // Sponsor logo animations
+    gsap.utils.toArray('.sponsor-logo').forEach((logo, index) => {
+      gsap.from(logo, {
+        opacity: 0,
+        y: 50,
+        duration: 0.8,
+        scrollTrigger: {
+          trigger: logo,
+          start: 'top bottom-=100',
+          toggleActions: 'play none none reverse'
+        },
+        delay: index * 0.1
+      });
+    });
+
+    // Floating bar animation
+    gsap.from('.floating-bar', {
+      y: 100,
+      opacity: 0,
+      duration: 1,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: 'body',
+        start: 'top top',
+        end: '+=100',
+        toggleActions: 'play none none reverse'
+      }
+    });
+  });
+
+  // Countdown timer
+  const countdownElement = document.getElementById('countdown');
+  const endDate = new Date('Feb 21, 2025 00:00:00').getTime();
+  
+  setInterval(() => {
+    const now = new Date().getTime();
+    const distance = endDate - now;
+
+    if (distance <= 0) {
+      countdownElement.innerHTML = "Registration Closed";
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  }, 1000);
+  </script>
+</body>
+</html>
+

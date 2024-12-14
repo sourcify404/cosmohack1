@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hackathon 2024</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.48/build/spline-viewer.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      min-height: 100vh;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      background-color: #000;
+      color: #fff;
+    }
+
+    .content-wrapper {
+      flex-grow: 1;
+      overflow-y: auto;
+      padding: 20px;
+      position: relative;
+      z-index: 10;
+      opacity: 1;
+      transition: opacity 0.5s ease;
+    }
+
+    .floating-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 15px 0;
+      box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+      z-index: 50;
+    }
+
+    .floating-bar button {
+      color: white;
+      background: transparent;
+      border: none;
+      padding: 12px 16px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .floating-bar button i {
+      font-size: 1.5rem;
+      margin-bottom: 5px;
+    }
+
+    .floating-bar button:hover {
+      color: #ff6f61;
+      transform: translateY(-5px);
+    }
+
+    .timeline-container {
+      position: relative;
+      padding: 20px 0;
+    }
+
+    .timeline-item {
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      margin-bottom: 20px;
+      position: relative;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      width: 2px;
+      height: calc(100% + 20px);
+      background: #FFC100;
+      left: -10px;
+      top: 0;
+    }
+
+    .timeline-item:last-child::before {
+      height: 50%;
+    }
+
+    .timeline-date {
+      font-weight: bold;
+      color: #FFC100;
+      margin-bottom: 10px;
+    }
+
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+
+    @media (max-width: 768px) {
+      .floating-bar {
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 10px 0;
+      }
+
+      .floating-bar button {
+        flex: 0 0 33.333%;
+        padding: 8px;
+        font-size: 0.8rem;
+      }
+
+      .floating-bar button i {
+        font-size: 1.2rem;
+        margin-bottom: 3px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="preloader">
+    <div class="flex flex-col items-center">
+      <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-purple-500 border-opacity-75"></div>
+      <p class="mt-4 text-white text-lg">Loading...</p>
+    </div>
+  </div>
+
+  <spline-viewer 
+    url="https://prod.spline.design/z4pikY-6eSfLjG3j/scene.splinecode" 
+    class="fixed inset-0 w-full h-full z-0">
+  </spline-viewer>
+
+  <div class="content-wrapper">
+    <header class="flex justify-between items-center p-4">
+      <img src="https://cosmohack.vercel.app/Assets/Logo-B-removebg-preview.png" alt="Logo" class="h-12 w-12 object-contain rounded-full border-2 border-white" />
+      <div class="text-right">
+        <p class="text-lg font-bold">Registration Ends In:</p>
+        <p id="countdown" class="text-2xl font-semibold text-purple-300"></p>
+      </div>
+    </header>
+
+    <main class="mt-8">
+      <h1 class="text-4xl font-bold mb-6 text-center">Hackathon 2024 Timeline</h1>
+      <div class="timeline-container">
+        <div class="timeline-item">
+          <p class="timeline-date">1-6 May, 2024</p>
+          <h4 class="text-xl font-bold mb-2">Registration</h4>
+          <p>Pick your favourite event(s) and register by filling the corresponding form. It's that easy!</p>
+        </div>
+        <div class="timeline-item">
+          <p class="timeline-date">6-9 May, 2024</p>
+          <h4 class="text-xl font-bold mb-2">Participation</h4>
+          <p>Participate online. Links for registered events will be sent via email and WhatsApp groups.</p>
+        </div>
+        <div class="timeline-item">
+          <p class="timeline-date">10 May, 2024</p>
+          <h4 class="text-xl font-bold mb-2">Result Declaration</h4>
+          <p>The ultimate genius will be revealed by our judging panel. Results will be announced in WhatsApp groups and via email.</p>
+        </div>
+        <div class="timeline-item">
+          <p class="timeline-date">12 May, 2024</p>
+          <h4 class="text-xl font-bold mb-2">Prize Distribution</h4>
+          <p>Winners will be contacted for their addresses, and winning goodies will be sent to them.</p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="text-center text-sm text-white/80 mt-8 mb-20">
+      © 2024 Hackathon. All Rights Reserved.
+    </footer>
+  </div>
+
+  <nav class="floating-bar">
+    <a href="index.html">
+        <button>
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+          </button>
+    </a>
+    <button>
+      <i class="fas fa-gift"></i>
+      <span>Sponsors</span>
+    </button>
+    <button>
+      <i class="fas fa-calendar-alt"></i>
+      <span>Timeline</span>
+    </button>
+    <button>
+      <i class="fas fa-palette"></i>
+      <span>Theme</span>
+    </button>
+    <button>
+      <i class="fas fa-envelope"></i>
+      <span>Contact</span>
+    </button>
+    <button>
+      <i class="fas fa-question-circle"></i>
+      <span>FAQ</span>
+    </button>
+  </nav>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Preloader
+    setTimeout(() => {
+      const preloader = document.getElementById('preloader');
+      const content = document.querySelector('.content-wrapper');
+      
+      if (preloader && content) {
+        gsap.to(preloader, {
+          opacity: 0,
+          duration: 0.5,
+          onComplete: () => {
+            preloader.style.display = 'none';
+            content.style.opacity = '1';
+          }
+        });
+      }
+    }, 3000);
+
+    // Timeline animations
+    gsap.utils.toArray('.timeline-item').forEach((item, index) => {
+      gsap.from(item, {
+        opacity: 0,
+        y: 50,
+        duration: 0.8,
+        scrollTrigger: {
+          trigger: item,
+          start: 'top bottom-=100',
+          toggleActions: 'play none none reverse'
+        },
+        delay: index * 0.2
+      });
+    });
+
+    // Floating bar animation
+    gsap.from('.floating-bar', {
+      y: 100,
+      opacity: 0,
+      duration: 1,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: 'body',
+        start: 'top top',
+        end: '+=100',
+        toggleActions: 'play none none reverse'
+      }
+    });
+  });
+
+  // Countdown timer
+  const countdownElement = document.getElementById('countdown');
+  const endDate = new Date('Feb 21, 2025 00:00:00').getTime();
+  
+  setInterval(() => {
+    const now = new Date().getTime();
+    const distance = endDate - now;
+
+    if (distance <= 0) {
+      countdownElement.innerHTML = "Registration Closed";
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  }, 1000);
+  </script>
+</body>
+</html>
+
