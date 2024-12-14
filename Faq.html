@@ -149,10 +149,12 @@
             <img src="./images/CosmoHACK-Round-W.png" alt="CosmoHack Logo"
                 class="h-16 w-16 object-contain rounded-full border-2 border-white shadow-lg" />
         </div>
-        <a href="index.html"
-            class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out">
-            Home
-        </a>
+        <div class="absolute  right-2 z-10 bg-purple-700 text-white rounded shadow-md py-2 px-4 py-1 max-w-[180px]">
+            <div class="text-right">
+                <p class="text-xs font-semibold uppercase tracking-wide">Registration Ends In:</p>
+                <p id="countdown" class="text-sm font-bold text-yellow-300 mt-1"></p>
+            </div>
+        </div>
     </header>
 
     <div id="content"
@@ -296,6 +298,27 @@
                 }
             });
         });
+
+        // Countdown timer
+  const countdownElement = document.getElementById('countdown');
+  const endDate = new Date('Feb 21, 2025 00:00:00').getTime();
+  
+  setInterval(() => {
+    const now = new Date().getTime();
+    const distance = endDate - now;
+
+    if (distance <= 0) {
+      countdownElement.innerHTML = "Registration Closed";
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  }, 1000);
     </script>
 
 </body>

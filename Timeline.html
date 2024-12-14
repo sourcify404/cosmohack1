@@ -169,13 +169,16 @@
   </spline-viewer>
 
   <div class="content-wrapper">
-    <header class="flex justify-between items-center p-4">
-      <img src="./images/CosmoHACK-Round-W.png" alt="Logo" class="h-12 w-12 object-contain rounded-full border-2 border-white" />
-      <a href="index.html"
-            class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out">
-            Home
-    </a>
-    </header>
+    <header class="flex justify-between items-center p-1">
+        <img src="./images/CosmoHACK-Round-W.png" alt="Logo" class="h-12 w-12 object-contain rounded-full border-2 border-white" />
+        
+          <div class="absolute  right-2 z-10 bg-purple-700 text-white rounded shadow-md py-2 px-4 py-1 max-w-[180px]">
+              <div class="text-right">
+                  <p class="text-xs font-semibold uppercase tracking-wide">Registration Ends In:</p>
+                  <p id="countdown" class="text-sm font-bold text-yellow-300 mt-1"></p>
+              </div>
+          </div>
+      </header>
 
     <main class="mt-8">
       <h1 class="text-4xl font-bold mb-6 text-center">Hackathon 2024 Timeline</h1>
