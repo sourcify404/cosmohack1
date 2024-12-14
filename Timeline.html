@@ -40,33 +40,69 @@
       justify-content: space-around;
       align-items: center;
       padding: 15px 0;
-      box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+      border-radius: 20px 20px 0 0;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
       z-index: 50;
+      /* transition: all 0.3s ease-in-out; */
     }
 
-    .floating-bar button {
-      color: white;
-      background: transparent;
-      border: none;
-      padding: 12px 16px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+    .floating-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 15px 0;
+            border-radius: 20px 20px 0 0;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            z-index: 50;
+            transition: all 0.3s ease-in-out;
+        }
 
-    .floating-bar button i {
-      font-size: 1.5rem;
-      margin-bottom: 5px;
-    }
+        .floating-bar button {
+            color: white;
+            background: transparent;
+            border: none;
+            padding: 12px 16px;
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            align-items: center;
+            border-radius: 10px;
+        }
 
-    .floating-bar button:hover {
-      color: #ff6f61;
-      transform: translateY(-5px);
-    }
+        .floating-bar button i {
+            margin-right: 8px;
+            font-size: 1.6rem;
+        }
 
+        .floating-bar button span {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .floating-bar button:hover {
+            color: #ff6f61;
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+
+    @media (max-width: 480px) {
+      .floating-bar button span {
+        display: none;
+      }
+
+      .floating-bar button i {
+        font-size: 1.2rem;
+        margin-bottom: 0;
+      }
+    }
     .timeline-container {
       position: relative;
       padding: 20px 0;
@@ -116,33 +152,16 @@
       transition: opacity 0.5s ease;
     }
 
-    @media (max-width: 768px) {
-      .floating-bar {
-        flex-wrap: wrap;
-        justify-content: space-around;
-        padding: 10px 0;
-      }
-
-      .floating-bar button {
-        flex: 0 0 33.333%;
-        padding: 8px;
-        font-size: 0.8rem;
-      }
-
-      .floating-bar button i {
-        font-size: 1.2rem;
-        margin-bottom: 3px;
-      }
-    }
+    
   </style>
 </head>
 <body>
-  <div id="preloader">
-    <div class="flex flex-col items-center">
-      <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-purple-500 border-opacity-75"></div>
-      <p class="mt-4 text-white text-lg">Loading...</p>
+    <div id="preloader" class="absolute inset-0 flex items-center justify-center bg-black z-50">
+        <div class="flex flex-col items-center">
+            <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-purple-500 border-opacity-75"></div>
+            <p class="mt-4 text-white text-lg">Loading...</p>
+        </div>
     </div>
-  </div>
 
   <spline-viewer 
     url="https://prod.spline.design/z4pikY-6eSfLjG3j/scene.splinecode" 
@@ -151,11 +170,11 @@
 
   <div class="content-wrapper">
     <header class="flex justify-between items-center p-4">
-      <img src="https://cosmohack.vercel.app/Assets/Logo-B-removebg-preview.png" alt="Logo" class="h-12 w-12 object-contain rounded-full border-2 border-white" />
-      <div class="text-right">
-        <p class="text-lg font-bold">Registration Ends In:</p>
-        <p id="countdown" class="text-2xl font-semibold text-purple-300"></p>
-      </div>
+      <img src="./images/CosmoHACK-Round-W.png" alt="Logo" class="h-12 w-12 object-contain rounded-full border-2 border-white" />
+      <a href="index.html"
+            class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out">
+            Home
+    </a>
     </header>
 
     <main class="mt-8">
@@ -185,7 +204,7 @@
     </main>
 
     <footer class="text-center text-sm text-white/80 mt-8 mb-20">
-      © 2024 Hackathon. All Rights Reserved.
+      © 2024 CosmoHack. All Rights Reserved.
     </footer>
   </div>
 
@@ -193,29 +212,39 @@
     <a href="index.html">
         <button>
             <i class="fas fa-home"></i>
-            <span>Home</span>
-          </button>
+            <span class="ml-2">Home</span>
+        </button>
     </a>
-    <button>
-      <i class="fas fa-gift"></i>
-      <span>Sponsors</span>
-    </button>
-    <button>
-      <i class="fas fa-calendar-alt"></i>
-      <span>Timeline</span>
-    </button>
-    <button>
-      <i class="fas fa-palette"></i>
-      <span>Theme</span>
-    </button>
-    <button>
-      <i class="fas fa-envelope"></i>
-      <span>Contact</span>
-    </button>
-    <button>
-      <i class="fas fa-question-circle"></i>
-      <span>FAQ</span>
-    </button>
+    <a href="Sponsors.html">
+        <button>
+            <i class="fas fa-gift"></i>
+            <span class="ml-2">Sponsors</span>
+        </button>
+    </a>
+    <a href="./Timeline.html">
+        <button>
+            <i class="fas fa-calendar-alt"></i>
+            <span class="ml-2">Timeline</span>
+        </button>
+    </a>
+    <a href="ProblemStatements.html">
+        <button>
+            <i class="fas fa-palette"></i>
+            <span class="ml-2">Theme</span>
+        </button>
+    </a>
+    <a href="Aboutus.html">
+        <button>
+            <i class="fas fa-envelope"></i>
+            <span class="ml-2">About</span>
+        </button>
+    </a>
+    <a href="Faq.html">
+        <button>
+            <i class="fas fa-question-circle"></i>
+            <span class="ml-2">FAQ</span>
+        </button>
+    </a>
   </nav>
 
   <script>
@@ -255,18 +284,18 @@
     });
 
     // Floating bar animation
-    gsap.from('.floating-bar', {
-      y: 100,
-      opacity: 0,
-      duration: 1,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: 'body',
-        start: 'top top',
-        end: '+=100',
-        toggleActions: 'play none none reverse'
-      }
-    });
+    // gsap.from('.floating-bar', {
+    //   y: 100,
+    //   opacity: 0,
+    //   duration: 1,
+    //   ease: 'power3.out',
+    //   scrollTrigger: {
+    //     trigger: 'body',
+    //     start: 'top top',
+    //     end: '+=100',
+    //     toggleActions: 'play none none reverse'
+    //   }
+    // });
   });
 
   // Countdown timer

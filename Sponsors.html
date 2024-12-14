@@ -30,53 +30,51 @@
     }
 
     .floating-bar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(10px);
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      padding: 10px 0;
-      box-shadow: 0 -2px 10px rgba(255, 255, 255, 0.1);
-      z-index: 1000;
-    }
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 15px 0;
+            border-radius: 20px 20px 0 0;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            z-index: 50;
+            transition: all 0.3s ease-in-out;
+        }
 
-    .floating-bar button {
-      color: white;
-      background: transparent;
-      border: none;
-      padding: 8px;
-      font-size: 0.8rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-      max-width: 80px;
-    }
+        .floating-bar button {
+            color: white;
+            background: transparent;
+            border: none;
+            padding: 12px 16px;
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            align-items: center;
+            border-radius: 10px;
+        }
 
-    .floating-bar button i {
-      font-size: 1.2rem;
-      margin-bottom: 4px;
-    }
+        .floating-bar button i {
+            margin-right: 8px;
+            font-size: 1.6rem;
+        }
 
-    @media (max-width: 768px) {
-      .floating-bar {
-        padding: 5px 0;
-      }
+        .floating-bar button span {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
 
-      .floating-bar button {
-        font-size: 0.7rem;
-      }
+        .floating-bar button:hover {
+            color: #ff6f61;
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
 
-      .floating-bar button i {
-        font-size: 1rem;
-      }
-    }
 
     @media (max-width: 480px) {
       .floating-bar button span {
@@ -129,33 +127,33 @@
   </div>
 
   <spline-viewer 
-    url="https://prod.spline.design/YoRRcQcu6gAMHEeZ/scene.splinecode" 
+    url="https://prod.spline.design/9iswz7HOr2gT4oT4/scene.splinecode" 
     class="fixed inset-0 w-full h-full z-0">
   </spline-viewer>
 
   <div class="content-wrapper">
     <header class="flex justify-between items-center p-4">
-      <img src="https://cosmohack.vercel.app/Assets/Logo-B-removebg-preview.png" alt="Logo" class="h-12 w-12 object-contain rounded-full border-2 border-white" />
-      <div class="text-right">
-        <p class="text-lg font-bold">Registration Ends In:</p>
-        <p id="countdown" class="text-2xl font-semibold text-purple-300"></p>
-      </div>
+      <img src="./images/CosmoHACK-Round-W.png" alt="Logo" class="h-12 w-12 object-contain rounded-full border-2 border-white" />
+      <a href="index.html"
+            class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out">
+            Home
+        </a>
     </header>
 
     <main class="mt-8">
       <h1 class="text-4xl font-bold mb-6 text-center">Our Sponsors</h1>
       
       <div class="sponsor-category">
-        <h2 class="text-2xl font-bold mb-4 text-center text-purple-300">Platinum Sponsors</h2>
+        <h2 class="text-2xl font-bold mb-4 text-center text-purple-300">✨Platinum Sponsors✨</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div class="sponsor-logo flex items-center justify-center bg-white bg-opacity-10 rounded-lg p-4">
-            <img src="/placeholder.svg?height=100&width=200" alt="Platinum Sponsor 1" class="max-h-24">
+            <img src="https://cdn.sanity.io/images/rvtn5kgj/production/aa44d7aecb1bcd0eaeae244e88675d7c3dc1ef39-2128x992.jpg" alt="Platinum Sponsor 1" class="max-h-24">
           </div>
           <div class="sponsor-logo flex items-center justify-center bg-white bg-opacity-10 rounded-lg p-4">
-            <img src="/placeholder.svg?height=100&width=200" alt="Platinum Sponsor 2" class="max-h-24">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoh5SY3J2BsoecJ8TsxtGX-34_b5HCIG6PIA&s" alt="Platinum Sponsor 2" class="max-h-24">
           </div>
           <div class="sponsor-logo flex items-center justify-center bg-white bg-opacity-10 rounded-lg p-4">
-            <img src="/placeholder.svg?height=100&width=200" alt="Platinum Sponsor 3" class="max-h-24">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1MZBS3hkS66Cxv0-hjcVTdYvftIF4Bd8LTQ&s" alt="Platinum Sponsor 3" class="max-h-24">
           </div>
         </div>
       </div>
@@ -209,30 +207,42 @@
   </div>
 
   <nav class="floating-bar">
-    <button aria-label="Home">
-      <i class="fas fa-home"></i>
-      <span>Home</span>
-    </button>
-    <button aria-label="Sponsors">
-      <i class="fas fa-gift"></i>
-      <span>Sponsors</span>
-    </button>
-    <button aria-label="Timeline">
-      <i class="fas fa-calendar-alt"></i>
-      <span>Timeline</span>
-    </button>
-    <button aria-label="Theme">
-      <i class="fas fa-palette"></i>
-      <span>Theme</span>
-    </button>
-    <button aria-label="Contact">
-      <i class="fas fa-envelope"></i>
-      <span>Contact</span>
-    </button>
-    <button aria-label="FAQ">
-      <i class="fas fa-question-circle"></i>
-      <span>FAQ</span>
-    </button>
+    <a href="index.html">
+        <button>
+            <i class="fas fa-home"></i>
+            <span class="ml-2">Home</span>
+        </button>
+    </a>
+    <a href="Sponsors.html">
+        <button>
+            <i class="fas fa-gift"></i>
+            <span class="ml-2">Sponsors</span>
+        </button>
+    </a>
+    <a href="./Timeline.html">
+        <button>
+            <i class="fas fa-calendar-alt"></i>
+            <span class="ml-2">Timeline</span>
+        </button>
+    </a>
+    <a href="ProblemStatements.html">
+        <button>
+            <i class="fas fa-palette"></i>
+            <span class="ml-2">Theme</span>
+        </button>
+    </a>
+    <a href="Aboutus.html">
+        <button>
+            <i class="fas fa-envelope"></i>
+            <span class="ml-2">About</span>
+        </button>
+    </a>
+    <a href="Faq.html">
+        <button>
+            <i class="fas fa-question-circle"></i>
+            <span class="ml-2">FAQ</span>
+        </button>
+    </a>
   </nav>
 
   <script>
@@ -272,18 +282,18 @@
     });
 
     // Floating bar animation
-    gsap.from('.floating-bar', {
-      y: 100,
-      opacity: 0,
-      duration: 1,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: 'body',
-        start: 'top top',
-        end: '+=100',
-        toggleActions: 'play none none reverse'
-      }
-    });
+    // gsap.from('.floating-bar', {
+    //   y: 100,
+    //   opacity: 0,
+    //   duration: 1,
+    //   ease: 'power3.out',
+    //   scrollTrigger: {
+    //     trigger: 'body',
+    //     start: 'top top',
+    //     end: '+=100',
+    //     toggleActions: 'play none none reverse'
+    //   }
+    // });
   });
 
   // Countdown timer
