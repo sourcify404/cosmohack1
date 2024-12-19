@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmohack Community Partners</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.48/build/spline-viewer.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            min-height: 100vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            background-color: #000;
+            color: #fff;
+        }
+
+        .content-wrapper {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .floating-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 15px 0;
+            border-radius: 20px 20px 0 0;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            z-index: 50;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .floating-bar button {
+            color: white;
+            background: transparent;
+            border: none;
+            padding: 12px 2px;
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            align-items: center;
+            border-radius: 10px;
+        }
+
+        .floating-bar button i {
+            margin-right: 8px;
+            font-size: 1.6rem;
+        }
+
+        .floating-bar button span {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .floating-bar button:hover {
+            color: #ff6f61;
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        @media (max-width: 480px) {
+            .floating-bar button span {
+                display: none;
+            }
+
+            .floating-bar button i {
+                font-size: 1.2rem;
+                margin-bottom: 0;
+            }
+        }
+
+        .sponsor-category {
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .sponsor-category.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        footer {
+            margin-bottom: 70px;
+        }
+
+        .floating-element {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            opacity: 1;
+            filter: brightness(0.9);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .sponsor-tier-icon {
+            font-size: 2rem;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+        }
+
+        .sponsor-tier-title {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .sponsor-tier-title:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .form-input {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 5px;
+            width: 100%;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #ff6f61;
+            box-shadow: 0 0 0 2px rgba(255, 111, 97, 0.2);
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .form-submit {
+            background: linear-gradient(to right, #ff6f61, #ff8e53);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(255, 111, 97, 0.3);
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .success,
+        .error {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="preloader">
+        <div class="flex flex-col items-center">
+            <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-purple-500 border-opacity-75"></div>
+            <p class="mt-4 text-white text-lg">Loading...</p>
+        </div>
+    </div>
+
+    <spline-viewer url="https://prod.spline.design/zjQ4mTT0jVltwy-y/scene.splinecode"
+        class="fixed inset-0 w-full h-full z-0">
+    </spline-viewer>
+
+    <div class="content-wrapper">
+        <div class="absolute top-4 left-4 z-10 flex items-center">
+            <img src="https://cosmohack.vercel.app/Assets/Logo-B-removebg-preview.png" alt="Logo"
+                class="w-40 object-contain" />
+        </div>
+
+        <div class="relative floating-element">
+            <div class="absolute top-4 right-4 z-50">
+                <img src="./images/mascot1.png" alt="Mascot" class="w-20">
+            </div>
+        </div>
+
+        <main class="mt-8">
+            <h1
+                class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-center mt-20">
+                Apply for Community Partnership</h1>
+
+            <div class="form-container">
+                <form id="communityPartnerForm" class="space-y-4">
+                    <div>
+                        <label for="communityName" class="form-label">Community Name</label>
+                        <input type="text" id="communityName" name="entry.425119372" placeholder="Enter your community name" required class="form-input">
+                    </div>
+                
+                    <div>
+                        <label for="communityEmail" class="form-label">Community Email</label>
+                        <input type="email" id="communityEmail" name="entry.985643883" placeholder="Enter your community email address" required class="form-input">
+                    </div>
+                
+                    <div>
+                        <label for="yourName" class="form-label">Your Name</label>
+                        <input type="text" id="yourName" name="entry.1052804035" placeholder="Enter your name" required class="form-input">
+                    </div>
+                
+                    <div>
+                        <label for="yourPosition" class="form-label">Your Position in Community</label>
+                        <input type="text" id="yourPosition" name="entry.1053080663" placeholder="Enter your position in the community" required class="form-input">
+                    </div>
+                
+                    <div>
+                        <label for="yourEmail" class="form-label">Your Email</label>
+                        <input type="email" id="yourEmail" name="entry.1191368089" placeholder="Enter your email address" required class="form-input">
+                    </div>
+                
+                    <div>
+                        <label for="whatsappNumber" class="form-label">Your WhatsApp Number</label>
+                        <input type="tel" id="whatsappNumber" name="entry.896888183" placeholder="Enter your WhatsApp number" required class="form-input">
+                    </div>
+                
+                    <div>
+                        <label for="communitySocials" class="form-label">Community Socials (linktr.ee link)</label>
+                        <input type="url" id="communitySocials" name="entry.728368598" placeholder="Enter your linktr.ee link" class="form-input">
+                    </div>
+                
+                    <div>
+                        <label for="communityDescription" class="form-label">Community Description</label>
+                        <textarea id="communityDescription" name="entry.925250765" placeholder="Tell us about your community" rows="4" required class="form-input"></textarea>
+                    </div>
+                
+                    <div>
+                        <label for="communityWebsite" class="form-label">Community Website (if any)</label>
+                        <input type="url" id="communityWebsite" name="entry.1019618673" placeholder="https://www.example.com" class="form-input">
+                    </div>
+                
+                    <button type="submit" class="form-submit w-full">Apply Now</button>
+                </form>
+                
+                <div id="loading" class="loading">Submitting...</div>
+                <div id="success" class="success">Form submitted successfully!</div>
+                <div id="error" class="error">An error occurred. Please try again.</div>
+            </div>
+        </main>
+
+        <footer class="text-center text-sm text-white/80 mt-8 mb-20">
+            © 2024 Hackathon. All Rights Reserved.
+        </footer>
+    </div>
+
+    <nav class="floating-bar">
+        <a href="index.html">
+            <button>
+                <i class="fas fa-home"></i>
+                <span class="ml-2">Home</span>
+            </button>
+        </a>
+        <a href="Sponsors.html">
+            <button>
+                <i class="fa-solid fa-sack-dollar"></i>
+                <span class="ml-2">Sponsors</span>
+            </button>
+        </a>
+        <a href="./Timeline.html">
+            <button>
+                <i class="fas fa-calendar-alt"></i>
+                <span class="ml-2">Timeline</span>
+            </button>
+        </a>
+        <a href="ProblemStatements.html">
+            <button>
+                <i class="fa-solid fa-road" style="color: #ffffff;"></i><span>Tracks</span>
+            </button>
+        </a>
+        <a href="prizes.html">
+            <button>
+                <i class="fa-solid fa-trophy"></i><span>Prizes</span>
+            </button>
+        </a>
+        <a href="Aboutus.html">
+            <button>
+                <i class="fa-solid fa-people-group"></i>
+                <span class="ml-2">About</span>
+            </button>
+        </a>
+        <a href="Faq.html">
+            <button>
+                <i class="fas fa-question-circle"></i>
+                <span class="ml-2">FAQ</span>
+            </button>
+        </a>
+    </nav>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Preloader
+            setTimeout(() => {
+                const preloader = document.getElementById('preloader');
+                const content = document.querySelector('.content-wrapper');
+
+                if (preloader && content) {
+                    gsap.to(preloader, {
+                        opacity: 0,
+                        duration: 0.5,
+                        onComplete: () => {
+                            preloader.style.display = 'none';
+                            content.style.opacity = '1';
+                        }
+                    });
+                }
+            }, 1000);
+
+            // Form animations
+            gsap.from('.form-container', {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: '.form-container',
+                    start: 'top bottom-=100',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+
+            // Form input animations
+            gsap.utils.toArray('.form-input').forEach((input) => {
+                input.addEventListener('focus', () => {
+                    gsap.to(input, { scale: 1.05, duration: 0.2 });
+                });
+                input.addEventListener('blur', () => {
+                    gsap.to(input, { scale: 1, duration: 0.2 });
+                });
+            });
+
+            
+
+            // Form submission handle 
+            const form = document.getElementById('communityPartnerForm');
+            const loading = document.getElementById('loading');
+            const success = document.getElementById('success');
+            const error = document.getElementById('error');
+
+            // Replace with your Google Form URL
+            const googleFormUrl = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSf2DiitO92_UPtyYOytsjrRMSRVSg3t00eg1GStwRc4iSazYQ/formResponse';
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                loading.style.display = 'block';
+                success.style.display = 'none';
+                error.style.display = 'none';
+
+                const formData = new FormData(form);
+                
+                fetch(googleFormUrl, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: formData
+                })
+                .then(() => {
+                    loading.style.display = 'none';
+                    form.reset();
+                    success.style.display = 'block';
+                })
+                .catch(() => {
+                    loading.style.display = 'none';
+                    error.style.display = 'block';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
