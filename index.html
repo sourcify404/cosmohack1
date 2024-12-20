@@ -21,10 +21,10 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05); /* Reduced opacity for lower intensity */
             backdrop-filter: blur(15px);
             display: flex;
-            justify-content: space-around;
+            justify-content: center; /* Center align buttons */
             align-items: center;
             padding: 15px 0;
             border-radius: 20px 20px 0 0;
@@ -35,15 +35,16 @@
 
         .floating-bar button {
             color: white;
-            background: transparent;
+            background: rgba(255, 255, 255, 0.2); /* Increased opacity for higher intensity */
             border: none;
-            padding: 12px 2px;
+            padding: 12px 16px; /* Increased horizontal padding */
             font-size: 1.25rem;
             cursor: pointer;
             transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             align-items: center;
             border-radius: 10px;
+            margin: 0 4px; /* Reduced gap between buttons */
         }
 
         .floating-bar button i {
@@ -62,14 +63,22 @@
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 768px) {
+            .floating-bar {
+                justify-content: space-around; /* Spread out buttons on mobile */
+            }
+
+            .floating-bar button {
+                padding: 12px 8px; /* Reduced padding on mobile */
+            }
+
             .floating-bar button span {
                 display: none;
             }
 
             .floating-bar button i {
                 font-size: 1.2rem;
-                margin-bottom: 0;
+                margin-right: 0;
             }
         }
 
@@ -98,7 +107,7 @@
 
         /* Responsive padding for floating bar */
         .floating-bar {
-            padding: 25px 0;
+            padding: 15px 0;
         }
 
         /* Ensuring that body is scrollable and the content expands on mobile */
@@ -312,4 +321,3 @@
 </body>
 
 </html>
-
