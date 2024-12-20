@@ -21,55 +21,62 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.05); /* Reduced opacity for lower intensity */
-            backdrop-filter: blur(15px);
+            background: rgba(255, 255, 255, 0.05); /* Reduced background intensity */
+            backdrop-filter: blur(10px);
             display: flex;
-            justify-content: center; /* Center align buttons */
+            justify-content: center; /* Center-align buttons */
             align-items: center;
-            padding: 15px 0;
+            padding: 10px 0;
             border-radius: 20px 20px 0 0;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             z-index: 10;
             transition: all 0.3s ease-in-out;
         }
 
         .floating-bar button {
             color: white;
-            background: rgba(255, 255, 255, 0.2); /* Increased opacity for higher intensity */
+            background: rgba(255, 255, 255, 0.2); /* Increased button intensity */
             border: none;
-            padding: 12px 16px; /* Increased horizontal padding */
-            font-size: 1.25rem;
+            padding: 10px 15px;
+            margin: 0 5px; /* Reduced gap between buttons */
+            font-size: 1rem;
             cursor: pointer;
-            transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             border-radius: 10px;
-            margin: 0 4px; /* Reduced gap between buttons */
         }
 
         .floating-bar button i {
-            margin-right: 8px;
-            font-size: 1.6rem;
+            margin-right: 5px;
+            font-size: 1.2rem;
         }
 
         .floating-bar button span {
-            font-size: 1.1rem;
+            font-size: 1.3rem; /* Increased from 1.1rem */
             font-weight: 500;
         }
 
-        .floating-bar button:hover {
-            color: #ff6f61;
-            transform: scale(1.1);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        @media (max-width: 768px) {
+            .floating-bar button span {
+                display: none;
+            }
         }
 
-        @media (max-width: 768px) {
+        .floating-bar button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 640px) {
             .floating-bar {
-                justify-content: space-around; /* Spread out buttons on mobile */
+                padding: 8px 0;
             }
 
             .floating-bar button {
-                padding: 12px 8px; /* Reduced padding on mobile */
+                padding: 8px 10px;
+                margin: 0 2px;
             }
 
             .floating-bar button span {
@@ -77,7 +84,7 @@
             }
 
             .floating-bar button i {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
                 margin-right: 0;
             }
         }
@@ -89,7 +96,7 @@
 
         /* Content wrapper styling */
         .content-wrapper {
-            padding-bottom: 100px;
+            padding-bottom: 80px; /* Reduced from 100px */
             overflow: auto;
             padding-top: 30px;
             margin-top: 40px;
@@ -107,7 +114,7 @@
 
         /* Responsive padding for floating bar */
         .floating-bar {
-            padding: 15px 0;
+            padding: 25px 0;
         }
 
         /* Ensuring that body is scrollable and the content expands on mobile */
@@ -218,63 +225,63 @@
 
                 <div class="z-10 bg-white bg-opacity-20 text-gray-800 rounded shadow-md px-4 py-2 max-w-[400px] md:px-6 interactive">
                     <div class="flex flex-col md:flex-row items-center justify-between text-center md:text-left">
-                        <p class="text-base md:text-lg font-semibold uppercase tracking-wide text-white mb-2 md:mb-0">
+                        <p class="text-2xl md:text-3xl font-semibold uppercase tracking-wide text-white mb-2 md:mb-0">
                             Feb 21-22 2025 <i class="fa-solid fa-hourglass-end fa-flip" style="color: #B197FC;"></i>&nbsp;
                         </p>
-                        <p id="countdown" class="text-base md:text-lg font-bold text-yellow-500">
+                        <p id="countdown" class="text-4xl md:text-6xl font-bold text-yellow-500">
                             26 : 02 : 07 : 10
                         </p>
                     </div>
                 </div>
+                
+                
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="absolute bottom-4 w-full text-center text-sm text-white/80 z-10 hidden interactive" id="footer">
-        © 2024 Hackathon. All Rights Reserved.
-    </footer>
 
     <!-- Floating Bar (Navbar alternative with glass effect) -->
     <nav class="floating-bar interactive">
         <a href="index.html">
             <button>
                 <i class="fas fa-home"></i>
-                <span class="ml-2">Home</span>
+                <span>Home</span>
             </button>
         </a>
         <a href="Sponsors.html">
             <button>
                 <i class="fa-solid fa-sack-dollar"></i>
-                <span class="ml-2">Sponsors</span>
+                <span>Sponsors</span>
             </button>
         </a>
         <a href="./Timeline.html">
             <button>
                 <i class="fas fa-calendar-alt"></i>
-                <span class="ml-2">Timeline</span>
+                <span>Timeline</span>
             </button>
         </a>
         <a href="ProblemStatements.html">
             <button>
-                <i class="fa-solid fa-road" style="color: #ffffff;"></i><span>Tracks</span>
+                <i class="fa-solid fa-road"></i>
+                <span>Tracks</span>
             </button>
         </a>
         <a href="prizes.html">
             <button>
-                <i class="fa-solid fa-trophy"></i><span>Prizes</span>
+                <i class="fa-solid fa-trophy"></i>
+                <span>Prizes</span>
             </button>
         </a>
         <a href="Aboutus.html">
             <button>
                 <i class="fa-solid fa-people-group"></i>
-                <span class="ml-2">About</span>
+                <span>About</span>
             </button>
         </a>
         <a href="Faq.html">
             <button>
                 <i class="fas fa-question-circle"></i>
-                <span class="ml-2">FAQ</span>
+                <span>FAQ</span>
             </button>
         </a>
     </nav>
@@ -288,7 +295,7 @@
 
                 // Show content and footer
                 document.getElementById('content').classList.remove('hidden');
-                document.getElementById('footer').classList.remove('hidden');
+                //document.getElementById('footer').classList.remove('hidden');
 
                 // Remove loading class from body
                 document.body.classList.remove('loading');
