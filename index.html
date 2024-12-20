@@ -29,7 +29,7 @@
             padding: 15px 0;
             border-radius: 20px 20px 0 0;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            z-index: 50;
+            z-index: 10;
             transition: all 0.3s ease-in-out;
         }
 
@@ -62,7 +62,6 @@
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
 
-
         @media (max-width: 480px) {
             .floating-bar button span {
                 display: none;
@@ -82,33 +81,25 @@
         /* Content wrapper styling */
         .content-wrapper {
             padding-bottom: 100px;
-            /* Ensure space for floating bar */
             overflow: auto;
             padding-top: 30px;
-            /* Increased padding-top for better spacing */
             margin-top: 40px;
-            /* Space above content */
+            pointer-events: none;
         }
 
         /* Content Text Adjustments */
         .content-wrapper h1 {
             font-size: 2.5rem;
-            /* Larger heading on mobile */
-            /* More top margin for better spacing */
         }
 
         .content-wrapper p {
             font-size: 1.3rem;
-            /* Slightly larger text on mobile */
-            /* Increased margin for better spacing */
         }
 
         /* Responsive padding for floating bar */
         .floating-bar {
             padding: 25px 0;
-            /* Even more space between buttons for a cleaner look */
         }
-
 
         /* Ensuring that body is scrollable and the content expands on mobile */
         body {
@@ -126,7 +117,6 @@
             align-items: center;
             text-align: center;
             padding: 20px;
-            /* Adjust to ensure it takes up space between navbar and footer */
         }
 
         /* Hide footer and content in loading state */
@@ -135,27 +125,35 @@
             display: none;
         }
 
+        /* Ensure Spline viewer is interactive */
+        spline-viewer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
 
-        .floating-element {
+        /* Adjust z-index for other elements */
+        #content, #footer, .floating-bar, .logo, .mascot {
+            position: relative;
+            z-index: 2;
+        }
 
-            inset: 0;
-            z-index: 0;
-            opacity: 1;
-            filter: brightness(0.9);
+        /* Animation for floating effect */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating-animation {
             animation: float 3s ease-in-out infinite;
         }
 
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-10px);
-                /* Adjust the distance of the float */
-            }
+        /* Make specific elements interactive */
+        .interactive {
+            pointer-events: auto;
         }
     </style>
 </head>
@@ -171,55 +169,35 @@
     </div>
 
     <!-- Spline Viewer Background -->
-    <spline-viewer url="https://prod.spline.design/zjQ4mTT0jVltwy-y/scene.splinecode"
-        class="absolute inset-0 w-full h-full z-0 opacity-55 brightness-30">
+    <spline-viewer url="https://prod.spline.design/V-fBSV8s5Lm2cz6D/scene.splinecode"
+        class="absolute inset-0 w-full h-full">
     </spline-viewer>
 
-
     <!-- Logo -->
-    <div class="absolute top-4 left-4 z-10 flex items-center">
-        <img src="./images/logo.png" alt="Logo"
-            class="w-40 object-contain" />
+    <div class="absolute top-4 left-4 z-10 flex items-center logo interactive">
+        <img src="./images/logo.png" alt="Logo" class="w-40 object-contain" />
     </div>
 
-    <!-- //mascot1 -->
-    <div class="relative floating-element">
-        <div class="absolute top-4 right-4 z-50">
-            <img src="./images/mascot1.png" alt="Mascot" class="w-20">
+    <!-- Mascot 1 -->
+    <div class="relative">
+        <div class="absolute top-4 right-4 z-10">
+            <img src="./images/mascot1.png" alt="Mascot" class="w-20 floating-animation">
         </div>
     </div>
-    <!-- //mascot2 -->
-    <div class="relative">
-        <!-- Moving Mascot -->
-        <div class="absolute bottom-4 animate-slide-in-left z-50">
+
+    <!-- Mascot 2 -->
+    <div class="relative mascot">
+        <div class="absolute bottom-4 animate-slide-in-left z-10">
             <img src="./images/mascot2.png" alt="Mascot" class="w-32 h-auto">
         </div>
     </div>
-    
-    
-    
-    <!-- Timer -->
-    <!-- <div class="absolute top-2 right-2 z-10 bg-white bg-opacity-20 text-gray-800 rounded shadow-md px-6 py-2 max-w-[400px]">
-        <div class="flex items-center justify-between">
-            <p class="text-lg font-semibold uppercase tracking-wide text-white">
-                Jan 10-12 2025 ||&nbsp;
-            </p>
-            <p id="countdown" class="text-lg font-bold text-yellow-500">
-                 26 : 02 : 07 : 10
-            </p>
-        </div>
-    </div> -->
-    
-    
-    
 
     <!-- Main Content -->
-    <div id="content"
-        class="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center hidden content-wrapper">
+    <div id="content" class="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center hidden content-wrapper">
         <div class="flex flex-col items-center justify-center h-full px-4 text-center">
-            <img src="./images/logo.png" alt="" class="floating-element">
+            <img src="./images/logo.png" alt="" class="floating-animation">
         </div>
-        <div class="z-10 bg-white bg-opacity-20 text-gray-800 rounded shadow-md px-4 py-2 max-w-[400px] md:px-6">
+        <div class="z-10 bg-white bg-opacity-20 text-gray-800 rounded shadow-md px-4 py-2 max-w-[400px] md:px-6 interactive">
             <div class="flex flex-col md:flex-row items-center justify-between text-center md:text-left">
                 <p class="text-base md:text-lg font-semibold uppercase tracking-wide text-white mb-2 md:mb-0">
                     Feb 21-22 2025 <i class="fa-solid fa-hourglass-end fa-flip" style="color: #B197FC;"></i>&nbsp;
@@ -236,25 +214,19 @@
         
         <div class="flex gap-4">
             <a href="#register"
-                class="bg-white text-purple-500 px-6 py-3 rounded-lg font-medium shadow-md hover:bg-purple-500 hover:text-white transition-all">
+                class="bg-white text-purple-500 px-6 py-3 rounded-lg font-medium shadow-md hover:bg-purple-500 hover:text-white transition-all interactive">
                 Register Now
             </a>
-            
-            <!-- <a href="#schedule"
-                class="bg-purple-600 px-6 py-3 rounded-lg font-medium shadow-md hover:bg-purple-700 transition-all">
-                View Schedule
-            </a> -->
         </div>
     </div>
 
     <!-- Footer -->
-    <footer class="absolute bottom-4 w-full text-center text-sm text-white/80 z-10 hidden" id="footer">
+    <footer class="absolute bottom-4 w-full text-center text-sm text-white/80 z-10 hidden interactive" id="footer">
         © 2024 Hackathon. All Rights Reserved.
     </footer>
 
     <!-- Floating Bar (Navbar alternative with glass effect) -->
-    <nav class="floating-bar">
-
+    <nav class="floating-bar interactive">
         <a href="index.html">
             <button>
                 <i class="fas fa-home"></i>
@@ -310,7 +282,7 @@
 
                 // Remove loading class from body
                 document.body.classList.remove('loading');
-            },); // Delay of 3 seconds before hiding the preloader
+            }, 3000); // Delay of 3 seconds before hiding the preloader
         };
 
         // Countdown timer for registration
@@ -339,3 +311,4 @@
 </body>
 
 </html>
+
