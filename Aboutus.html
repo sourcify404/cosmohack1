@@ -13,56 +13,79 @@
       overflow: hidden;
     }
 
+    /* Floating bar at the bottom with glass effect */
     .floating-bar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(15px);
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      padding: 12px 0;
-      border-radius: 12px 12px 0 0;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-      z-index: 50;
-      transition: all 0.3s ease-in-out;
-    }
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05); /* Reduced background intensity */
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center; /* Center-align buttons */
+            align-items: center;
+            padding: 10px 0;
+            border-radius: 20px 20px 0 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            transition: all 0.3s ease-in-out;
+        }
 
-    .floating-bar button {
-      color: white;
-      background: transparent;
-      border: none;
-      padding: 12px 2px;
-      font-size: 1rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      border-radius: 8px;
-      transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    }
+        .floating-bar button {
+            color: white;
+            background: rgba(255, 255, 255, 0.2); /* Increased button intensity */
+            border: none;
+            padding: 10px 15px;
+            margin: 0 5px; /* Reduced gap between buttons */
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            border-radius: 10px;
+        }
 
-    .floating-bar button i {
-      margin-right: 6px;
-      font-size: 1.4rem;
-    }
+        .floating-bar button i {
+            margin-right: 5px;
+            font-size: 1.2rem;
+        }
 
-    .floating-bar button:hover {
-      color: #ff6f61;
-      transform: scale(1.1);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    }
+        .floating-bar button span {
+            font-size: 1.3rem; /* Increased from 1.1rem */
+            font-weight: 500;
+        }
 
-    @media (max-width: 480px) {
-      .floating-bar button span {
-        display: none;
-      }
+        @media (max-width: 768px) {
+            .floating-bar button span {
+                display: none;
+            }
+        }
 
-      .floating-bar button i {
-        font-size: 1.2rem;
-      }
-    }
+        .floating-bar button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 640px) {
+            .floating-bar {
+                padding: 8px 0;
+            }
+
+            .floating-bar button {
+                padding: 8px 10px;
+                margin: 0 2px;
+            }
+
+            .floating-bar button span {
+                display: none;
+            }
+
+            .floating-bar button i {
+                font-size: 1.1rem;
+                margin-right: 0;
+            }
+        }
 
     @keyframes fadeInUp {
       from {
