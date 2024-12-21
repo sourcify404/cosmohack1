@@ -4,19 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hackathon 2024</title>
+    <title>Cosmohack</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.48/build/spline-viewer.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="audioPlayer.js" defer></script>
     <style>
-        /* Prevent scrolling during preload */
-        body.loading {
-            overflow: hidden;
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            min-height: 100vh;
+            background-color: black;
         }
 
-        /* Floating bar at the bottom with glass effect */
+        .spline-viewer-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+        }
+
         .floating-bar {
             position: fixed;
             bottom: 0;
@@ -27,11 +38,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 10px 0;
+            padding: 15px 0;
             border-radius: 20px 20px 0 0;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            z-index: 10;
-            transition: all 0.3s ease-in-out;
+            z-index: 1000;
         }
 
         .floating-bar button {
@@ -58,107 +68,63 @@
             font-weight: 500;
         }
 
-        @media (max-width: 768px) {
-            .floating-bar button span {
-                display: none;
-            }
-        }
-
         .floating-bar button:hover {
             background: rgba(255, 255, 255, 0.1);
             transform: translateY(-3px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.042);
         }
 
-        @media (max-width: 640px) {
-            .floating-bar {
-                padding: 8px 0;
-            }
-
-            .floating-bar button {
-                padding: 8px 10px;
-                margin: 0 2px;
-            }
-
-            .floating-bar button span {
-                display: none;
-            }
-
-            .floating-bar button i {
-                font-size: 1.1rem;
-                margin-right: 0;
-            }
-        }
-
-        /* Make the page scrollable on mobile */
-        body {
-            overflow-y: scroll;
-        }
-
-        /* Content wrapper styling */
         .content-wrapper {
             padding-bottom: 80px;
-            overflow: auto;
-            padding-top: 30px;
-            margin-top: 40px;
-            pointer-events: none;
+            padding-top: 20px;
+            margin-top: 20px;
         }
 
-        /* Content Text Adjustments */
-        .content-wrapper h1 {
-            font-size: 2.5rem;
-        }
-
-        .content-wrapper p {
-            font-size: 1.3rem;
-        }
-
-        /* Responsive padding for floating bar */
-        .floating-bar {
-            padding: 25px 0;
-        }
-
-        /* Ensuring that body is scrollable and the content expands on mobile */
-        body {
-            min-height: 100vh;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .content-wrapper {
-            flex-grow: 1;
+        .apply-section {
             display: flex;
             justify-content: center;
-            align-items: center;
-            text-align: center;
+            gap: 20px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .apply-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
             padding: 20px;
+            width: 280px;
+            text-align: center;
+            transition: transform 0.3s ease;
         }
 
-        /* Hide footer and content in loading state */
-        .loading .content-wrapper,
-        .loading #footer {
-            display: none;
+        .apply-card:hover {
+            transform: translateY(-10px);
         }
 
-        /* Ensure Spline viewer is fixed to the background */
-        spline-viewer {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            z-index: 1;
+        .apply-now-btn {
+            background: #B197FC;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            transition: background 0.3s ease;
+            font-size: 1rem;
         }
 
-        /* Adjust z-index for other elements */
-        #content, #footer, .floating-bar, .logo, .mascot {
-            position: relative;
-            z-index: 2;
+        .apply-now-btn:hover {
+            background: #9370DB;
         }
 
-        /* Animation for floating effect */
+        @media (max-width: 640px) {
+            .apply-card {
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
@@ -168,87 +134,87 @@
             animation: float 3s ease-in-out infinite;
         }
 
-        /* Make specific elements interactive */
-        .interactive {
-            pointer-events: auto;
+        @media (max-width: 768px) {
+            .floating-bar button span {
+                display: none;
+            }
+
+            .apply-section {
+                flex-direction: column;
+                align-items: center;
+            }
         }
 
-        /* Music player bar styles */
+        @media (max-width: 640px) {
+            .floating-bar {
+                padding: 10px 0;
+            }
+
+            .floating-bar button {
+                padding: 8px 10px;
+                margin: 0 2px;
+            }
+
+            .floating-bar button i {
+                font-size: 1.1rem;
+                margin-right: 0;
+            }
+        }
+
         .music-player {
-    position: fixed;
-    bottom: 105px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    max-width: 500px;
-    background: rgba(0, 0, 0, 0.8); /* Sleek dark background */
-    backdrop-filter: blur(10px);
-    padding: 5px 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
-}
+            width: 90%;
+            max-width: 500px;
+            /* margin: 20px auto; */
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            /* padding: 10px; */
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-.music-player button {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
-    margin: 0 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.2s ease, color 0.2s ease;
-}
+        .music-player button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
 
-.music-player button:hover {
-    transform: scale(1.2);
-    color: #B197FC;
-}
+        .music-player button:hover {
+            color: #B197FC;
+        }
 
-.music-player .progress-bar {
-    flex-grow: 1;
-    height: 8px;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 5px;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    margin: 0 15px;
-}
+        #progressBar {
+            flex-grow: 1;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            margin: 0 10px;
+            border-radius: 2px;
+            cursor: pointer;
+        }
 
-.music-player .progress {
-    height: 100%;
-    background: #B197FC;
-    width: 0;
-    transition: width 0.2s ease;
-    border-radius: 5px;
-}
+        #progress {
+            height: 100%;
+            background: #B197FC;
+            width: 0;
+            border-radius: 2px;
+            transition: width 0.1s linear;
+        }
 
-.music-player .time {
-    font-size: 14px;
-    color: #ffffffcc;
-}
-
-.music-player .time.current {
-    margin-right: 10px;
-}
-
-.music-player .time.duration {
-    margin-left: 10px;
-}
-
+        .time {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0 5px;
+        }
     </style>
 </head>
 
-<body class="min-h-screen overflow-y-auto text-white relative loading bg-black">
-
+<body>
     <!-- Preloader -->
-    <div id="preloader" class="absolute inset-0 flex items-center justify-center bg-black z-50">
+    <div id="preloader" class="fixed inset-0 flex items-center justify-center bg-black z-50">
         <div class="flex flex-col items-center">
             <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-purple-500 border-opacity-75"></div>
             <p class="mt-4 text-white text-lg">Loading...</p>
@@ -256,71 +222,84 @@
     </div>
 
     <!-- Spline Viewer Background -->
-    <spline-viewer url="https://prod.spline.design/6LTLSMAaLiIze7dn/scene.splinecode"
-        class="absolute inset-0 w-full h-full">
-    </spline-viewer>
+    <div class="spline-viewer-container">
+        <spline-viewer url="https://prod.spline.design/6LTLSMAaLiIze7dn/scene.splinecode"></spline-viewer>
+    </div>
 
     <!-- Logo -->
-    <div class="absolute top-4 left-4 z-10 flex items-center logo interactive">
+    <div class="fixed top-4 left-4 z-10 flex items-center logo">
         <img src="./images/logo.png" alt="Logo" class="w-40 object-contain" />
     </div>
 
     <!-- Mascot 1 -->
-    <div class="relative">
-        <div class="absolute top-4 right-4 z-10">
-            <img src="./images/mascot1.png" alt="Mascot" class="w-20 floating-animation">
-        </div>
+    <div class="fixed top-4 right-4 z-10">
+        <img src="./images/mascot1.png" alt="Mascot" class="w-20 floating-animation">
     </div>
 
     <!-- Mascot 2 -->
-    <div class="relative mascot">
-        <div class="absolute bottom-4 animate-slide-in-left z-10">
-            <img src="./images/mascot2.png" alt="Mascot" class="w-32 h-auto">
-        </div>
+    <div class="fixed bottom-4 z-10 animate-slide-in-left">
+        <img src="./images/mascot2.png" alt="Mascot" class="w-32 h-auto">
     </div>
 
     <!-- Main Content -->
-    <div id="content" class="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center hidden content-wrapper">
-        <div class="flex flex-col items-center justify-center h-full px-4 text-center">
-            <img src="./images/logo.png" alt="" class="floating-animation mb-8">
+    <div id="content" class="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-20 text-center content-wrapper">
+        <img src="./images/logo.png" alt="" class="floating-animation">
 
-            <p class="text-lg md:text-2xl mb-6 drop-shadow-lg">
-                Innovate. Collaborate. Compete. Shape the future with your code!
-            </p>
+        <!-- Music Player Bar -->
+        <div class="music-player mt-2">
+            <button id="playPauseBtn">
+                <i class="fas fa-play"></i>
+            </button>
+            <div class="time" id="currentTime">0:00</div>
+            <div id="progressBar">
+                <div id="progress"></div>
+            </div>
+            <div class="time" id="duration">0:00</div>
+            <button id="muteBtn">
+                <i class="fas fa-volume-up"></i>
+            </button>
+        </div>
 
-            <div class="flex flex-col items-center gap-4">
-                <a href="#register"
-                    class="bg-white text-purple-500 px-6 py-3 rounded-lg font-medium shadow-md hover:bg-purple-500 hover:text-white transition-all interactive">
-                    Register Now
-                </a>
+        <p class="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 drop-shadow-lg text-white">
+            Innovate. Collaborate. Compete. Shape the future with your code!
+        </p>
 
-                <div class="z-10 bg-white bg-opacity-20 text-gray-800 rounded shadow-md px-4 py-2 max-w-[400px] md:px-6 interactive">
-                    <div class="flex flex-col md:flex-row items-center justify-between text-center md:text-left">
-                        <p class="text-2xl md:text-3xl font-semibold uppercase tracking-wide text-white mb-2 md:mb-0">
-                            Feb 21-22 2025 <i class="fa-solid fa-hourglass-end fa-flip" style="color: #B197FC;"></i>&nbsp;
-                        </p>
-                        <p id="countdown" class="text-4xl md:text-6xl font-bold text-yellow-500">
-                            26 : 02 : 07 : 10
-                        </p>
-                    </div>
+        <div class="flex flex-col items-center gap-4">
+            <a href="#register"
+                class="bg-white text-purple-500 px-6 py-3 rounded-lg font-medium shadow-md hover:bg-purple-500 hover:text-white transition-all">
+                Register Now
+            </a>
+
+            <div class="z-10 bg-white bg-opacity-20 text-gray-800 rounded shadow-md px-4 py-2 max-w-[400px] md:px-6">
+                <div class="flex flex-col md:flex-row items-center justify-between text-center md:text-left">
+                    <p class="text-sm sm:text-base md:text-lg lg:text-xl font-semibold uppercase tracking-wide text-white mb-2 md:mb-0">
+                        Feb 21-22 2025 <i class="fa-solid fa-hourglass-end fa-flip" style="color: #B197FC;"></i>&nbsp;
+                    </p>
+                    <p id="countdown" class="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-yellow-500">
+                        26 : 02 : 07 : 10
+                    </p>
                 </div>
+            </div>
+            
+        </div>
+
+        <!-- Apply Section -->
+        <div class="apply-section">
+            <div class="apply-card floating-animation">
+                <h3 class="text-white text-xl mb-4">Cosmocaptain</h3>
+                <p class="text-gray-300 text-sm md:text-base mb-4">Join as a Cosmocaptain and lead your team to victory!</p>
+                <a href="#apply-cosmocaptain" class="apply-now-btn">Apply as Cosmocaptain</a>
+            </div>
+            <div class="apply-card floating-animation" style="animation-delay: 0.5s;">
+                <h3 class="text-white text-xl mb-4">Community Partner</h3>
+                <p class="text-gray-300 text-sm md:text-base mb-4">Become a Community Partner and help shape the future!</p>
+                <a href="communityPartner.html" class="apply-now-btn" target="_blank">Apply as Partner</a>
             </div>
         </div>
     </div>
 
-    <!-- Music Player Bar -->
-    <div class="music-player">
-        <button id="playPauseBtn"><i class="fas fa-play"></i></button>
-        <div class="time" id="currentTime">0:00</div>
-        <div class="progress-bar" id="progressBar">
-            <div class="progress" id="progress"></div>
-        </div>
-        <div class="time" id="duration">0:00</div>
-        <button id="muteBtn"><i class="fas fa-volume-up"></i></button>
-    </div>
-
     <!-- Floating Bar (Navbar alternative with glass effect) -->
-    <nav class="floating-bar interactive">
+    <nav class="floating-bar">
         <a href="#">
             <button>
                 <i class="fas fa-home"></i>
@@ -369,15 +348,9 @@
         // Preloader functionality
         window.onload = function () {
             setTimeout(() => {
-                // Hide preloader
                 document.getElementById('preloader').style.display = 'none';
-
-                // Show content and footer
                 document.getElementById('content').classList.remove('hidden');
-
-                // Remove loading class from body
-                document.body.classList.remove('loading');
-            }); // Delay of 3 seconds before hiding the preloader
+            }, 3000); // 3 seconds delay
         };
 
         // Countdown timer for registration
@@ -400,57 +373,6 @@
 
             countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
         }, 1000);
-
-        // Music Player Functionality
-        // const audio = new Audio('./music/theme.mp3');
-        // const playPauseBtn = document.getElementById('playPauseBtn');
-        // const muteBtn = document.getElementById('muteBtn');
-        // const progressBar = document.getElementById('progressBar');
-        // const progress = document.getElementById('progress');
-        // const currentTimeDisplay = document.getElementById('currentTime');
-        // const durationDisplay = document.getElementById('duration');
-
-        // playPauseBtn.addEventListener('click', togglePlay);
-        // muteBtn.addEventListener('click', toggleMute);
-        // progressBar.addEventListener('click', seek);
-        // audio.addEventListener('timeupdate', updateProgress);
-        // audio.addEventListener('loadedmetadata', setDuration);
-
-        // function togglePlay() {
-        //     if (audio.paused) {
-        //         audio.play();
-        //         playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-        //     } else {
-        //         audio.pause();
-        //         playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
-        //     }
-        // }
-
-        // function toggleMute() {
-        //     audio.muted = !audio.muted;
-        //     muteBtn.innerHTML = audio.muted ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>';
-        // }
-
-        // function seek(e) {
-        //     const percent = e.offsetX / progressBar.offsetWidth;
-        //     audio.currentTime = percent * audio.duration;
-        // }
-
-        // function updateProgress() {
-        //     const percent = (audio.currentTime / audio.duration) * 100;
-        //     progress.style.width = `${percent}%`;
-        //     currentTimeDisplay.textContent = formatTime(audio.currentTime);
-        // }
-
-        // function setDuration() {
-        //     durationDisplay.textContent = formatTime(audio.duration);
-        // }
-
-        // function formatTime(time) {
-        //     const minutes = Math.floor(time / 60);
-        //     const seconds = Math.floor(time % 60);
-        //     return `${minutes}:${seconds.toString().padStart(2, '0')}`;
-        // }
     </script>
 
     <script defer async src="https://apply.devfolio.co/v2/sdk.js"></script>
