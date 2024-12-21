@@ -10,7 +10,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+        integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body {
             min-height: 100vh;
@@ -31,16 +33,18 @@
             transition: opacity 0.5s ease;
         }
 
-       /* Floating bar at the bottom with glass effect */
-       .floating-bar {
+        /* Floating bar at the bottom with glass effect */
+        .floating-bar {
             position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.05); /* Reduced background intensity */
+            background: rgba(255, 255, 255, 0.05);
+            /* Reduced background intensity */
             backdrop-filter: blur(10px);
             display: flex;
-            justify-content: center; /* Center-align buttons */
+            justify-content: center;
+            /* Center-align buttons */
             align-items: center;
             padding: 10px 0;
             border-radius: 20px 20px 0 0;
@@ -51,10 +55,12 @@
 
         .floating-bar button {
             color: white;
-            background: rgba(255, 255, 255, 0.2); /* Increased button intensity */
+            background: rgba(255, 255, 255, 0.2);
+            /* Increased button intensity */
             border: none;
             padding: 10px 15px;
-            margin: 0 5px; /* Reduced gap between buttons */
+            margin: 0 5px;
+            /* Reduced gap between buttons */
             font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -69,7 +75,8 @@
         }
 
         .floating-bar button span {
-            font-size: 1.3rem; /* Increased from 1.1rem */
+            font-size: 1.3rem;
+            /* Increased from 1.1rem */
             font-weight: 500;
         }
 
@@ -277,8 +284,7 @@
 
     <div class="content-wrapper">
         <div class="absolute top-4 left-4 z-10 flex items-center">
-            <img src="./images/logo.png" alt="Logo"
-                class="w-40 object-contain" />
+            <img src="./images/logo.png" alt="Logo" class="w-40 object-contain" />
         </div>
 
         <div class="relative floating-element">
@@ -296,52 +302,61 @@
                 <form id="communityPartnerForm" class="space-y-4">
                     <div>
                         <label for="communityName" class="form-label">Community Name</label>
-                        <input type="text" id="communityName" name="entry.425119372" placeholder="Enter your community name" required class="form-input">
+                        <input type="text" id="communityName" name="entry.425119372"
+                            placeholder="Enter your community name" required class="form-input">
                     </div>
-                
+
                     <div>
                         <label for="communityEmail" class="form-label">Community Email</label>
-                        <input type="email" id="communityEmail" name="entry.985643883" placeholder="Enter your community email address" required class="form-input">
+                        <input type="email" id="communityEmail" name="entry.985643883"
+                            placeholder="Enter your community email address" required class="form-input">
                     </div>
-                
+
                     <div>
                         <label for="yourName" class="form-label">Your Name</label>
-                        <input type="text" id="yourName" name="entry.1052804035" placeholder="Enter your name" required class="form-input">
+                        <input type="text" id="yourName" name="entry.1052804035" placeholder="Enter your name" required
+                            class="form-input">
                     </div>
-                
+
                     <div>
                         <label for="yourPosition" class="form-label">Your Position in Community</label>
-                        <input type="text" id="yourPosition" name="entry.1053080663" placeholder="Enter your position in the community" required class="form-input">
+                        <input type="text" id="yourPosition" name="entry.1053080663"
+                            placeholder="Enter your position in the community" required class="form-input">
                     </div>
-                
+
                     <div>
                         <label for="yourEmail" class="form-label">Your Email</label>
-                        <input type="email" id="yourEmail" name="entry.1191368089" placeholder="Enter your email address" required class="form-input">
+                        <input type="email" id="yourEmail" name="entry.1191368089"
+                            placeholder="Enter your email address" required class="form-input">
                     </div>
-                
+
                     <div>
                         <label for="whatsappNumber" class="form-label">Your WhatsApp Number</label>
-                        <input type="tel" id="whatsappNumber" name="entry.896888183" placeholder="Enter your WhatsApp number" required class="form-input">
+                        <input type="tel" id="whatsappNumber" name="entry.896888183"
+                            placeholder="Enter your WhatsApp number" required class="form-input">
                     </div>
-                
+
                     <div>
                         <label for="communitySocials" class="form-label">Community Socials (linktr.ee link)</label>
-                        <input type="url" id="communitySocials" name="entry.728368598" placeholder="Enter your linktr.ee link" class="form-input">
+                        <input type="url" id="communitySocials" name="entry.728368598"
+                            placeholder="Enter your linktr.ee link" class="form-input">
                     </div>
-                
+
                     <div>
                         <label for="communityDescription" class="form-label">Community Description</label>
-                        <textarea id="communityDescription" name="entry.925250765" placeholder="Tell us about your community" rows="4" required class="form-input"></textarea>
+                        <textarea id="communityDescription" name="entry.925250765"
+                            placeholder="Tell us about your community" rows="4" required class="form-input"></textarea>
                     </div>
-                
+
                     <div>
                         <label for="communityWebsite" class="form-label">Community Website (if any)</label>
-                        <input type="url" id="communityWebsite" name="entry.1019618673" placeholder="https://www.example.com" class="form-input">
+                        <input type="url" id="communityWebsite" name="entry.1019618673"
+                            placeholder="https://www.example.com" class="form-input">
                     </div>
-                
+
                     <button type="submit" class="form-submit w-full">Apply Now</button>
                 </form>
-                
+
                 <div id="loading" class="loading">Submitting...</div>
                 <div id="success" class="success">Form submitted successfully!</div>
                 <div id="error" class="error">An error occurred. Please try again.</div>
@@ -354,8 +369,8 @@
     </div>
 
     <nav class="floating-bar">
-        <a href="index.html">
-            <button>
+        <a>
+            <button onclick="goBack()">
                 <i class="fas fa-home"></i>
                 <span class="ml-2">Home</span>
             </button>
@@ -415,7 +430,7 @@
                         }
                     });
                 }
-            }, 1000);
+            });
 
             // Form animations
             gsap.from('.form-container', {
@@ -439,7 +454,7 @@
                 });
             });
 
-            
+
 
             // Form submission handle 
             const form = document.getElementById('communityPartnerForm');
@@ -447,7 +462,7 @@
             const success = document.getElementById('success');
             const error = document.getElementById('error');
 
-            // Replace with your Google Form URL
+
             const googleFormUrl = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSf2DiitO92_UPtyYOytsjrRMSRVSg3t00eg1GStwRc4iSazYQ/formResponse';
 
             form.addEventListener('submit', function (e) {
@@ -457,23 +472,29 @@
                 error.style.display = 'none';
 
                 const formData = new FormData(form);
-                
+
                 fetch(googleFormUrl, {
                     method: 'POST',
                     mode: 'no-cors',
                     body: formData
                 })
-                .then(() => {
-                    loading.style.display = 'none';
-                    form.reset();
-                    success.style.display = 'block';
-                })
-                .catch(() => {
-                    loading.style.display = 'none';
-                    error.style.display = 'block';
-                });
+                    .then(() => {
+                        loading.style.display = 'none';
+                        form.reset();
+                        success.style.display = 'block';
+                    })
+                    .catch(() => {
+                        loading.style.display = 'none';
+                        error.style.display = 'block';
+                    });
             });
         });
+
+        function goBack() {
+            window.close();
+        }
+
     </script>
 </body>
+
 </html>

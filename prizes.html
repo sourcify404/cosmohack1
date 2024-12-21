@@ -8,7 +8,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.48/build/spline-viewer.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+        integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         /* Prevent scrolling during preload */
         body.loading {
@@ -22,10 +24,12 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.05); /* Reduced background intensity */
+            background: rgba(255, 255, 255, 0.05);
+            /* Reduced background intensity */
             backdrop-filter: blur(10px);
             display: flex;
-            justify-content: center; /* Center-align buttons */
+            justify-content: center;
+            /* Center-align buttons */
             align-items: center;
             padding: 10px 0;
             border-radius: 20px 20px 0 0;
@@ -36,10 +40,12 @@
 
         .floating-bar button {
             color: white;
-            background: rgba(255, 255, 255, 0.2); /* Increased button intensity */
+            background: rgba(255, 255, 255, 0.2);
+            /* Increased button intensity */
             border: none;
             padding: 10px 15px;
-            margin: 0 5px; /* Reduced gap between buttons */
+            margin: 0 5px;
+            /* Reduced gap between buttons */
             font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -54,7 +60,8 @@
         }
 
         .floating-bar button span {
-            font-size: 1.3rem; /* Increased from 1.1rem */
+            font-size: 1.3rem;
+            /* Increased from 1.1rem */
             font-weight: 500;
         }
 
@@ -89,6 +96,7 @@
                 margin-right: 0;
             }
         }
+
         /* Make the page scrollable on mobile */
         body {
             overflow-y: scroll;
@@ -99,7 +107,7 @@
             padding-bottom: 100px;
             /* Ensure space for floating bar */
             overflow: auto;
-           
+
         }
 
         /* Content Text Adjustments */
@@ -168,28 +176,28 @@
                 /* Adjust the distance of the float */
             }
         }
-        
+
         .floating-element {
 
-inset: 0;
-z-index: 0;
-opacity: 1;
-filter: brightness(0.9);
-animation: float 3s ease-in-out infinite;
-}
+            inset: 0;
+            z-index: 0;
+            opacity: 1;
+            filter: brightness(0.9);
+            animation: float 3s ease-in-out infinite;
+        }
 
-@keyframes float {
+        @keyframes float {
 
-0%,
-100% {
-    transform: translateY(0);
-}
+            0%,
+            100% {
+                transform: translateY(0);
+            }
 
-50% {
-    transform: translateY(-10px);
-    /* Adjust the distance of the float */
-}
-}
+            50% {
+                transform: translateY(-10px);
+                /* Adjust the distance of the float */
+            }
+        }
     </style>
 </head>
 
@@ -211,8 +219,7 @@ animation: float 3s ease-in-out infinite;
 
     <!-- Logo -->
     <div class="absolute top-4 left-4 z-10 flex items-center">
-        <img src="./images/logo.png" alt="Logo"
-            class="w-40 object-contain" />
+        <img src="./images/logo.png" alt="Logo" class="w-40 object-contain" />
     </div>
 
     <!-- //mascot1 -->
@@ -232,44 +239,45 @@ animation: float 3s ease-in-out infinite;
             </p>
         </div>
     </div> -->
-    
-    
-    
+
+
+
 
     <!-- Main Content -->
     <div id="content"
         class="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center hidden content-wrapper">
         <!-- Prizes Section -->
-    <section id="prizes" class="relative z-10 px-6 py-32  rounded-lg shadow-md max-w-6xl mx-auto">
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">
-            Prizes
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Prize Card 1 -->
-            <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-lg shadow-lg p-6 text-center">
-                <i class="fas fa-trophy text-5xl text-yellow-400 mb-4"></i>
-                <h3 class="text-2xl font-semibold mb-2 text-white">1st Place</h3>
-                <p class="text-xl font-bold text-yellow-300">$5,000</p>
-                <p class="text-gray-300 mt-2">Cash prize + internship opportunities with top space companies.</p>
-            </div>
+        <section id="prizes" class="relative z-10 px-6 py-32  rounded-lg shadow-md max-w-6xl mx-auto">
+            <h2
+                class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">
+                Prizes
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Prize Card 1 -->
+                <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-lg shadow-lg p-6 text-center">
+                    <i class="fas fa-trophy text-5xl text-yellow-400 mb-4"></i>
+                    <h3 class="text-2xl font-semibold mb-2 text-white">1st Place</h3>
+                    <p class="text-xl font-bold text-yellow-300">$5,000</p>
+                    <p class="text-gray-300 mt-2">Cash prize + internship opportunities with top space companies.</p>
+                </div>
 
-            <!-- Prize Card 2 -->
-            <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-lg shadow-lg p-6 text-center">
-                <i class="fas fa-medal text-5xl text-gray-400 mb-4"></i>
-                <h3 class="text-2xl font-semibold mb-2 text-white">2nd Place</h3>
-                <p class="text-xl font-bold text-yellow-300">$3,000</p>
-                <p class="text-gray-300 mt-2">Cash prize + networking opportunities with industry leaders.</p>
-            </div>
+                <!-- Prize Card 2 -->
+                <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-lg shadow-lg p-6 text-center">
+                    <i class="fas fa-medal text-5xl text-gray-400 mb-4"></i>
+                    <h3 class="text-2xl font-semibold mb-2 text-white">2nd Place</h3>
+                    <p class="text-xl font-bold text-yellow-300">$3,000</p>
+                    <p class="text-gray-300 mt-2">Cash prize + networking opportunities with industry leaders.</p>
+                </div>
 
-            <!-- Prize Card 3 -->
-            <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-lg shadow-lg p-6 text-center">
-                <i class="fas fa-award text-5xl text-orange-400 mb-4"></i>
-                <h3 class="text-2xl font-semibold mb-2 text-white">3rd Place</h3>
-                <p class="text-xl font-bold text-yellow-300">$1,500</p>
-                <p class="text-gray-300 mt-2">Cash prize + certificates of excellence.</p>
+                <!-- Prize Card 3 -->
+                <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-lg shadow-lg p-6 text-center">
+                    <i class="fas fa-award text-5xl text-orange-400 mb-4"></i>
+                    <h3 class="text-2xl font-semibold mb-2 text-white">3rd Place</h3>
+                    <p class="text-xl font-bold text-yellow-300">$1,500</p>
+                    <p class="text-gray-300 mt-2">Cash prize + certificates of excellence.</p>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
     </div>
 
@@ -281,8 +289,8 @@ animation: float 3s ease-in-out infinite;
     <!-- Floating Bar (Navbar alternative with glass effect) -->
     <nav class="floating-bar">
 
-        <a href="index.html">
-            <button>
+        <a>
+            <button onclick="goBack()">
                 <i class="fas fa-home"></i>
                 <span class="ml-2">Home</span>
             </button>
@@ -358,7 +366,12 @@ animation: float 3s ease-in-out infinite;
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
             countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-        }, 1000);
+        });
+
+        function goBack() {
+            window.close();
+        }
+
     </script>
 
     //devfolio JavaScript
