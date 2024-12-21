@@ -9,10 +9,12 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.48/build/spline-viewer.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+        integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="audioPlayer.js" defer></script>
     <link rel="stylesheet" href="index.css">
-    
+
     <style>
         body {
             margin: 0;
@@ -96,7 +98,8 @@
             backdrop-filter: blur(10px);
             border-radius: 15px;
             padding: 20px;
-            width: 280px;
+            width: calc(50% - 10px);
+            max-width: 280px;
             text-align: center;
             transition: transform 0.3s ease;
         }
@@ -129,8 +132,15 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
         .floating-animation {
@@ -167,10 +177,8 @@
         .music-player {
             width: 90%;
             max-width: 500px;
-            /* margin: 20px auto; */
             background: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(10px);
-            /* padding: 10px; */
             border-radius: 15px;
             display: flex;
             align-items: center;
@@ -212,6 +220,32 @@
             color: rgba(255, 255, 255, 0.7);
             margin: 0 5px;
         }
+
+        .become-part-section {
+            margin-top: 60px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            max-width: 1200px;
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .become-part-description {
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .apply-card {
+                width: 100%;
+                max-width: none;
+            }
+        }
     </style>
 </head>
 
@@ -245,7 +279,8 @@
     </div>
 
     <!-- Main Content -->
-    <div id="content" class="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-20 text-center content-wrapper">
+    <div id="content"
+        class="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-20 text-center content-wrapper">
         <img src="./images/logo.png" alt="" class="floating-animation">
 
         <!-- Music Player Bar -->
@@ -275,7 +310,8 @@
 
             <div class="z-10 bg-white bg-opacity-20 text-gray-800 rounded shadow-md px-4 py-2 max-w-[400px] md:px-6">
                 <div class="flex flex-col md:flex-row items-center justify-between text-center md:text-left">
-                    <p class="text-sm sm:text-base md:text-lg lg:text-xl font-semibold uppercase tracking-wide text-white mb-2 md:mb-0">
+                    <p
+                        class="text-sm sm:text-base md:text-lg lg:text-xl font-semibold uppercase tracking-wide text-white mb-2 md:mb-0">
                         Feb 21-22 2025 <i class="fa-solid fa-hourglass-end fa-flip" style="color: #B197FC;"></i>&nbsp;
                     </p>
                     <p id="countdown" class="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-yellow-500">
@@ -283,24 +319,34 @@
                     </p>
                 </div>
             </div>
-            
+
         </div>
 
-        <!-- Apply Section -->
+
+
+    </div>
+    <!-- Become a Part Section -->
+    <div class="become-part-section">
+        <h2 class="text-white text-3xl mb-4 text-center">Become a Part</h2>
+        <p class="become-part-description">
+            Join our vibrant community and help shape the future of innovation. Whether you're a leader or a connector,
+            there's a place for you in Cosmohack!
+        </p>
         <div class="apply-section">
             <div class="apply-card floating-animation">
                 <h3 class="text-white text-xl mb-4">Cosmocaptain</h3>
-                <p class="text-gray-300 text-sm md:text-base mb-4">Join as a Cosmocaptain and lead your team to victory!</p>
+                <p class="text-gray-300 text-sm md:text-base mb-4">Join as a Cosmocaptain and lead your team to victory!
+                </p>
                 <a href="comingsoon.html" class="apply-now-btn" target="_blank">Apply as Cosmocaptain</a>
             </div>
             <div class="apply-card floating-animation" style="animation-delay: 0.5s;">
                 <h3 class="text-white text-xl mb-4">Community Partner</h3>
-                <p class="text-gray-300 text-sm md:text-base mb-4">Become a Community Partner and help shape the future!</p>
+                <p class="text-gray-300 text-sm md:text-base mb-4">Become a Community Partner and help shape the future!
+                </p>
                 <a href="communityPartner.html" class="apply-now-btn" target="_blank">Apply as Partner</a>
             </div>
         </div>
     </div>
-
     <!-- Floating Bar (Navbar alternative with glass effect) -->
     <nav class="floating-bar">
         <a href="#">
@@ -382,4 +428,3 @@
 </body>
 
 </html>
-
