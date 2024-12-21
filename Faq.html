@@ -8,7 +8,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.48/build/spline-viewer.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+        integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body.loading {
             overflow: hidden;
@@ -64,10 +66,12 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.05); /* Reduced background intensity */
+            background: rgba(255, 255, 255, 0.05);
+            /* Reduced background intensity */
             backdrop-filter: blur(10px);
             display: flex;
-            justify-content: center; /* Center-align buttons */
+            justify-content: center;
+            /* Center-align buttons */
             align-items: center;
             padding: 10px 0;
             border-radius: 20px 20px 0 0;
@@ -78,10 +82,12 @@
 
         .floating-bar button {
             color: white;
-            background: rgba(255, 255, 255, 0.2); /* Increased button intensity */
+            background: rgba(255, 255, 255, 0.2);
+            /* Increased button intensity */
             border: none;
             padding: 10px 15px;
-            margin: 0 5px; /* Reduced gap between buttons */
+            margin: 0 5px;
+            /* Reduced gap between buttons */
             font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -96,7 +102,8 @@
         }
 
         .floating-bar button span {
-            font-size: 1.3rem; /* Increased from 1.1rem */
+            font-size: 1.3rem;
+            /* Increased from 1.1rem */
             font-weight: 500;
         }
 
@@ -131,6 +138,7 @@
                 margin-right: 0;
             }
         }
+
         #preloader {
             position: fixed;
             top: 0;
@@ -144,28 +152,28 @@
             z-index: 9999;
             transition: opacity 0.5s ease;
         }
-    
+
         .floating-element {
 
-inset: 0;
-z-index: 0;
-opacity: 1;
-filter: brightness(0.9);
-animation: float 3s ease-in-out infinite;
-}
+            inset: 0;
+            z-index: 0;
+            opacity: 1;
+            filter: brightness(0.9);
+            animation: float 3s ease-in-out infinite;
+        }
 
-@keyframes float {
+        @keyframes float {
 
-0%,
-100% {
-    transform: translateY(0);
-}
+            0%,
+            100% {
+                transform: translateY(0);
+            }
 
-50% {
-    transform: translateY(-10px);
-    /* Adjust the distance of the float */
-}
-}
+            50% {
+                transform: translateY(-10px);
+                /* Adjust the distance of the float */
+            }
+        }
     </style>
 </head>
 
@@ -183,8 +191,7 @@ animation: float 3s ease-in-out infinite;
     </spline-viewer>
 
     <div class="absolute top-4 left-4 z-10 flex items-center">
-        <img src="./images/logo.png" alt="Logo"
-            class="w-40 object-contain" />
+        <img src="./images/logo.png" alt="Logo" class="w-40 object-contain" />
     </div>
 
     <!-- //mascot1 -->
@@ -194,11 +201,11 @@ animation: float 3s ease-in-out infinite;
         </div>
     </div>
     <!-- <header class="absolute top-0 left-0 right-0 z-20 flex justify-between items-center p-4"> -->
-        <!-- <div class="flex items-center">
+    <!-- <div class="flex items-center">
             <img src="./images/CosmoHACK-Round-W.png" alt="CosmoHack Logo"
                 class="h-16 w-16 object-contain rounded-full border-2 border-white shadow-lg" />
         </div> -->
-        <!-- <div class="absolute  right-2 z-10 bg-purple-700 text-white rounded shadow-md py-2 px-4 py-1 max-w-[180px]">
+    <!-- <div class="absolute  right-2 z-10 bg-purple-700 text-white rounded shadow-md py-2 px-4 py-1 max-w-[180px]">
             <div class="text-right">
                 <p class="text-xs font-semibold uppercase tracking-wide">Registration Ends In:</p>
                 <p id="countdown" class="text-sm font-bold text-yellow-300 mt-1"></p>
@@ -219,7 +226,7 @@ animation: float 3s ease-in-out infinite;
             <div class="space-y-4">
                 <div class="faq-item rounded-lg p-4 cursor-pointer">
                     <div class="flex justify-between items-center">
-                        <h3 class="text-lg sm:text-xl font-semibold">  What is CosmoHack?</h3>
+                        <h3 class="text-lg sm:text-xl font-semibold"> What is CosmoHack?</h3>
                         <span class="faq-toggle text-2xl">▼</span>
                     </div>
                     <div class="faq-answer mt-2 text-base sm:text-lg text-gray-300">
@@ -229,7 +236,7 @@ animation: float 3s ease-in-out infinite;
                 </div>
                 <div class="faq-item rounded-lg p-4 cursor-pointer">
                     <div class="flex justify-between items-center">
-                        <h3 class="text-lg sm:text-xl font-semibold">  Who can participate?</h3>
+                        <h3 class="text-lg sm:text-xl font-semibold"> Who can participate?</h3>
                         <span class="faq-toggle text-2xl">▼</span>
                     </div>
                     <div class="faq-answer mt-2 text-base sm:text-lg text-gray-300">
@@ -239,7 +246,7 @@ animation: float 3s ease-in-out infinite;
                 </div>
                 <div class="faq-item rounded-lg p-4 cursor-pointer">
                     <div class="flex justify-between items-center">
-                        <h3 class="text-lg sm:text-xl font-semibold">  What kind of projects can I work on?</h3>
+                        <h3 class="text-lg sm:text-xl font-semibold"> What kind of projects can I work on?</h3>
                         <span class="faq-toggle text-2xl">▼</span>
                     </div>
                     <div class="faq-answer mt-2 text-base sm:text-lg text-gray-300">
@@ -250,7 +257,7 @@ animation: float 3s ease-in-out infinite;
                 </div>
                 <div class="faq-item rounded-lg p-4 cursor-pointer">
                     <div class="flex justify-between items-center">
-                        <h3 class="text-lg sm:text-xl font-semibold">  Is there a registration fee?</h3>
+                        <h3 class="text-lg sm:text-xl font-semibold"> Is there a registration fee?</h3>
                         <span class="faq-toggle text-2xl">▼</span>
                     </div>
                     <div class="faq-answer mt-2 text-base sm:text-lg text-gray-300">
@@ -260,7 +267,7 @@ animation: float 3s ease-in-out infinite;
                 </div>
                 <div class="faq-item rounded-lg p-4 cursor-pointer">
                     <div class="flex justify-between items-center">
-                        <h3 class="text-lg sm:text-xl font-semibold">  What are the prizes?</h3>
+                        <h3 class="text-lg sm:text-xl font-semibold"> What are the prizes?</h3>
                         <span class="faq-toggle text-2xl">▼</span>
                     </div>
                     <div class="faq-answer mt-2 text-base sm:text-lg text-gray-300">
@@ -279,8 +286,8 @@ animation: float 3s ease-in-out infinite;
     </footer>
 
     <nav class="floating-bar">
-        <a href="index.html">
-            <button>
+        <a>
+            <button onclick="goBack()">
                 <i class="fas fa-home"></i>
                 <span class="ml-2">Home</span>
             </button>
@@ -319,7 +326,7 @@ animation: float 3s ease-in-out infinite;
                 <span class="ml-2">FAQ</span>
             </button>
         </a>
-      </nav>
+    </nav>
 
     <script>
         window.addEventListener('load', function () {
@@ -331,8 +338,8 @@ animation: float 3s ease-in-out infinite;
                     document.getElementById('content').classList.remove('hidden');
                     document.getElementById('footer').classList.remove('hidden');
                     document.body.classList.remove('loading');
-                }, 500);
-            }, 2000);
+                });
+            });
         });
 
         // Updated FAQ toggle functionality
@@ -352,26 +359,11 @@ animation: float 3s ease-in-out infinite;
             });
         });
 
-        // Countdown timer
-  const countdownElement = document.getElementById('countdown');
-  const endDate = new Date('Feb 21, 2025 00:00:00').getTime();
-  
-  setInterval(() => {
-    const now = new Date().getTime();
-    const distance = endDate - now;
 
-    if (distance <= 0) {
-      countdownElement.innerHTML = "Registration Closed";
-      return;
-    }
+        function goBack() {
+            window.close();
+        }
 
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    
-    countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-  }, 1000);
     </script>
 
 </body>

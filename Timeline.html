@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     body {
       min-height: 100vh;
@@ -29,79 +32,86 @@
       opacity: 1;
       transition: opacity 0.5s ease;
     }
-/* Floating bar at the bottom with glass effect */
-.floating-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.05); /* Reduced background intensity */
-            backdrop-filter: blur(10px);
-            display: flex;
-            justify-content: center; /* Center-align buttons */
-            align-items: center;
-            padding: 10px 0;
-            border-radius: 20px 20px 0 0;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            z-index: 10;
-            transition: all 0.3s ease-in-out;
-        }
 
-        .floating-bar button {
-            color: white;
-            background: rgba(255, 255, 255, 0.2); /* Increased button intensity */
-            border: none;
-            padding: 10px 15px;
-            margin: 0 5px; /* Reduced gap between buttons */
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            border-radius: 10px;
-        }
+    /* Floating bar at the bottom with glass effect */
+    .floating-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      /* Reduced background intensity */
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: center;
+      /* Center-align buttons */
+      align-items: center;
+      padding: 10px 0;
+      border-radius: 20px 20px 0 0;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+      transition: all 0.3s ease-in-out;
+    }
 
-        .floating-bar button i {
-            margin-right: 5px;
-            font-size: 1.2rem;
-        }
+    .floating-bar button {
+      color: white;
+      background: rgba(255, 255, 255, 0.2);
+      /* Increased button intensity */
+      border: none;
+      padding: 10px 15px;
+      margin: 0 5px;
+      /* Reduced gap between buttons */
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      border-radius: 10px;
+    }
 
-        .floating-bar button span {
-            font-size: 1.3rem; /* Increased from 1.1rem */
-            font-weight: 500;
-        }
+    .floating-bar button i {
+      margin-right: 5px;
+      font-size: 1.2rem;
+    }
 
-        @media (max-width: 768px) {
-            .floating-bar button span {
-                display: none;
-            }
-        }
+    .floating-bar button span {
+      font-size: 1.3rem;
+      /* Increased from 1.1rem */
+      font-weight: 500;
+    }
 
-        .floating-bar button:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
+    @media (max-width: 768px) {
+      .floating-bar button span {
+        display: none;
+      }
+    }
 
-        @media (max-width: 640px) {
-            .floating-bar {
-                padding: 8px 0;
-            }
+    .floating-bar button:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
 
-            .floating-bar button {
-                padding: 8px 10px;
-                margin: 0 2px;
-            }
+    @media (max-width: 640px) {
+      .floating-bar {
+        padding: 8px 0;
+      }
 
-            .floating-bar button span {
-                display: none;
-            }
+      .floating-bar button {
+        padding: 8px 10px;
+        margin: 0 2px;
+      }
 
-            .floating-bar button i {
-                font-size: 1.1rem;
-                margin-right: 0;
-            }
-        }
+      .floating-bar button span {
+        display: none;
+      }
+
+      .floating-bar button i {
+        font-size: 1.1rem;
+        margin-right: 0;
+      }
+    }
+
     .timeline-container {
       position: relative;
       padding: 20px 0;
@@ -151,58 +161,57 @@
       transition: opacity 0.5s ease;
     }
 
- 
+
     .floating-element {
 
-inset: 0;
-z-index: 0;
-opacity: 1;
-filter: brightness(0.9);
-animation: float 3s ease-in-out infinite;
-}
+      inset: 0;
+      z-index: 0;
+      opacity: 1;
+      filter: brightness(0.9);
+      animation: float 3s ease-in-out infinite;
+    }
 
-@keyframes float {
+    @keyframes float {
 
-0%,
-100% {
-    transform: translateY(0);
-}
+      0%,
+      100% {
+        transform: translateY(0);
+      }
 
-50% {
-    transform: translateY(-10px);
-    /* Adjust the distance of the float */
-}
-}   
+      50% {
+        transform: translateY(-10px);
+        /* Adjust the distance of the float */
+      }
+    }
   </style>
 </head>
-<body>
-    <div id="preloader" class="absolute inset-0 flex items-center justify-center bg-black z-50">
-        <div class="flex flex-col items-center">
-            <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-purple-500 border-opacity-75"></div>
-            <p class="mt-4 text-white text-lg">Loading...</p>
-        </div>
-    </div>
 
-  <spline-viewer 
-    url="https://prod.spline.design/6LTLSMAaLiIze7dn/scene.splinecode" 
+<body>
+  <div id="preloader" class="absolute inset-0 flex items-center justify-center bg-black z-50">
+    <div class="flex flex-col items-center">
+      <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-purple-500 border-opacity-75"></div>
+      <p class="mt-4 text-white text-lg">Loading...</p>
+    </div>
+  </div>
+
+  <spline-viewer url="https://prod.spline.design/6LTLSMAaLiIze7dn/scene.splinecode"
     class="fixed inset-0 w-full h-full z-0">
   </spline-viewer>
 
   <div class="content-wrapper">
     <div class="absolute top-4 left-4 z-10 flex items-center">
-        <img src="./images/logo.png" alt="Logo"
-            class="w-40 object-contain" />
+      <img src="./images/logo.png" alt="Logo" class="w-40 object-contain" />
     </div>
-<!-- //mascot1 -->
-<div class="relative floating-element">
-  <div class="absolute top-4 right-4 z-50">
-      <img src="./images/mascot1.png" alt="Mascot" class="w-20">
-  </div>
-</div>
+    <!-- //mascot1 -->
+    <div class="relative floating-element">
+      <div class="absolute top-4 right-4 z-50">
+        <img src="./images/mascot1.png" alt="Mascot" class="w-20">
+      </div>
+    </div>
     <!-- <header class="flex justify-between items-center p-1"> -->
-        <!-- <img src="./images/CosmoHACK-Round-W.png" alt="Logo" class="h-12 w-12 object-contain rounded-full border-2 border-white" /> -->
-        
-          <!-- <div class="absolute  right-2 z-10 bg-purple-700 text-white rounded shadow-md py-2 px-4 py-1 max-w-[180px]">
+    <!-- <img src="./images/CosmoHACK-Round-W.png" alt="Logo" class="h-12 w-12 object-contain rounded-full border-2 border-white" /> -->
+
+    <!-- <div class="absolute  right-2 z-10 bg-purple-700 text-white rounded shadow-md py-2 px-4 py-1 max-w-[180px]">
               <div class="text-right">
                   <p class="text-xs font-semibold uppercase tracking-wide">Registration Ends In:</p>
                   <p id="countdown" class="text-sm font-bold text-yellow-300 mt-1"></p>
@@ -226,7 +235,8 @@ animation: float 3s ease-in-out infinite;
         <div class="timeline-item">
           <p class="timeline-date">10 May, 2024</p>
           <h4 class="text-xl font-bold mb-2">Result Declaration</h4>
-          <p>The ultimate genius will be revealed by our judging panel. Results will be announced in WhatsApp groups and via email.</p>
+          <p>The ultimate genius will be revealed by our judging panel. Results will be announced in WhatsApp groups and
+            via email.</p>
         </div>
         <div class="timeline-item">
           <p class="timeline-date">12 May, 2024</p>
@@ -242,120 +252,125 @@ animation: float 3s ease-in-out infinite;
   </div>
 
   <nav class="floating-bar">
-    <a href="index.html">
-        <button>
-            <i class="fas fa-home"></i>
-            <span class="ml-2">Home</span>
-        </button>
+    <a>
+      <button onclick="goBack()">
+        <i class="fas fa-home"></i>
+        <span class="ml-2">Home</span>
+      </button>
     </a>
     <a href="Sponsors.html">
-        <button>
-            <i class="fa-solid fa-sack-dollar"></i>
-            <span class="ml-2">Sponsors</span>
-        </button>
+      <button>
+        <i class="fa-solid fa-sack-dollar"></i>
+        <span class="ml-2">Sponsors</span>
+      </button>
     </a>
     <a href="./Timeline.html">
-        <button>
-            <i class="fas fa-calendar-alt"></i>
-            <span class="ml-2">Timeline</span>
-        </button>
+      <button>
+        <i class="fas fa-calendar-alt"></i>
+        <span class="ml-2">Timeline</span>
+      </button>
     </a>
     <a href="ProblemStatements.html">
-        <button>
-          <i class="fa-regular fa-star"></i><span>Tracks</span>
-        </button>
+      <button>
+        <i class="fa-regular fa-star"></i><span>Tracks</span>
+      </button>
     </a>
     <a href="prizes.html">
-        <button>
-            <i class="fa-solid fa-trophy"></i><span>Prizes</span>
-        </button>
+      <button>
+        <i class="fa-solid fa-trophy"></i><span>Prizes</span>
+      </button>
     </a>
     <a href="Aboutus.html">
-        <button>
-            <i class="fa-solid fa-people-group"></i>
-            <span class="ml-2">About</span>
-        </button>
+      <button>
+        <i class="fa-solid fa-people-group"></i>
+        <span class="ml-2">About</span>
+      </button>
     </a>
     <a href="Faq.html">
-        <button>
-            <i class="fas fa-question-circle"></i>
-            <span class="ml-2">FAQ</span>
-        </button>
+      <button>
+        <i class="fas fa-question-circle"></i>
+        <span class="ml-2">FAQ</span>
+      </button>
     </a>
   </nav>
 
   <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    gsap.registerPlugin(ScrollTrigger);
+    document.addEventListener('DOMContentLoaded', function () {
+      gsap.registerPlugin(ScrollTrigger);
 
-    // Preloader
-    setTimeout(() => {
-      const preloader = document.getElementById('preloader');
-      const content = document.querySelector('.content-wrapper');
-      
-      if (preloader && content) {
-        gsap.to(preloader, {
-          opacity: 0,
-          duration: 0.5,
-          onComplete: () => {
-            preloader.style.display = 'none';
-            content.style.opacity = '1';
-          }
-        });
-      }
-    });
+      // Preloader
+      setTimeout(() => {
+        const preloader = document.getElementById('preloader');
+        const content = document.querySelector('.content-wrapper');
 
-    // Timeline animations
-    gsap.utils.toArray('.timeline-item').forEach((item, index) => {
-      gsap.from(item, {
-        opacity: 0,
-        y: 50,
-        duration: 0.8,
-        scrollTrigger: {
-          trigger: item,
-          start: 'top bottom-=100',
-          toggleActions: 'play none none reverse'
-        },
-        delay: index * 0.2
+        if (preloader && content) {
+          gsap.to(preloader, {
+            opacity: 0,
+            duration: 0.5,
+            onComplete: () => {
+              preloader.style.display = 'none';
+              content.style.opacity = '1';
+            }
+          });
+        }
       });
+
+      // Timeline animations
+      gsap.utils.toArray('.timeline-item').forEach((item, index) => {
+        gsap.from(item, {
+          opacity: 0,
+          y: 50,
+          duration: 0.8,
+          scrollTrigger: {
+            trigger: item,
+            start: 'top bottom-=100',
+            toggleActions: 'play none none reverse'
+          },
+          delay: index * 0.2
+        });
+      });
+
+      // Floating bar animation
+      // gsap.from('.floating-bar', {
+      //   y: 100,
+      //   opacity: 0,
+      //   duration: 1,
+      //   ease: 'power3.out',
+      //   scrollTrigger: {
+      //     trigger: 'body',
+      //     start: 'top top',
+      //     end: '+=100',
+      //     toggleActions: 'play none none reverse'
+      //   }
+      // });
     });
 
-    // Floating bar animation
-    // gsap.from('.floating-bar', {
-    //   y: 100,
-    //   opacity: 0,
-    //   duration: 1,
-    //   ease: 'power3.out',
-    //   scrollTrigger: {
-    //     trigger: 'body',
-    //     start: 'top top',
-    //     end: '+=100',
-    //     toggleActions: 'play none none reverse'
-    //   }
-    // });
-  });
+    // Countdown timer
+    const countdownElement = document.getElementById('countdown');
+    const endDate = new Date('Feb 21, 2025 00:00:00').getTime();
 
-  // Countdown timer
-  const countdownElement = document.getElementById('countdown');
-  const endDate = new Date('Feb 21, 2025 00:00:00').getTime();
-  
-  setInterval(() => {
-    const now = new Date().getTime();
-    const distance = endDate - now;
+    setInterval(() => {
+      const now = new Date().getTime();
+      const distance = endDate - now;
 
-    if (distance <= 0) {
-      countdownElement.innerHTML = "Registration Closed";
-      return;
+      if (distance <= 0) {
+        countdownElement.innerHTML = "Registration Closed";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    });
+
+    function goBack() {
+      window.close();
     }
 
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    
-    countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-  }, 1000);
   </script>
 </body>
-</html>
 
+</html>
