@@ -1,376 +1,377 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hackathon 2024</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.48/build/spline-viewer.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
-    integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <style>
-    body {
-      min-height: 100vh;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      background-color: #000;
-      color: #fff;
-    }
-
-    .content-wrapper {
-      flex-grow: 1;
-      overflow-y: auto;
-      padding: 20px;
-      position: relative;
-      z-index: 10;
-      opacity: 1;
-      transition: opacity 0.5s ease;
-    }
-
-    /* Floating bar at the bottom with glass effect */
-    .floating-bar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.05);
-      /* Reduced background intensity */
-      backdrop-filter: blur(10px);
-      display: flex;
-      justify-content: center;
-      /* Center-align buttons */
-      align-items: center;
-      padding: 10px 0;
-      border-radius: 20px 20px 0 0;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      z-index: 10;
-      transition: all 0.3s ease-in-out;
-    }
-
-    .floating-bar button {
-      color: white;
-      background: rgba(255, 255, 255, 0.2);
-      /* Increased button intensity */
-      border: none;
-      padding: 10px 15px;
-      margin: 0 5px;
-      /* Reduced gap between buttons */
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      border-radius: 10px;
-    }
-
-    .floating-bar button i {
-      margin-right: 5px;
-      font-size: 1.2rem;
-    }
-
-    .floating-bar button span {
-      font-size: 1.3rem;
-      /* Increased from 1.1rem */
-      font-weight: 500;
-    }
-
-    @media (max-width: 768px) {
-      .floating-bar button span {
-        display: none;
-      }
-    }
-
-    .floating-bar button:hover {
-      background: rgba(255, 255, 255, 0.3);
-      transform: translateY(-3px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    @media (max-width: 640px) {
-      .floating-bar {
-        padding: 8px 0;
-      }
-
-      .floating-bar button {
-        padding: 8px 10px;
-        margin: 0 2px;
-      }
-
-      .floating-bar button span {
-        display: none;
-      }
-
-      .floating-bar button i {
-        font-size: 1.1rem;
-        margin-right: 0;
-      }
-    }
-
-    .timeline-container {
-      position: relative;
-      padding: 20px 0;
-    }
-
-    .timeline-item {
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 8px;
-      margin-bottom: 20px;
-      position: relative;
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      width: 2px;
-      height: calc(100% + 20px);
-      background: #FFC100;
-      left: -10px;
-      top: 0;
-    }
-
-    .timeline-item:last-child::before {
-      height: 50%;
-    }
-
-    .timeline-date {
-      font-weight: bold;
-      color: #FFC100;
-      margin-bottom: 10px;
-    }
-
-    #preloader {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      transition: opacity 0.5s ease;
-    }
-
-
-    .floating-element {
-
-      inset: 0;
-      z-index: 0;
-      opacity: 1;
-      filter: brightness(0.9);
-      animation: float 3s ease-in-out infinite;
-    }
-
-    @keyframes float {
-
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-10px);
-        /* Adjust the distance of the float */
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <div id="preloader" class="absolute inset-0 flex items-center justify-center bg-black z-50">
-    <div class="flex flex-col items-center">
-      <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-purple-500 border-opacity-75"></div>
-      <p class="mt-4 text-white text-lg">Loading...</p>
-    </div>
-  </div>
-
-  <spline-viewer url="https://prod.spline.design/6LTLSMAaLiIze7dn/scene.splinecode"
-    class="fixed inset-0 w-full h-full z-0">
-  </spline-viewer>
-
-  <div class="content-wrapper">
-    <div class="absolute top-4 left-4 z-10 flex items-center">
-      <img src="./images/logo.png" alt="Logo" class="w-40 object-contain" />
-    </div>
-    <!-- //mascot1 -->
-    <div class="relative floating-element">
-      <div class="absolute top-4 right-4 z-50">
-        <img src="./images/mascot1.png" alt="Mascot" class="w-20">
-      </div>
-    </div>
-    <!-- <header class="flex justify-between items-center p-1"> -->
-    <!-- <img src="./images/CosmoHACK-Round-W.png" alt="Logo" class="h-12 w-12 object-contain rounded-full border-2 border-white" /> -->
-
-    <!-- <div class="absolute  right-2 z-10 bg-purple-700 text-white rounded shadow-md py-2 px-4 py-1 max-w-[180px]">
-              <div class="text-right">
-                  <p class="text-xs font-semibold uppercase tracking-wide">Registration Ends In:</p>
-                  <p id="countdown" class="text-sm font-bold text-yellow-300 mt-1"></p>
-              </div>
-          </div>
-      </header> -->
-
-    <main class="mt-8">
-      <h1 class="text-4xl font-bold mb-2 mt-20 text-center">Hackathon 2024 Timeline</h1>
-      <div class="timeline-container">
-        <div class="timeline-item">
-          <p class="timeline-date">1-6 May, 2024</p>
-          <h4 class="text-xl font-bold mb-2">Registration</h4>
-          <p>Pick your favourite event(s) and register by filling the corresponding form. It's that easy!</p>
-        </div>
-        <div class="timeline-item">
-          <p class="timeline-date">6-9 May, 2024</p>
-          <h4 class="text-xl font-bold mb-2">Participation</h4>
-          <p>Participate online. Links for registered events will be sent via email and WhatsApp groups.</p>
-        </div>
-        <div class="timeline-item">
-          <p class="timeline-date">10 May, 2024</p>
-          <h4 class="text-xl font-bold mb-2">Result Declaration</h4>
-          <p>The ultimate genius will be revealed by our judging panel. Results will be announced in WhatsApp groups and
-            via email.</p>
-        </div>
-        <div class="timeline-item">
-          <p class="timeline-date">12 May, 2024</p>
-          <h4 class="text-xl font-bold mb-2">Prize Distribution</h4>
-          <p>Winners will be contacted for their addresses, and winning goodies will be sent to them.</p>
-        </div>
-      </div>
-    </main>
-
-    <footer class="text-center text-sm text-white/80 mt-8 mb-20">
-      <!-- © 2024 CosmoHack. All Rights Reserved. -->
-    </footer>
-  </div>
-
-  <nav class="floating-bar">
-    <a>
-      <button onclick="goBack()">
-        <i class="fas fa-home"></i>
-        <span class="ml-2">Home</span>
-      </button>
-    </a>
-    <a href="Sponsors.html">
-      <button>
-        <i class="fa-solid fa-sack-dollar"></i>
-        <span class="ml-2">Sponsors</span>
-      </button>
-    </a>
-    <a href="./Timeline.html">
-      <button>
-        <i class="fas fa-calendar-alt"></i>
-        <span class="ml-2">Timeline</span>
-      </button>
-    </a>
-    <a href="ProblemStatements.html">
-      <button>
-        <i class="fa-regular fa-star"></i><span>Tracks</span>
-      </button>
-    </a>
-    <a href="prizes.html">
-      <button>
-        <i class="fa-solid fa-trophy"></i><span>Prizes</span>
-      </button>
-    </a>
-    <a href="Aboutus.html">
-      <button>
-        <i class="fa-solid fa-people-group"></i>
-        <span class="ml-2">About</span>
-      </button>
-    </a>
-    <a href="Faq.html">
-      <button>
-        <i class="fas fa-question-circle"></i>
-        <span class="ml-2">FAQ</span>
-      </button>
-    </a>
-  </nav>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      gsap.registerPlugin(ScrollTrigger);
-
-      // Preloader
-      setTimeout(() => {
-        const preloader = document.getElementById('preloader');
-        const content = document.querySelector('.content-wrapper');
-
-        if (preloader && content) {
-          gsap.to(preloader, {
-            opacity: 0,
-            duration: 0.5,
-            onComplete: () => {
-              preloader.style.display = 'none';
-              content.style.opacity = '1';
-            }
-          });
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackathon 2024</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@0.9.490/build/spline-viewer.js"></script>
+    <style>
+        body {
+            min-height: 100vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
         }
-      });
 
-      // Timeline animations
-      gsap.utils.toArray('.timeline-item').forEach((item, index) => {
-        gsap.from(item, {
-          opacity: 0,
-          y: 50,
-          duration: 0.8,
-          scrollTrigger: {
-            trigger: item,
-            start: 'top bottom-=100',
-            toggleActions: 'play none none reverse'
-          },
-          delay: index * 0.2
+        .content-wrapper {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .timeline-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #FFC100;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            animation: growLine 2s ease-out forwards;
+        }
+
+        @keyframes growLine {
+            0% { height: 0; }
+            100% { height: 100%; }
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.5s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: #FFC100;
+            border: 4px solid #FF9F55;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover::after {
+            transform: scale(1.2);
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .right::after {
+            left: -16px;
+        }
+
+        .content {
+            padding: 20px 30px;
+            background-color: rgba(255, 255, 255, 0.05);
+            position: relative;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .content:hover {
+            transform: scale(1.05);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .timeline-date {
+            font-weight: bold;
+            color: #FFC100;
+            margin-bottom: 10px;
+        }
+
+        .timeline-icon {
+            font-size: 24px;
+            color: #FFC100;
+            margin-right: 10px;
+        }
+
+        .floating-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 0;
+            border-radius: 20px 20px 0 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            z-index: 20;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .floating-bar button {
+            color: white;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            padding: 10px 15px;
+            margin: 0 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            border-radius: 10px;
+        }
+
+        .floating-bar button i {
+            margin-right: 5px;
+            font-size: 1.2rem;
+        }
+
+        .floating-bar button span {
+            font-size: 1.3rem;
+            font-weight: 500;
+        }
+
+        .floating-bar button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        @media screen and (max-width: 600px) {
+            .timeline-container::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item::after {
+                left: 15px;
+            }
+
+            .right {
+                left: 0%;
+            }
+
+            .floating-bar button span {
+                display: none;
+            }
+
+            .floating-bar button i {
+                font-size: 1.1rem;
+                margin-right: 0;
+            }
+        }
+
+        spline-viewer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="preloader" class="fixed inset-0 flex items-center justify-center bg-black z-50">
+        <div class="flex flex-col items-center">
+            <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-purple-500 border-opacity-75"></div>
+            <p class="mt-4 text-white text-lg">Loading...</p>
+        </div>
+    </div>
+
+    <spline-viewer url="https://prod.spline.design/6LTLSMAaLiIze7dn/scene.splinecode"></spline-viewer>
+
+    <div class="content-wrapper">
+        <div class="absolute top-4 left-4 z-10 flex items-center">
+            <img src="./images/logo.png" alt="Logo" class="w-40 object-contain" />
+        </div>
+        <div class="relative floating-element">
+            <div class="absolute top-4 right-4 z-50">
+                <img src="./images/mascot1.png" alt="Mascot" class="w-20">
+            </div>
+        </div>
+        <main class="mt-8">
+            <h1 class="text-4xl font-bold mb-2 mt-20 text-center">Hackathon 2024 Timeline</h1>
+            <div class="timeline-container">
+                <div class="timeline-item left">
+                    <div class="content">
+                        <p class="timeline-date"><i class="fas fa-user-plus timeline-icon"></i>1-6 May, 2024</p>
+                        <h4 class="text-xl font-bold mb-2">Registration</h4>
+                        <p>Pick your favourite event(s) and register by filling the corresponding form. It's that easy!</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="content">
+                        <p class="timeline-date"><i class="fas fa-calendar-alt timeline-icon"></i>6-9 May, 2024</p>
+                        <h4 class="text-xl font-bold mb-2">Participation</h4>
+                        <p>Participate online. Links for registered events will be sent via email and WhatsApp groups.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="content">
+                        <p class="timeline-date"><i class="fas fa-trophy timeline-icon"></i>10 May, 2024</p>
+                        <h4 class="text-xl font-bold mb-2">Result Declaration</h4>
+                        <p>The ultimate genius will be revealed by our judging panel. Results will be announced in WhatsApp groups and via email.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="content">
+                        <p class="timeline-date"><i class="fas fa-gift timeline-icon"></i>12 May, 2024</p>
+                        <h4 class="text-xl font-bold mb-2">Prize Distribution</h4>
+                        <p>Winners will be contacted for their addresses, and winning goodies will be sent to them.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="text-center text-sm text-white/80 mt-8 mb-20">
+            <!-- © 2024 CosmoHack. All Rights Reserved. -->
+        </footer>
+    </div>
+
+    <nav class="floating-bar">
+        <button onclick="goBack()">
+            <i class="fas fa-home"></i>
+            <span class="ml-2">Home</span>
+        </button>
+        <a href="Sponsors.html">
+            <button>
+                <i class="fa-solid fa-sack-dollar"></i>
+                <span class="ml-2">Sponsors</span>
+            </button>
+        </a>
+        <a href="./Timeline.html">
+            <button>
+                <i class="fas fa-calendar-alt"></i>
+                <span class="ml-2">Timeline</span>
+            </button>
+        </a>
+        <a href="ProblemStatements.html">
+            <button>
+                <i class="fa-regular fa-star"></i><span>Tracks</span>
+            </button>
+        </a>
+        <a href="prizes.html">
+            <button>
+                <i class="fa-solid fa-trophy"></i><span>Prizes</span>
+            </button>
+        </a>
+        <a href="Aboutus.html">
+            <button>
+                <i class="fa-solid fa-people-group"></i>
+                <span class="ml-2">About</span>
+            </button>
+        </a>
+        <a href="Faq.html">
+            <button>
+                <i class="fas fa-question-circle"></i>
+                <span class="ml-2">FAQ</span>
+            </button>
+        </a>
+    </nav>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Preloader
+            setTimeout(() => {
+                const preloader = document.getElementById('preloader');
+                const content = document.querySelector('.content-wrapper');
+
+                if (preloader && content) {
+                    gsap.to(preloader, {
+                        opacity: 0,
+                        duration: 0.5,
+                        onComplete: () => {
+                            preloader.style.display = 'none';
+                            content.style.opacity = '1';
+                        }
+                    });
+                }
+            });
+
+            function isElementInViewport(el) {
+                const rect = el.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+            }
+
+            function animateTimelineItems() {
+                const timelineItems = document.querySelectorAll('.timeline-item');
+                timelineItems.forEach((item) => {
+                    if (isElementInViewport(item)) {
+                        item.classList.add('visible');
+                    }
+                });
+            }
+
+            window.addEventListener('load', animateTimelineItems);
+            window.addEventListener('scroll', animateTimelineItems);
+
+            // Add hover effect to timeline items
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            timelineItems.forEach((item) => {
+                item.addEventListener('mouseenter', () => {
+                    item.style.transform = 'scale(1.05)';
+                });
+                item.addEventListener('mouseleave', () => {
+                    item.style.transform = 'scale(1)';
+                });
+            });
+
+            // Animate timeline line growth on page load
+            window.addEventListener('load', () => {
+                const timelineContainer = document.querySelector('.timeline-container');
+                timelineContainer.style.opacity = '1';
+            });
         });
-      });
 
-      // Floating bar animation
-      // gsap.from('.floating-bar', {
-      //   y: 100,
-      //   opacity: 0,
-      //   duration: 1,
-      //   ease: 'power3.out',
-      //   scrollTrigger: {
-      //     trigger: 'body',
-      //     start: 'top top',
-      //     end: '+=100',
-      //     toggleActions: 'play none none reverse'
-      //   }
-      // });
-    });
-
-    // Countdown timer
-    const countdownElement = document.getElementById('countdown');
-    const endDate = new Date('Feb 21, 2025 00:00:00').getTime();
-
-    setInterval(() => {
-      const now = new Date().getTime();
-      const distance = endDate - now;
-
-      if (distance <= 0) {
-        countdownElement.innerHTML = "Registration Closed";
-        return;
-      }
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-    });
-
-    function goBack() {
-      window.close();
-    }
-
-  </script>
+        function goBack() {
+            window.close();
+        }
+    </script>
 </body>
-
 </html>
+
