@@ -8,7 +8,7 @@ let currentTimeDisplay;
 let durationDisplay;
 
 function initAudioPlayer() {
-    audio = new Audio('./music/theme.mp3');
+    audio = new Audio('./music/cosmohack.mp3');
     playPauseBtn = document.getElementById('playPauseBtn');
     muteBtn = document.getElementById('muteBtn');
     progressBar = document.getElementById('progressBar');
