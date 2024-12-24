@@ -4,3 +4,57 @@
     font-weight: 400;
     font-style: normal;
 }
+
+/* Apply to the entire scrollbar */
+::-webkit-scrollbar {
+    width: 5px; /* Adjust the width */
+    height: 12px; /* For horizontal scrollbar */
+}
+
+/* Apply to the scrollbar track (background of the scrollbar) */
+::-webkit-scrollbar-track {
+    background: #f9e6f6; /* Light pink background for the track */
+    border-radius: 10px; /* Rounded corners */
+}
+
+/* Apply to the scrollbar thumb (the part that moves) */
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #f7a1d7, #9b59b6); /* Light pink to purple gradient */
+    border-radius: 10px; /* Rounded corners */
+    animation: glowingPulse 2s infinite alternate, glowingShadow 1.5s infinite alternate; /* Pulsating and glowing shadow animation */
+}
+
+/* Apply glow effect when hovering over the scrollbar thumb */
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #9b59b6, #f7a1d7); /* Swap gradient on hover */
+    box-shadow: 0 0 40px rgba(247, 161, 215, 1), 0 0 60px rgba(155, 89, 182, 1); /* Stronger and brighter glow on hover */
+}
+
+/* Keyframe for glowing pulse effect */
+@keyframes glowingPulse {
+    0% {
+        background: linear-gradient(45deg, #f7a1d7, #9b59b6); /* Soft pink to purple gradient */
+        box-shadow: 0 0 10px rgba(247, 161, 215, 0.5), 0 0 20px rgba(155, 89, 182, 0.5);
+    }
+    50% {
+        background: linear-gradient(45deg, #f7c7db, #7a42ab); /* Brighter pink to deep purple gradient */
+        box-shadow: 0 0 20px rgba(247, 161, 215, 0.8), 0 0 30px rgba(155, 89, 182, 0.8);
+    }
+    100% {
+        background: linear-gradient(45deg, #f7a1d7, #9b59b6); /* Soft pink to purple gradient */
+        box-shadow: 0 0 10px rgba(247, 161, 215, 0.5), 0 0 20px rgba(155, 89, 182, 0.5);
+    }
+}
+
+/* Keyframe for glowing shadow effect */
+@keyframes glowingShadow {
+    0% {
+        box-shadow: 0 0 15px rgba(247, 161, 215, 0.6), 0 0 25px rgba(155, 89, 182, 0.6);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(247, 161, 215, 1), 0 0 45px rgba(155, 89, 182, 1);
+    }
+    100% {
+        box-shadow: 0 0 15px rgba(247, 161, 215, 0.6), 0 0 25px rgba(155, 89, 182, 0.6);
+    }
+}
