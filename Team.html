@@ -1,157 +1,494 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cosmohack</title>
+  <title>Cosmohack - Our Team</title>
   <link rel="shortcut icon" href="./images/CosmoHACK-Round-W.png" type="image/x-icon">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.48/build/spline-viewer.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
   <style>
-    .team-card {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(15px);
-      border-radius: 15px;
+    /* Existing styles */
+    body.loading {
       overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .team-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    .floating-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 0;
+      border-radius: 20px 20px 0 0;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+      transition: all 0.3s ease-in-out;
     }
 
-    .team-card img {
-      border-bottom: 4px solid rgba(255, 255, 255, 0.2);
+    .floating-bar button {
+      color: white;
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      padding: 10px 15px;
+      margin: 0 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      border-radius: 10px;
+    }
+
+    .floating-bar button i {
+      margin-right: 5px;
+      font-size: 1.2rem;
+    }
+
+    .floating-bar button span {
+      font-size: 1.3rem;
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      .floating-bar button span {
+        display: none;
+      }
+    }
+
+    .floating-bar button:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 640px) {
+      .floating-bar {
+        padding: 8px 0;
+      }
+
+      .floating-bar button {
+        padding: 8px 10px;
+        margin: 0 2px;
+      }
+
+      .floating-bar button span {
+        display: none;
+      }
+
+      .floating-bar button i {
+        font-size: 1.1rem;
+        margin-right: 0;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fadeInUp {
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    .cta-button {
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-button::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s ease, height 0.3s ease;
+    }
+
+    .cta-button:hover::after {
+      width: 300px;
+      height: 300px;
+    }
+
+    .floating-element {
+      inset: 0;
+      z-index: 0;
+      opacity: 1;
+      filter: brightness(0.9);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    /* Updated styles for team section */
+    .team-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      padding: 2rem;
+    }
+
+    .team-member {
+      width: 280px;
+      height: 400px;
+      perspective: 1000px;
+      cursor: pointer;
+    }
+
+    .member-card {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.8s;
+    }
+
+    .member-card:hover {
+      transform: rotateY(180deg);
+    }
+
+    .member-front, .member-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 1.5rem;
+    }
+
+    .member-back {
+      transform: rotateY(180deg);
+    }
+
+    .member-image {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+
+    .member-name {
+      font-size: 1.4rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .member-role {
+      font-size: 1.1rem;
+      color: #aaa;
+      margin-bottom: 1rem;
+    }
+
+    .member-bio {
+      font-size: 0.9rem;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
     }
 
     .social-icons a {
-      color: white;
-      margin: 0 10px;
+      color: #fff;
+      font-size: 1.5rem;
       transition: color 0.3s ease;
     }
 
     .social-icons a:hover {
-      color: #ff6f61;
+      color: #9f7aea;
+    }
+
+    #team-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    @media (max-width: 768px) {
+      .team-member {
+        width: 240px;
+        height: 340px;
+      }
+
+      .member-image {
+        width: 140px;
+        height: 140px;
+      }
+
+      .member-name {
+        font-size: 1.2rem;
+      }
+
+      .member-role {
+        font-size: 1rem;
+      }
+
+      .member-bio {
+        font-size: 0.8rem;
+      }
     }
   </style>
-  <link rel="stylesheet" href="index.css">
 </head>
-<body class="min-h-screen bg-black text-white flex flex-col items-center py-8">
 
-  <!-- Header -->
-  <header class="text-center mb-12">
-    <h1 class="text-4xl sm:text-5xl font-bold mb-4 text-gradient bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">
-      Meet Our Visionaries
-    </h1>
-    <p class="text-lg sm:text-xl max-w-3xl mx-auto">
-      Behind every great innovation is a team of dreamers, thinkers, and doers. Here are the brilliant minds shaping CosmoHack 2024.
-    </p>
-  </header>
+<body class="min-h-screen overflow-y-auto text-white relative loading bg-black">
 
-  <!-- Team Grid -->
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 sm:px-8 lg:px-16">
-
-    <!-- Team Member 1 -->
-    <div class="team-card p-6 text-center">
-      <img src="https://via.placeholder.com/300" alt="John Doe" class="w-full h-64 object-cover">
-      <h3 class="text-xl font-bold mt-4">John Doe</h3>
-      <p class="text-sm text-gray-300">Event Director</p>
-      <div class="social-icons mt-4 flex justify-center">
-        <a href="#" class="text-xl"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="text-xl"><i class="fab fa-linkedin"></i></a>
-        <a href="#" class="text-xl"><i class="fab fa-github"></i></a>
-      </div>
+  <!-- Preloader -->
+  <div id="preloader" class="absolute inset-0 flex items-center justify-center bg-black z-50">
+    <div class="flex flex-col items-center">
+      <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-purple-500 border-opacity-75"></div>
+      <p class="mt-4 text-white text-lg">Loading...</p>
     </div>
-
-    <!-- Team Member 2 -->
-    <div class="team-card p-6 text-center">
-      <img src="https://via.placeholder.com/300" alt="Jane Smith" class="w-full h-64 object-cover">
-      <h3 class="text-xl font-bold mt-4">Jane Smith</h3>
-      <p class="text-sm text-gray-300">Technical Lead</p>
-      <div class="social-icons mt-4 flex justify-center">
-        <a href="#" class="text-xl"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="text-xl"><i class="fab fa-linkedin"></i></a>
-        <a href="#" class="text-xl"><i class="fab fa-github"></i></a>
-      </div>
-    </div>
-
-    <!-- Team Member 3 -->
-    <div class="team-card p-6 text-center">
-      <img src="https://via.placeholder.com/300" alt="Alex Johnson" class="w-full h-64 object-cover">
-      <h3 class="text-xl font-bold mt-4">Alex Johnson</h3>
-      <p class="text-sm text-gray-300">Design Strategist</p>
-      <div class="social-icons mt-4 flex justify-center">
-        <a href="#" class="text-xl"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="text-xl"><i class="fab fa-linkedin"></i></a>
-        <a href="#" class="text-xl"><i class="fab fa-github"></i></a>
-      </div>
-    </div>
-    <!-- Team Member 3 -->
-    <div class="team-card p-6 text-center">
-      <img src="https://via.placeholder.com/300" alt="Alex Johnson" class="w-full h-64 object-cover">
-      <h3 class="text-xl font-bold mt-4">Alex Johnson</h3>
-      <p class="text-sm text-gray-300">Design Strategist</p>
-      <div class="social-icons mt-4 flex justify-center">
-        <a href="#" class="text-xl"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="text-xl"><i class="fab fa-linkedin"></i></a>
-        <a href="#" class="text-xl"><i class="fab fa-github"></i></a>
-      </div>
-    </div>
-    <!-- Team Member 3 -->
-    <div class="team-card p-6 text-center">
-      <img src="https://via.placeholder.com/300" alt="Alex Johnson" class="w-full h-64 object-cover">
-      <h3 class="text-xl font-bold mt-4">Alex Johnson</h3>
-      <p class="text-sm text-gray-300">Design Strategist</p>
-      <div class="social-icons mt-4 flex justify-center">
-        <a href="#" class="text-xl"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="text-xl"><i class="fab fa-linkedin"></i></a>
-        <a href="#" class="text-xl"><i class="fab fa-github"></i></a>
-      </div>
-    </div>
-    <!-- Team Member 3 -->
-    <div class="team-card p-6 text-center">
-      <img src="https://via.placeholder.com/300" alt="Alex Johnson" class="w-full h-64 object-cover">
-      <h3 class="text-xl font-bold mt-4">Alex Johnson</h3>
-      <p class="text-sm text-gray-300">Design Strategist</p>
-      <div class="social-icons mt-4 flex justify-center">
-        <a href="#" class="text-xl"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="text-xl"><i class="fab fa-linkedin"></i></a>
-        <a href="#" class="text-xl"><i class="fab fa-github"></i></a>
-      </div>
-    </div>
-    <!-- Team Member 3 -->
-    <div class="team-card p-6 text-center">
-      <img src="https://via.placeholder.com/300" alt="Alex Johnson" class="w-full h-64 object-cover">
-      <h3 class="text-xl font-bold mt-4">Alex Johnson</h3>
-      <p class="text-sm text-gray-300">Design Strategist</p>
-      <div class="social-icons mt-4 flex justify-center">
-        <a href="#" class="text-xl"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="text-xl"><i class="fab fa-linkedin"></i></a>
-        <a href="#" class="text-xl"><i class="fab fa-github"></i></a>
-      </div>
-    </div>
-    <!-- Team Member 3 -->
-    <div class="team-card p-6 text-center">
-      <img src="https://via.placeholder.com/300" alt="Alex Johnson" class="w-full h-64 object-cover">
-      <h3 class="text-xl font-bold mt-4">Alex Johnson</h3>
-      <p class="text-sm text-gray-300">Design Strategist</p>
-      <div class="social-icons mt-4 flex justify-center">
-        <a href="#" class="text-xl"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="text-xl"><i class="fab fa-linkedin"></i></a>
-        <a href="#" class="text-xl"><i class="fab fa-github"></i></a>
-      </div>
-    </div>
-
-    <!-- Add more team members as needed -->
-
   </div>
 
+  <!-- 3D Spline Viewer -->
+  <spline-viewer url="https://prod.spline.design/6LTLSMAaLiIze7dn/scene.splinecode"
+    class="fixed inset-0 w-full h-full z-0">
+  </spline-viewer>
+
+  <!-- CosmoHack Logo -->
+  <div class="absolute top-4 left-4 z-10 flex items-center" onclick="goBack()">
+    <img src="./images/logo.png" alt="Logo" class="w-40 object-contain" />
+  </div>
+
+  <!-- Mascot -->
+  <div class="relative floating-element">
+    <div class="absolute top-4 right-4 z-50">
+      <img src="./images/mascot1.png" alt="Mascot" class="w-20">
+    </div>
+  </div>
+
+  <!-- Content Section (Team) -->
+  <div id="content"
+    class="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 md:px-8 py-8 sm:py-12 text-center hidden content-wrapper animate-fadeInUp mt-2 pb-32">
+
+    <h1
+      class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 mt-12 sm:mt-0">
+      Meet Our Cosmic Crew
+    </h1>
+
+    <div class="team-container">
+      <!-- Team members will be dynamically added here -->
+    </div>
+  </div>
+
+  <canvas id="team-canvas"></canvas>
+
   <!-- Footer -->
-  <footer class="mt-16 text-center text-sm text-white/80">
-    © 2024 CosmoHack. All Rights Reserved. | <a href="#privacy" class="hover:text-purple-300">Privacy Policy</a> | <a href="#terms" class="hover:text-purple-300">Terms of Service</a>
+  <footer class="absolute bottom-4 w-full text-center text-sm text-white/80 z-10 hidden" id="footer">
+    © 2024 CosmoHack. All Rights Reserved. | <a href="#privacy" class="hover:text-purple-300">Privacy Policy</a> | <a
+      href="#terms" class="hover:text-purple-300">Terms of Service</a>
   </footer>
 
-  
+  <!-- Floating Navigation Bar -->
+  <nav class="floating-bar">
+    <a href="index.html">
+      <button>
+        <i class="fas fa-home"></i>
+        <span class="ml-2">Home</span>
+      </button>
+    </a>
+    <a href="Sponsors.html">
+      <button>
+        <i class="fa-solid fa-sack-dollar"></i>
+        <span class="ml-2">Sponsors</span>
+      </button>
+    </a>
+    <a href="./Timeline.html">
+      <button>
+        <i class="fas fa-calendar-alt"></i>
+        <span class="ml-2">Timeline</span>
+      </button>
+    </a>
+    <a href="ProblemStatements.html">
+      <button>
+        <i class="fa-regular fa-star"></i><span>Tracks</span>
+      </button>
+    </a>
+    <a href="prizes.html">
+      <button>
+        <i class="fa-solid fa-trophy"></i><span>Prizes</span>
+      </button>
+    </a>
+    <a href="Aboutus.html">
+      <button>
+        <i class="fa-solid fa-people-group"></i>
+        <span class="ml-2">About</span>
+      </button>
+    </a>
+    <a href="Faq.html">
+      <button>
+        <i class="fas fa-question-circle"></i>
+        <span class="ml-2">FAQ</span>
+      </button>
+    </a>
+  </nav>
+
+  <!-- JavaScript -->
+  <script>
+    // Updated team members data with more details and social media links
+    const teamMembers = [
+      {
+        name: "Jane Doe",
+        role: "Founder & CEO",
+        image: "https://i.pravatar.cc/300?img=1",
+        bio: "Visionary leader with a passion for space exploration and technology. Jane has been pioneering innovative solutions in the aerospace industry for over a decade.",
+        linkedin: "https://linkedin.com/in/janedoe",
+        twitter: "https://twitter.com/janedoe"
+      },
+      {
+        name: "John Smith",
+        role: "CTO",
+        image: "https://i.pravatar.cc/300?img=2",
+        bio: "Innovative technologist driving our cutting-edge developments. John's expertise in quantum computing has revolutionized our approach to space technology.",
+        linkedin: "https://linkedin.com/in/johnsmith",
+        twitter: "https://twitter.com/johnsmith"
+      },
+      {
+        name: "Emily Johnson",
+        role: "Lead Engineer",
+        image: "https://i.pravatar.cc/300?img=3",
+        bio: "Brilliant engineer specializing in spacecraft systems and AI. Emily's work on autonomous navigation systems has set new industry standards.",
+        linkedin: "https://linkedin.com/in/emilyjohnson",
+        twitter: "https://twitter.com/emilyjohnson"
+      },
+      {
+        name: "Michael Brown",
+        role: "Head of Research",
+        image: "https://i.pravatar.cc/300?img=4",
+        bio: "Pioneering researcher in quantum computing and space physics. Michael's groundbreaking work on quantum entanglement has opened new possibilities for interstellar communication.",
+        linkedin: "https://linkedin.com/in/michaelbrown",
+        twitter: "https://twitter.com/michaelbrown"
+      },
+    ];
+
+    // Function to create team member cards
+    function createTeamMemberCards() {
+      const container = document.querySelector('.team-container');
+      teamMembers.forEach(member => {
+        const memberCard = document.createElement('div');
+        memberCard.className = 'team-member';
+        memberCard.innerHTML = `
+          <div class="member-card">
+            <div class="member-front">
+              <img src="${member.image}" alt="${member.name}" class="member-image">
+              <h3 class="member-name">${member.name}</h3>
+              <p class="member-role">${member.role}</p>
+            </div>
+            <div class="member-back">
+              <p class="member-bio">${member.bio}</p>
+              <div class="social-icons">
+                <a href="${member.linkedin}" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                <a href="${member.twitter}" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+              </div>
+            </div>
+          </div>
+        `;
+        container.appendChild(memberCard);
+      });
+    }
+
+    // 3D animation setup
+    let scene, camera, renderer, particles;
+
+    function init3DAnimation() {
+      scene = new THREE.Scene();
+      camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+      renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('team-canvas'), alpha: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+
+      const geometry = new THREE.BufferGeometry();
+      const vertices = [];
+      for (let i = 0; i < 5000; i++) {
+        vertices.push(
+          Math.random() * 2000 - 1000,
+          Math.random() * 2000 - 1000,
+          Math.random() * 2000 - 1000
+        );
+      }
+      geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+
+      const material = new THREE.PointsMaterial({ color: 0xffffff, size: 2 });
+      particles = new THREE.Points(geometry, material);
+      scene.add(particles);
+
+      camera.position.z = 1000;
+
+      animate();
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+      particles.rotation.x += 0.001;
+      particles.rotation.y += 0.002;
+      renderer.render(scene, camera);
+    }
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // Initialize everything when the window loads
+    window.addEventListener('load', function () {
+      setTimeout(() => {
+        document.getElementById('preloader').style.opacity = '0';
+        document.getElementById('preloader').style.transition = 'opacity 0.5s ease';
+        setTimeout(() => {
+          document.getElementById('preloader').style.display = 'none';
+          document.getElementById('content').classList.remove('hidden');
+          document.getElementById('footer').classList.remove('hidden');
+          document.body.classList.remove('loading');
+          createTeamMemberCards();
+          init3DAnimation();
+        }, 500);
+      });
+    });
+
+    function goBack() {
+      window.close();
+    }
+  </script>
 </body>
+
 </html>
