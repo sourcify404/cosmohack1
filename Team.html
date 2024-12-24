@@ -12,8 +12,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
-        integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     /* Existing styles */
     body.loading {
@@ -142,9 +142,12 @@
     }
 
     @keyframes float {
-      0%, 100% {
+
+      0%,
+      100% {
         transform: translateY(0);
       }
+
       50% {
         transform: translateY(-10px);
       }
@@ -178,7 +181,8 @@
       transform: rotateY(180deg);
     }
 
-    .member-front, .member-back {
+    .member-front,
+    .member-back {
       position: absolute;
       width: 100%;
       height: 100%;
@@ -188,7 +192,7 @@
       align-items: center;
       justify-content: center;
       border-radius: 15px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       background: rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(10px);
       padding: 1.5rem;
@@ -324,41 +328,41 @@
 
   <!-- Floating Navigation Bar -->
   <nav class="floating-bar">
-    <a href="index.html">
+    <a href="/index">
       <button>
         <i class="fas fa-home"></i>
         <span class="ml-2">Home</span>
       </button>
     </a>
-    <a href="Sponsors.html">
+    <a href="/Sponsors">
       <button>
         <i class="fa-solid fa-sack-dollar"></i>
         <span class="ml-2">Sponsors</span>
       </button>
     </a>
-    <a href="./Timeline.html">
+    <a href="/Timeline">
       <button>
         <i class="fas fa-calendar-alt"></i>
         <span class="ml-2">Timeline</span>
       </button>
     </a>
-    <a href="ProblemStatements.html">
+    <a href="/ProblemStatements">
       <button>
         <i class="fa-regular fa-star"></i><span>Tracks</span>
       </button>
     </a>
-    <a href="prizes.html">
+    <a href="/prizes">
       <button>
         <i class="fa-solid fa-trophy"></i><span>Prizes</span>
       </button>
     </a>
-    <a href="Aboutus.html">
+    <a href="/Aboutus">
       <button>
         <i class="fa-solid fa-people-group"></i>
         <span class="ml-2">About</span>
       </button>
     </a>
-    <a href="Faq.html">
+    <a href="/Faq">
       <button>
         <i class="fas fa-question-circle"></i>
         <span class="ml-2">FAQ</span>
