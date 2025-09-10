@@ -301,7 +301,7 @@
         </div> -->
 
         <p class="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 drop-shadow-lg text-white">
-            Unlock the cosmos hack the fututre 
+            Unlock the cosmos, hack the future 
         </p>
 
         <div class="flex flex-col items-center gap-4">
@@ -314,7 +314,7 @@
                 <div class="flex flex-col md:flex-row items-center justify-between text-center md:text-left">
                     <p
                         class="text-xs sm:text-sm md:text-base lg:text-lg font-semibold uppercase tracking-wide text-white mb-2 md:mb-0">
-                        Feb 21-22 2025 <i class="fa-solid fa-hourglass-end fa-flip" style="color: #B197FC;"></i>&nbsp;
+                        March 22-24 2025 <i class="fa-solid fa-hourglass-end fa-flip" style="color: #B197FC;"></i>&nbsp;
                     </p>
                     <p id="countdown" class="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-yellow-500">
                         26 : 02 : 07 : 10
@@ -352,43 +352,43 @@
     </div>
     <!-- Floating Bar (Navbar alternative with glass effect) -->
     <nav class="floating-bar">
-        <a href="/">
+        <a href="index.html">
             <button>
                 <i class="fas fa-home"></i>
                 <span>Home</span>
             </button>
         </a>
-        <a href="/comingsoon">
+        <a href="comingsoon.html">
             <button>
                 <i class="fa-solid fa-sack-dollar"></i>
                 <span>Sponsors</span>
             </button>
         </a>
-        <a href="/Timeline">
+        <a href="Timeline.html">
             <button>
                 <i class="fas fa-calendar-alt"></i>
                 <span>Timeline</span>
             </button>
         </a>
-        <a href="/comingsoon">
+        <a href="comingsoon.html">
             <button>
                 <i class="fa-regular fa-star"></i>
                 <span>Tracks</span>
             </button>
         </a>
-        <a href="/comingsoon">
+        <a href="prizes.html">
             <button>
                 <i class="fa-solid fa-trophy"></i>
                 <span>Prizes</span>
             </button>
         </a>
-        <a href="/Aboutus">
+        <a href="Aboutus.html">
             <button>
                 <i class="fa-solid fa-people-group"></i>
                 <span>About</span>
             </button>
         </a>
-        <a href="/Faq">
+        <a href="Faq.html">
             <button>
                 <i class="fas fa-question-circle"></i>
                 <span>FAQ</span>
@@ -408,14 +408,14 @@
 
         // Countdown timer for registration
         const countdownElement = document.getElementById('countdown');
-        const endDate = new Date('Feb 21, 2025 00:00:00').getTime();
+        const endDate = new Date('March 22, 2025 00:00:00').getTime();
 
         setInterval(() => {
             const now = new Date().getTime();
             const distance = endDate - now;
 
             if (distance <= 0) {
-                countdownElement.innerHTML = "Registration Closed";
+                countdownElement.innerHTML = "Registration Opening soon";
                 return;
             }
 

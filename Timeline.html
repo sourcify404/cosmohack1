@@ -8,8 +8,6 @@
   <link rel="shortcut icon" href="./images/CosmoHACK-Round-W.png" type="image/x-icon">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
   <script type="module" src="https://unpkg.com/@splinetool/viewer@0.9.490/build/spline-viewer.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
@@ -45,13 +43,21 @@
     .timeline-container::after {
       content: '';
       position: absolute;
-      width: 6px;
-      background-color: #ff00ffcc;
+      width: 4px;
+      background: linear-gradient(180deg, #ff00ff, #00ffff, #ffff00, #ff00ff);
+      background-size: 100% 200%;
+      animation: gradientShift 3s ease-in-out infinite, growLine 2s ease-out forwards;
       top: 0;
       bottom: 0;
       left: 50%;
-      margin-left: -3px;
-      animation: growLine 2s ease-out forwards;
+      margin-left: -2px;
+      border-radius: 2px;
+      box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 0%; }
+      50% { background-position: 0% 100%; }
     }
 
     @keyframes growLine {
@@ -70,30 +76,44 @@
       width: 50%;
       opacity: 0;
       transform: translateY(50px);
-      transition: all 0.5s ease;
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .timeline-item.visible {
       opacity: 1;
       transform: translateY(0);
+      animation: slideInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .timeline-item::after {
       content: '';
       position: absolute;
-      width: 25px;
-      height: 25px;
-      right: -17px;
-      background-color: #c000ff;
-      border: 4px solid #FF9F55;
-      top: 15px;
+      width: 20px;
+      height: 20px;
+      right: -12px;
+      background: linear-gradient(45deg, #ff00ff, #00ffff);
+      border: 3px solid #ffffff;
+      top: 20px;
       border-radius: 50%;
-      z-index: 1;
+      z-index: 2;
       transition: all 0.3s ease;
+      box-shadow: 0 0 20px rgba(255, 0, 255, 0.6), inset 0 0 10px rgba(255, 255, 255, 0.3);
     }
 
     .timeline-item:hover::after {
-      transform: scale(1.2);
+      transform: scale(1.3);
+      box-shadow: 0 0 30px rgba(255, 0, 255, 0.8), inset 0 0 15px rgba(255, 255, 255, 0.5);
     }
 
     .left {
@@ -109,28 +129,59 @@
     }
 
     .content {
-      padding: 20px 30px;
-      background-color: #9b9b9c3f;
+      padding: 25px 30px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       position: relative;
-      border-radius: 6px;
+      border-radius: 15px;
       transition: all 0.3s ease;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     }
 
     .content:hover {
-      transform: scale(1.05);
-      background-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-5px) scale(1.02);
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+      border-color: rgba(255, 255, 255, 0.3);
     }
 
     .timeline-date {
       font-weight: bold;
       color: #FFC100;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+      text-shadow: 0 0 10px rgba(255, 193, 0, 0.5);
     }
 
     .timeline-icon {
       font-size: 24px;
       color: #FFC100;
       margin-right: 10px;
+      text-shadow: 0 0 10px rgba(255, 193, 0, 0.5);
+    }
+
+    .content h4 {
+      color: #ffffff;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      margin-bottom: 15px;
+    }
+
+    .content p {
+      color: #e0e0e0;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .content img {
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .content img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
     }
 
     .floating-bar {
@@ -325,7 +376,7 @@
   <spline-viewer url="https://prod.spline.design/6LTLSMAaLiIze7dn/scene.splinecode"></spline-viewer>
 
   <div class="content-wrapper">
-    <a href="/">
+    <a href="index.html">
       <div class="fixed top-4 left-4 z-50 flex items-center logo">
         <img src="./images/logo.png" alt="Hackathon 2024 Logo" class="w-40 object-contain" />
       </div>
@@ -338,7 +389,8 @@
     </div>
     <main class="mt-8">
       <h1
-        class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 mt-20 text-center text-gradient bg-clip-text bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 animate-pulse drop-shadow-lg">
+        class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-8 mt-20 text-center text-gradient bg-clip-text bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 animate-pulse drop-shadow-lg"
+        style="text-shadow: 0 0 30px rgba(168, 85, 247, 0.5);">
         Cosmic Timeline
       </h1>
 
@@ -388,41 +440,41 @@
   </div>
 
   <nav class="floating-bar">
-    <a href="/index">
+    <a href="index.html">
       <button>
         <i class="fas fa-home"></i>
         <span class="ml-2">Home</span>
       </button>
     </a>
-    <a href="/comingsoon">
+    <a href="Sponsors.html">
       <button>
         <i class="fa-solid fa-sack-dollar"></i>
         <span class="ml-2">Sponsors</span>
       </button>
     </a>
-    <a href="/Timeline">
+    <a href="Timeline.html">
       <button>
         <i class="fas fa-calendar-alt"></i>
         <span class="ml-2">Timeline</span>
       </button>
     </a>
-    <a href="/comingsoon">
+    <a href="ProblemStatements.html">
       <button>
         <i class="fa-regular fa-star"></i><span>Tracks</span>
       </button>
     </a>
-    <a href="/comingsoon">
+    <a href="prizes.html">
       <button>
         <i class="fa-solid fa-trophy"></i><span>Prizes</span>
       </button>
     </a>
-    <a href="/Aboutus">
+    <a href="Aboutus.html">
       <button>
         <i class="fa-solid fa-people-group"></i>
         <span class="ml-2">About</span>
       </button>
     </a>
-    <a href="/Faq">
+    <a href="Faq.html">
       <button>
         <i class="fas fa-question-circle"></i>
         <span class="ml-2">FAQ</span>
@@ -431,64 +483,36 @@
   </nav>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      gsap.registerPlugin(ScrollTrigger);
-
-      // Preloader
-      setTimeout(() => {
-        const preloader = document.getElementById('preloader');
-        const content = document.querySelector('.content-wrapper');
-
-        if (preloader && content) {
-          gsap.to(preloader, {
-            opacity: 0,
-            duration: 0.5,
-            onComplete: () => {
-              preloader.style.display = 'none';
-              content.style.opacity = '1';
-            }
-          });
+    // Simple page initialization
+    document.addEventListener('DOMContentLoaded', function() {
+      // Hide preloader after 2 seconds
+      setTimeout(function() {
+        var preloader = document.getElementById('preloader');
+        var content = document.querySelector('.content-wrapper');
+        
+        if (preloader) {
+          preloader.style.display = 'none';
         }
-      });
+        if (content) {
+          content.style.opacity = '1';
+        }
+      }, 2000);
 
-      function isElementInViewport(el) {
-        const rect = el.getBoundingClientRect();
-        return (
-          rect.top >= 0 &&
-          rect.left >= 0 &&
-          rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-          rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-        );
-      }
-
-      function animateTimelineItems() {
-        const timelineItems = document.querySelectorAll('.timeline-item');
-        timelineItems.forEach((item) => {
-          if (isElementInViewport(item)) {
+      // Timeline animation on scroll
+      function checkTimelineItems() {
+        var timelineItems = document.querySelectorAll('.timeline-item');
+        timelineItems.forEach(function(item) {
+          var rect = item.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
             item.classList.add('visible');
           }
         });
       }
 
-      window.addEventListener('load', animateTimelineItems);
-      window.addEventListener('scroll', animateTimelineItems);
-
-      // Add hover effect to timeline items
-      const timelineItems = document.querySelectorAll('.timeline-item');
-      timelineItems.forEach((item) => {
-        item.addEventListener('mouseenter', () => {
-          item.style.transform = 'scale(1.05)';
-        });
-        item.addEventListener('mouseleave', () => {
-          item.style.transform = 'scale(1)';
-        });
-      });
-
-      // Animate timeline line growth on page load
-      window.addEventListener('load', () => {
-        const timelineContainer = document.querySelector('.timeline-container');
-        timelineContainer.style.opacity = '1';
-      });
+      // Run on scroll
+      window.addEventListener('scroll', checkTimelineItems);
+      // Run once on load
+      checkTimelineItems();
     });
 
     function goBack() {
