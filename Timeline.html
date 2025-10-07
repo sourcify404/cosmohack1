@@ -2,541 +2,701 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cosmohack</title>
-  <link rel="shortcut icon" href="./images/CosmoHACK-Round-W.png" type="image/x-icon">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-  <script type="module" src="https://unpkg.com/@splinetool/viewer@0.9.490/build/spline-viewer.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <style>
-    body {
-      min-height: 100vh;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      background-color: #000;
-      color: #fff;
-      font-family: Arial, sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline - Cosmohack</title>
+    <link rel="shortcut icon" href="./images/CosmoHACK-Round-W.png" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" rel="stylesheet">
 
-    .content-wrapper {
-      flex-grow: 1;
-      overflow-y: auto;
-      padding: 20px;
-      position: relative;
-      z-index: 10;
-      opacity: 0;
-      transition: opacity 0.5s ease;
-    }
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cinzel:wght@400..900&family=Orbitron&family=Pacifico&family=Playwrite+US+Trad+Guides&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Salsa&display=swap');
 
-    .timeline-container {
-      position: relative;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 40px 0;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Salsa", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
 
-    .timeline-container::after {
-      content: '';
-      position: absolute;
-      width: 4px;
-      background: linear-gradient(180deg, #ff00ff, #00ffff, #ffff00, #ff00ff);
-      background-size: 100% 200%;
-      animation: gradientShift 3s ease-in-out infinite, growLine 2s ease-out forwards;
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      margin-left: -2px;
-      border-radius: 2px;
-      box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
-    }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 12px;
+        }
 
-    @keyframes gradientShift {
-      0%, 100% { background-position: 0% 0%; }
-      50% { background-position: 0% 100%; }
-    }
+        ::-webkit-scrollbar-track {
+            background: #1a1a2e;
+            border-radius: 10px;
+        }
 
-    @keyframes growLine {
-      0% {
-        height: 0;
-      }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #7c3aed, #a78bfa);
+            border-radius: 10px;
+            animation: glowingPulse 2s infinite alternate, glowingShadow 1.5s infinite alternate;
+        }
 
-      100% {
-        height: 100%;
-      }
-    }
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, #a78bfa, #7c3aed);
+            box-shadow: 0 0 40px rgba(167, 139, 250, 1), 0 0 60px rgba(124, 58, 237, 1);
+        }
 
-    .timeline-item {
-      padding: 10px 40px;
-      position: relative;
-      width: 50%;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    }
+        @keyframes glowingPulse {
+            0% {
+                background: linear-gradient(45deg, #7c3aed, #a78bfa);
+                box-shadow: 0 0 10px rgba(167, 139, 250, 0.5), 0 0 20px rgba(124, 58, 237, 0.5);
+            }
+            50% {
+                background: linear-gradient(45deg, #a78bfa, #6d28d9);
+                box-shadow: 0 0 20px rgba(167, 139, 250, 0.8), 0 0 30px rgba(124, 58, 237, 0.8);
+            }
+            100% {
+                background: linear-gradient(45deg, #7c3aed, #a78bfa);
+                box-shadow: 0 0 10px rgba(167, 139, 250, 0.5), 0 0 20px rgba(124, 58, 237, 0.5);
+            }
+        }
 
-    .timeline-item.visible {
-      opacity: 1;
-      transform: translateY(0);
-      animation: slideInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    }
+        @keyframes glowingShadow {
+            0% {
+                box-shadow: 0 0 15px rgba(167, 139, 250, 0.6), 0 0 25px rgba(124, 58, 237, 0.6);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(167, 139, 250, 1), 0 0 45px rgba(124, 58, 237, 1);
+            }
+            100% {
+                box-shadow: 0 0 15px rgba(167, 139, 250, 0.6), 0 0 25px rgba(124, 58, 237, 0.6);
+            }
+        }
 
-    @keyframes slideInUp {
-      from {
-        opacity: 0;
-        transform: translateY(50px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+        body {
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
 
-    .timeline-item::after {
-      content: '';
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      right: -12px;
-      background: linear-gradient(45deg, #ff00ff, #00ffff);
-      border: 3px solid #ffffff;
-      top: 20px;
-      border-radius: 50%;
-      z-index: 2;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 20px rgba(255, 0, 255, 0.6), inset 0 0 10px rgba(255, 255, 255, 0.3);
-    }
+        /* Animated Gradient Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -2;
+            background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #1a1a2e, #16213e);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
 
-    .timeline-item:hover::after {
-      transform: scale(1.3);
-      box-shadow: 0 0 30px rgba(255, 0, 255, 0.8), inset 0 0 15px rgba(255, 255, 255, 0.5);
-    }
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
 
-    .left {
-      left: 0;
-    }
+        /* Code Rain Animation */
+        .code-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            opacity: 0.15;
+        }
 
-    .right {
-      left: 50%;
-    }
+        .code-rain canvas {
+            display: block;
+        }
 
-    .right::after {
-      left: -16px;
-    }
+        /* Floating particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+        }
 
-    .content {
-      padding: 25px 30px;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      position: relative;
-      border-radius: 15px;
-      transition: all 0.3s ease;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    }
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: float-particle linear infinite;
+        }
 
-    .content:hover {
-      transform: translateY(-5px) scale(1.02);
-      background: rgba(255, 255, 255, 0.15);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-      border-color: rgba(255, 255, 255, 0.3);
-    }
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
 
-    .timeline-date {
-      font-weight: bold;
-      color: #FFC100;
-      margin-bottom: 15px;
-      font-size: 1.1rem;
-      text-shadow: 0 0 10px rgba(255, 193, 0, 0.5);
-    }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
 
-    .timeline-icon {
-      font-size: 24px;
-      color: #FFC100;
-      margin-right: 10px;
-      text-shadow: 0 0 10px rgba(255, 193, 0, 0.5);
-    }
+        .floating-animation {
+            animation: float 3s ease-in-out infinite;
+        }
 
-    .content h4 {
-      color: #ffffff;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-      margin-bottom: 15px;
-    }
+        /* Desktop Floating Bar */
+        .floating-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 1000;
+            display: none;
+        }
 
-    .content p {
-      color: #e0e0e0;
-      line-height: 1.6;
-      margin-bottom: 15px;
-    }
+        @media (min-width: 768px) {
+            .floating-bar {
+                display: block;
+            }
+        }
 
-    .content img {
-      border-radius: 15px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-      transition: all 0.3s ease;
-    }
+        /* Mobile Hamburger Menu */
+        .mobile-menu-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1001;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #7c3aed, #a78bfa);
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.5);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    .content img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
-    }
+        .mobile-menu-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(124, 58, 237, 0.7);
+        }
 
-    .floating-bar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 15px 0;
-      border-radius: 20px 20px 0 0;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      z-index: 1000;
-    }
+        @media (min-width: 768px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+        }
 
-    .floating-bar button {
-      color: white;
-      background: rgba(255, 255, 255, 0.2);
-      border: none;
-      padding: 10px 15px;
-      margin: 0 5px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      border-radius: 10px;
-    }
+        /* Mobile Menu Overlay */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100vh;
+            background: rgba(15, 12, 41, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-    .floating-bar button i {
-      margin-right: 5px;
-      font-size: 1.2rem;
-    }
+        .mobile-menu.active {
+            right: 0;
+        }
 
-    .floating-bar button span {
-      font-size: 1.3rem;
-      font-weight: 500;
-    }
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
 
-    .floating-bar button:hover {
-      background: rgba(255, 255, 255, 0.1);
-      transform: translateY(-3px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.042);
-    }
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
 
-    .content-wrapper {
-      padding-bottom: 80px;
-      padding-top: 20px;
-      margin-top: 20px;
-    }
+        .glass-card {
+            background: rgba(57, 57, 57, 0.062);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
 
-    .apply-section {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 40px;
-      flex-wrap: wrap;
-    }
+        /* Timeline Styles */
+        .timeline-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
 
-    .apply-card {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border-radius: 15px;
-      padding: 20px;
-      width: calc(50% - 10px);
-      max-width: 280px;
-      text-align: center;
-      transition: transform 0.3s ease;
-    }
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: linear-gradient(180deg, #ff00ff, #00ffff, #ffff00, #ff00ff);
+            background-size: 100% 200%;
+            animation: gradientShift 3s ease-in-out infinite;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 2px;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+        }
 
-    .apply-card:hover {
-      transform: translateY(-10px);
-    }
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-    .apply-now-btn {
-      background: #B197FC;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 25px;
-      text-decoration: none;
-      display: inline-block;
-      margin-top: 20px;
-      transition: background 0.3s ease;
-      font-size: 1rem;
-    }
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-    .apply-now-btn:hover {
-      background: #9370DB;
-    }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -12px;
+            background: linear-gradient(45deg, #ff00ff, #00ffff);
+            border: 3px solid #ffffff;
+            top: 20px;
+            border-radius: 50%;
+            z-index: 2;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.6), inset 0 0 10px rgba(255, 255, 255, 0.3);
+        }
 
-    @media (max-width: 640px) {
-      .apply-card {
-        width: 100%;
-        max-width: 280px;
-      }
-    }
+        .timeline-item:hover::after {
+            transform: scale(1.3);
+            box-shadow: 0 0 30px rgba(255, 0, 255, 0.8), inset 0 0 15px rgba(255, 255, 255, 0.5);
+        }
 
-    @keyframes float {
+        .left {
+            left: 0;
+        }
 
-      0%,
-      100% {
-        transform: translateY(0);
-      }
+        .right {
+            left: 50%;
+        }
 
-      50% {
-        transform: translateY(-10px);
-      }
-    }
+        .right::after {
+            left: -16px;
+        }
 
-    .floating-animation {
-      animation: float 3s ease-in-out infinite;
-    }
+        .content {
+            padding: 25px 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
 
-    @media (max-width: 768px) {
-      .floating-bar button span {
-        display: none;
-      }
+        .content:hover {
+            transform: translateY(-5px) scale(1.02);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
 
-      .apply-section {
-        flex-direction: column;
-        align-items: center;
-      }
-    }
+        .timeline-date {
+            font-weight: bold;
+            color: #FFC100;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            text-shadow: 0 0 10px rgba(255, 193, 0, 0.5);
+        }
 
-    @media (max-width: 640px) {
-      .floating-bar {
-        padding: 10px 0;
-      }
+        .timeline-icon {
+            font-size: 24px;
+            color: #FFC100;
+            margin-right: 10px;
+            text-shadow: 0 0 10px rgba(255, 193, 0, 0.5);
+        }
 
-      .floating-bar button {
-        padding: 8px 10px;
-        margin: 0 2px;
-      }
+        .content h4 {
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            margin-bottom: 15px;
+        }
 
-      .floating-bar button i {
-        font-size: 1.1rem;
-        margin-right: 0;
-      }
-    }
+        .content p {
+            color: #e0e0e0;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
 
-    @media screen and (max-width: 600px) {
-      .timeline-container::after {
-        left: 31px;
-      }
+        .content img {
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
 
-      .timeline-item {
-        width: 100%;
-        padding-left: 70px;
-        padding-right: 25px;
-      }
+        .content img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+        }
 
-      .timeline-item::after {
-        left: 15px;
-      }
+        @media screen and (max-width: 600px) {
+            .timeline-container::after {
+                left: 31px;
+            }
 
-      .right {
-        left: 0%;
-      }
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
 
-      .floating-bar button span {
-        display: none;
-      }
+            .timeline-item::after {
+                left: 15px;
+            }
 
-      .floating-bar button i {
-        font-size: 1.1rem;
-        margin-right: 0;
-      }
-    }
+            .right {
+                left: 0%;
+            }
+        }
 
-    spline-viewer {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-    }
-  </style>
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .mascot-bottom {
+                bottom: 100px !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <div id="preloader" class="fixed inset-0 flex items-center justify-center bg-black z-50">
-    <div class="flex flex-col items-center">
-      <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-purple-500 border-opacity-75"></div>
-      <p class="mt-4 text-white text-lg">Loading...</p>
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+
+    <!-- Code Rain Canvas -->
+    <div class="code-rain">
+        <canvas id="codeCanvas"></canvas>
     </div>
-  </div>
 
-  <spline-viewer url="https://prod.spline.design/6LTLSMAaLiIze7dn/scene.splinecode"></spline-viewer>
+    <!-- Floating Particles -->
+    <div class="particles" id="particles"></div>
 
-  <div class="content-wrapper">
-    <a href="index.html">
-      <div class="fixed top-4 left-4 z-50 flex items-center logo">
-        <img src="./images/logo.png" alt="Hackathon 2024 Logo" class="w-40 object-contain" />
-      </div>
-    </a>
-
-    <div class="relative floating-element">
-      <div class="absolute top-4 right-4 z-50">
-        <img src="./images/mascot1.png" alt="Mascot" class="w-20">
-      </div>
+    <!-- Preloader -->
+    <div id="preloader" class="fixed inset-0 flex items-center justify-center bg-gradient-to-br from-purple-900 to-blue-900 z-50">
+        <div class="flex flex-col items-center">
+            <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-purple-300"></div>
+            <p class="mt-4 text-white text-lg">Loading...</p>
+        </div>
     </div>
-    <main class="mt-8">
-      <h1
-        class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-8 mt-20 text-center text-gradient bg-clip-text bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 animate-pulse drop-shadow-lg"
-        style="text-shadow: 0 0 30px rgba(168, 85, 247, 0.5);">
-        Cosmic Timeline
-      </h1>
 
-      <div class="timeline-container">
-        <div class="timeline-item left">
-          <div class="content">
-            <p class="timeline-date"><i class="fas fa-user-plus timeline-icon"></i>2nd Oct, 2025</p>
-            <h4 class="text-xl font-bold mb-2">Registration Starts</h4>
-            <p>Come one, come all! Participants can now submit their details and join the hackathon.</p>
-            <img src="./images/mascot3.png" alt=""
-              class="w-20 md:w-32 lg:w-40 xl:w-48 2xl:w-56 mx-auto rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out">
-          </div>
-        </div>
-        <div class="timeline-item right">
-          <div class="content">
-            <p class="timeline-date"><i class="fas fa-calendar-times timeline-icon"></i>2nd Nov, 2025</p>
-            <h4 class="text-xl font-bold mb-2">Registration Closed</h4>
-            <p>The deadline has arrived! Last chance to register and be part of the action.</p>
-            <img src="./images/mascot4.png" alt=""
-              class="w-20 md:w-32 lg:w-40 xl:w-48 2xl:w-56 mx-auto rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out">
-          </div>
-        </div>
-        <div class="timeline-item left">
-          <div class="content">
-            <p class="timeline-date"><i class="fas fa-calendar-alt timeline-icon"></i>16th Nov, 2025</p>
-            <h4 class="text-xl font-bold mb-2">Approvals Rolled Out</h4>
-            <p>The wait is finally over. Participants will get the theme/track and other procedures of hackathon.</p>
-            <img src="./images/mascot5.png" alt=""
-              class="w-20 md:w-32 lg:w-40 xl:w-48 2xl:w-56 mx-auto rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out">
-          </div>
-        </div>
-        <div class="timeline-item right">
-          <div class="content">
-            <p class="timeline-date"><i class="fas fa-users timeline-icon"></i>17th & 18th Nov, 2025</p>
-            <h4 class="text-xl font-bold mb-2">Track Specific Mentoring</h4>
-            <p>Get guidance during mentor assessments for any specific Theme/Track.</p>
-            <img src="./images/mascot6.png" alt=""
-              class="w-20 md:w-32 lg:w-40 xl:w-48 2xl:w-56 mx-auto rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out">
-          </div>
-        </div>
-        <div class="timeline-item left">
-          <div class="content">
-            <p class="timeline-date"><i class="fas fa-trophy timeline-icon"></i>19th to 20th Nov, 2025</p>
-            <h4 class="text-xl font-bold mb-2">24hr Hackathon Marathon</h4>
-            <p>Work hard, create your projects, and showcase your skills within the time limits.</p>
-            <img src="./images/mascot5.png" alt="Mascot"
-              class="w-20 md:w-32 lg:w-40 xl:w-48 2xl:w-56 mx-auto rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out">
-
-          </div>
-        </div>
-        <div class="timeline-item right">
-          <div class="content">
-            <p class="timeline-date"><i class="fas fa-gift timeline-icon"></i>TBD</p>
-            <h4 class="text-xl font-bold mb-2">Results Out !!!</h4>
-            <p>All eyes on the results - may the best team win!</p>
-            <img src="./images/mascot6.png" alt=""
-              class="w-20 md:w-32 lg:w-40 xl:w-48 2xl:w-56 mx-auto rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out">
-          </div>
-        </div>
-      </div>
-    </main>
-    <footer class="text-center text-sm text-white/80 mt-8 mb-20">
-      <!-- © 2024 CosmoHack. All Rights Reserved. -->
-    </footer>
-  </div>
-
-  <nav class="floating-bar">
+    <!-- Logo -->
     <a href="index.html">
-      <button>
-        <i class="fas fa-home"></i>
-        <span class="ml-2">Home</span>
-      </button>
+        <div class="fixed top-4 left-4 z-10 flex items-center justify-center rounded-lg cursor-pointer">
+            <img src="./images/logo.png" alt="Cosmohack Logo" class="w-32 md:w-40 object-contain" />
+        </div>
     </a>
-    <a href="Sponsors.html">
-      <button>
-        <i class="fa-solid fa-sack-dollar"></i>
-        <span class="ml-2">Sponsors</span>
-      </button>
-    </a>
-    <a href="Timeline.html">
-      <button>
-        <i class="fas fa-calendar-alt"></i>
-        <span class="ml-2">Timeline</span>
-      </button>
-    </a>
-    <a href="ProblemStatements.html">
-      <button>
-        <i class="fa-regular fa-star"></i><span>Tracks</span>
-      </button>
-    </a>
-    <a href="comingsoon.html">
-      <button>
-        <i class="fa-solid fa-trophy"></i><span>Prizes</span>
-      </button>
-    </a>
-    <a href="Aboutus.html">
-      <button>
-        <i class="fa-solid fa-people-group"></i>
-        <span class="ml-2">About</span>
-      </button>
-    </a>
-    <a href="Faq.html">
-      <button>
-        <i class="fas fa-question-circle"></i>
-        <span class="ml-2">FAQ</span>
-      </button>
-    </a>
-  </nav>
 
-  <script>
-    // Simple page initialization
-    document.addEventListener('DOMContentLoaded', function() {
-      // Hide preloader after 2 seconds
-      setTimeout(function() {
-        var preloader = document.getElementById('preloader');
-        var content = document.querySelector('.content-wrapper');
-        
-        if (preloader) {
-          preloader.style.display = 'none';
-        }
-        if (content) {
-          content.style.opacity = '1';
-        }
-      }, 2000);
+    <!-- Mascot 1 -->
+    <div class="fixed top-4 right-4 z-10">
+        <img src="./images/mascot1.png" alt="Mascot" class="w-16 md:w-20 floating-animation drop-shadow-lg">
+    </div>
 
-      // Timeline animation on scroll
-      function checkTimelineItems() {
-        var timelineItems = document.querySelectorAll('.timeline-item');
-        timelineItems.forEach(function(item) {
-          var rect = item.getBoundingClientRect();
-          if (rect.top < window.innerHeight && rect.bottom > 0) {
-            item.classList.add('visible');
-          }
+    <!-- Mascot 2 -->
+    <div class="mascot-bottom fixed bottom-24  z-10 md:bottom-24">
+        <img src="./images/mascot2.png" alt="Mascot" class="w-24 md:w-32 h-auto drop-shadow-lg">
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="menuOverlay"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-white text-2xl font-bold">Menu</h2>
+                <button id="closeMenuBtn" class="text-white text-2xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <nav class="flex flex-col gap-4">
+                <a href="index.html" class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                    <i class="fas fa-home text-xl w-6"></i>
+                    <span>Home</span>
+                </a>
+                <a href="comingsoon.html" class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                    <i class="fa-solid fa-sack-dollar text-xl w-6"></i>
+                    <span>Sponsors</span>
+                </a>
+                <a href="Timeline.html" class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                    <i class="fas fa-calendar-alt text-xl w-6"></i>
+                    <span>Timeline</span>
+                </a>
+                <a href="comingsoon.html" class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                    <i class="fa-regular fa-star text-xl w-6"></i>
+                    <span>Tracks</span>
+                </a>
+                <a href="comingsoon.html" class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                    <i class="fa-solid fa-trophy text-xl w-6"></i>
+                    <span>Prizes</span>
+                </a>
+                <a href="Aboutus.html" class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                    <i class="fa-solid fa-people-group text-xl w-6"></i>
+                    <span>About</span>
+                </a>
+                <a href="Faq.html" class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                    <i class="fas fa-question-circle text-xl w-6"></i>
+                    <span>FAQ</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button class="mobile-menu-btn" id="menuBtn">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Main Content -->
+    <div class="relative z-10 px-4 py-20 pb-32">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-12 mt-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-400 to-yellow-400 drop-shadow-lg">
+            Cosmic Timeline
+        </h1>
+
+        <div class="timeline-container">
+            <div class="timeline-item left">
+                <div class="content">
+                    <p class="timeline-date"><i class="fas fa-user-plus timeline-icon"></i>2nd Oct, 2025</p>
+                    <h4 class="text-xl font-bold mb-2">Registration Starts</h4>
+                    <p>Come one, come all! Participants can now submit their details and join the hackathon.</p>
+                    <img src="./images/mascot3.png" alt="Registration" class="w-20 md:w-32 lg:w-40 xl:w-48 2xl:w-56 mx-auto rounded-lg shadow-lg">
+                </div>
+            </div>
+            
+            <div class="timeline-item right">
+                <div class="content">
+                    <p class="timeline-date"><i class="fas fa-calendar-times timeline-icon"></i>2nd Nov, 2025</p>
+                    <h4 class="text-xl font-bold mb-2">Registration Closed</h4>
+                    <p>The deadline has arrived! Last chance to register and be part of the action.</p>
+                    <img src="./images/mascot4.png" alt="Deadline" class="w-20 md:w-32 lg:w-40 xl:w-48 2xl:w-56 mx-auto rounded-lg shadow-lg">
+                </div>
+            </div>
+            
+            <div class="timeline-item left">
+                <div class="content">
+                    <p class="timeline-date"><i class="fas fa-calendar-alt timeline-icon"></i>16th Nov, 2025</p>
+                    <h4 class="text-xl font-bold mb-2">Approvals Rolled Out</h4>
+                    <p>The wait is finally over. Participants will get the theme/track and other procedures of hackathon.</p>
+                    <img src="./images/mascot5.png" alt="Approvals" class="w-20 md:w-32 lg:w-40 xl:w-48 2xl:w-56 mx-auto rounded-lg shadow-lg">
+                </div>
+            </div>
+            
+            <div class="timeline-item right">
+                <div class="content">
+                    <p class="timeline-date"><i class="fas fa-users timeline-icon"></i>17th & 18th Nov, 2025</p>
+                    <h4 class="text-xl font-bold mb-2">Track Specific Mentoring</h4>
+                    <p>Get guidance during mentor assessments for any specific Theme/Track.</p>
+                    <img src="./images/mascot6.png" alt="Mentoring" class="w-20 md:w-32 lg:w-40 xl:w-48 2xl:w-56 mx-auto rounded-lg shadow-lg">
+                </div>
+            </div>
+            
+            <div class="timeline-item left">
+                <div class="content">
+                    <p class="timeline-date"><i class="fas fa-trophy timeline-icon"></i>19th to 20th Nov, 2025</p>
+                    <h4 class="text-xl font-bold mb-2">24hr Hackathon Marathon</h4>
+                    <p>Work hard, create your projects, and showcase your skills within the time limits.</p>
+                    <img src="./images/mascot5.png" alt="Marathon" class="w-20 md:w-32 lg:w-40 xl:w-48 2xl:w-56 mx-auto rounded-lg shadow-lg">
+                </div>
+            </div>
+            
+            <div class="timeline-item right">
+                <div class="content">
+                    <p class="timeline-date"><i class="fas fa-gift timeline-icon"></i>TBD</p>
+                    <h4 class="text-xl font-bold mb-2">Results Out !!!</h4>
+                    <p>All eyes on the results - may the best team win!</p>
+                    <img src="./images/mascot6.png" alt="Results" class="w-20 md:w-32 lg:w-40 xl:w-48 2xl:w-56 mx-auto rounded-lg shadow-lg">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Desktop Floating Navigation Bar -->
+    <nav class="floating-bar">
+        <div class="flex justify-center items-center py-4 px-2 gap-2 flex-wrap">
+            <a href="index.html" class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+                <i class="fas fa-home text-xl"></i>
+                <span class="font-medium">Home</span>
+            </a>
+            <a href="comingsoon.html" class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+                <i class="fa-solid fa-sack-dollar text-xl"></i>
+                <span class="font-medium">Sponsors</span>
+            </a>
+            <a href="Timeline.html" class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+                <i class="fas fa-calendar-alt text-xl"></i>
+                <span class="font-medium">Timeline</span>
+            </a>
+            <a href="comingsoon.html" class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+                <i class="fa-regular fa-star text-xl"></i>
+                <span class="font-medium">Tracks</span>
+            </a>
+            <a href="comingsoon.html" class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+                <i class="fa-solid fa-trophy text-xl"></i>
+                <span class="font-medium">Prizes</span>
+            </a>
+            <a href="Aboutus.html" class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+                <i class="fa-solid fa-people-group text-xl"></i>
+                <span class="font-medium">About</span>
+            </a>
+            <a href="Faq.html" class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+                <i class="fas fa-question-circle text-xl"></i>
+                <span class="font-medium">FAQ</span>
+            </a>
+        </div>
+    </nav>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
         });
-      }
 
-      // Run on scroll
-      window.addEventListener('scroll', checkTimelineItems);
-      // Run once on load
-      checkTimelineItems();
-    });
+        closeMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
 
-    function goBack() {
-      window.close();
-    }
-  </script>
+        menuOverlay.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Preloader
+        window.onload = function () {
+            setTimeout(() => {
+                document.getElementById('preloader').style.display = 'none';
+            }, 0);
+        };
+
+        // Timeline animation on scroll
+        function checkTimelineItems() {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            timelineItems.forEach(item => {
+                const rect = item.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    item.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkTimelineItems);
+        checkTimelineItems();
+
+        // Code Rain Animation
+        const canvas = document.getElementById('codeCanvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*(){}[]<>/';
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+
+        function drawCodeRain() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = '#fff';
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = characters[Math.floor(Math.random() * characters.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(drawCodeRain, 33);
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Create floating particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            particle.style.animationDelay = Math.random() * 5 + 's';
+            particlesContainer.appendChild(particle);
+        }
+    </script>
 </body>
 
 </html>

@@ -2,503 +2,694 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cosmohack - Our Team</title>
-  <link rel="shortcut icon" href="./images/CosmoHACK-Round-W.png" type="image/x-icon">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.48/build/spline-viewer.js"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
-    integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <style>
-    /* Existing styles */
-    body.loading {
-      overflow: hidden;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmohack - Our Team</title>
+    <link rel="shortcut icon" href="./images/CosmoHACK-Round-W.png" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" rel="stylesheet">
 
-    .floating-bar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 10px 0;
-      border-radius: 20px 20px 0 0;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      z-index: 10;
-      transition: all 0.3s ease-in-out;
-    }
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cinzel:wght@400..900&family=Orbitron&family=Pacifico&family=Playwrite+US+Trad+Guides&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Salsa&display=swap');
 
-    .floating-bar button {
-      color: white;
-      background: rgba(255, 255, 255, 0.2);
-      border: none;
-      padding: 10px 15px;
-      margin: 0 5px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      border-radius: 10px;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Salsa", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
 
-    .floating-bar button i {
-      margin-right: 5px;
-      font-size: 1.2rem;
-    }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 12px;
+        }
 
-    .floating-bar button span {
-      font-size: 1.3rem;
-      font-weight: 500;
-    }
+        ::-webkit-scrollbar-track {
+            background: #1a1a2e;
+            border-radius: 10px;
+        }
 
-    @media (max-width: 768px) {
-      .floating-bar button span {
-        display: none;
-      }
-    }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #7c3aed, #a78bfa);
+            border-radius: 10px;
+            animation: glowingPulse 2s infinite alternate, glowingShadow 1.5s infinite alternate;
+        }
 
-    .floating-bar button:hover {
-      background: rgba(255, 255, 255, 0.3);
-      transform: translateY(-3px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, #a78bfa, #7c3aed);
+            box-shadow: 0 0 40px rgba(167, 139, 250, 1), 0 0 60px rgba(124, 58, 237, 1);
+        }
 
-    @media (max-width: 640px) {
-      .floating-bar {
-        padding: 8px 0;
-      }
+        @keyframes glowingPulse {
+            0% {
+                background: linear-gradient(45deg, #7c3aed, #a78bfa);
+                box-shadow: 0 0 10px rgba(167, 139, 250, 0.5), 0 0 20px rgba(124, 58, 237, 0.5);
+            }
+            50% {
+                background: linear-gradient(45deg, #a78bfa, #6d28d9);
+                box-shadow: 0 0 20px rgba(167, 139, 250, 0.8), 0 0 30px rgba(124, 58, 237, 0.8);
+            }
+            100% {
+                background: linear-gradient(45deg, #7c3aed, #a78bfa);
+                box-shadow: 0 0 10px rgba(167, 139, 250, 0.5), 0 0 20px rgba(124, 58, 237, 0.5);
+            }
+        }
 
-      .floating-bar button {
-        padding: 8px 10px;
-        margin: 0 2px;
-      }
+        @keyframes glowingShadow {
+            0% {
+                box-shadow: 0 0 15px rgba(167, 139, 250, 0.6), 0 0 25px rgba(124, 58, 237, 0.6);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(167, 139, 250, 1), 0 0 45px rgba(124, 58, 237, 1);
+            }
+            100% {
+                box-shadow: 0 0 15px rgba(167, 139, 250, 0.6), 0 0 25px rgba(124, 58, 237, 0.6);
+            }
+        }
 
-      .floating-bar button span {
-        display: none;
-      }
+        body {
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
 
-      .floating-bar button i {
-        font-size: 1.1rem;
-        margin-right: 0;
-      }
-    }
+        /* Animated Gradient Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -2;
+            background: linear-gradient(-45deg, #05040e, #231f4e, #1a1a28, #11111e, #0e162a);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
 
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
 
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+        /* Code Rain Animation */
+        .code-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            opacity: 0.15;
+        }
 
-    .animate-fadeInUp {
-      animation: fadeInUp 0.6s ease-out;
-    }
+        .code-rain canvas {
+            display: block;
+        }
 
-    .cta-button {
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
+        /* Floating particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+        }
 
-    .cta-button::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      transition: width 0.3s ease, height 0.3s ease;
-    }
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgb(125, 61, 255);
+            border-radius: 50%;
+            animation: float-particle linear infinite;
+        }
 
-    .cta-button:hover::after {
-      width: 300px;
-      height: 300px;
-    }
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
 
-    .floating-element {
-      inset: 0;
-      z-index: 0;
-      opacity: 1;
-      filter: brightness(0.9);
-      animation: float 3s ease-in-out infinite;
-    }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
 
-    @keyframes float {
+        .floating-animation {
+            animation: float 3s ease-in-out infinite;
+        }
 
-      0%,
-      100% {
-        transform: translateY(0);
-      }
+        /* Desktop Floating Bar */
+        .floating-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 1000;
+            display: none;
+        }
 
-      50% {
-        transform: translateY(-10px);
-      }
-    }
+        @media (min-width: 768px) {
+            .floating-bar {
+                display: block;
+            }
+        }
 
-    /* Updated styles for team section */
-    .team-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-      padding: 2rem;
-    }
+        /* Mobile Hamburger Menu */
+        .mobile-menu-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1001;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #7c3aed, #a78bfa);
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.5);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    .team-member {
-      width: 280px;
-      height: 400px;
-      perspective: 1000px;
-      cursor: pointer;
-    }
+        .mobile-menu-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(124, 58, 237, 0.7);
+        }
 
-    .member-card {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      transform-style: preserve-3d;
-      transition: transform 0.8s;
-    }
+        @media (min-width: 768px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+        }
 
-    .member-card:hover {
-      transform: rotateY(180deg);
-    }
+        /* Mobile Menu Overlay */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100vh;
+            background: rgba(15, 12, 41, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-    .member-front,
-    .member-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      border-radius: 15px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      padding: 1.5rem;
-    }
+        .mobile-menu.active {
+            right: 0;
+        }
 
-    .member-back {
-      transform: rotateY(180deg);
-    }
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
 
-    .member-image {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 1rem;
-    }
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
 
-    .member-name {
-      font-size: 1.4rem;
-      font-weight: bold;
-      margin-bottom: 0.5rem;
-    }
+        .glass-card {
+            background: rgba(57, 57, 57, 0.062);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
 
-    .member-role {
-      font-size: 1.1rem;
-      color: #aaa;
-      margin-bottom: 1rem;
-    }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-    .member-bio {
-      font-size: 0.9rem;
-      text-align: center;
-      margin-bottom: 1rem;
-    }
+        .animate-fadeInUp {
+            animation: fadeInUp 0.6s ease-out;
+        }
 
-    .social-icons {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-    }
+        /* Team Member Cards */
+        .team-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
 
-    .social-icons a {
-      color: #fff;
-      font-size: 1.5rem;
-      transition: color 0.3s ease;
-    }
+        .team-member {
+            perspective: 1000px;
+            cursor: pointer;
+            height: 400px;
+        }
 
-    .social-icons a:hover {
-      color: #9f7aea;
-    }
+        .member-card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s;
+        }
 
-    #team-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: -1;
-    }
+        .team-member:hover .member-card {
+            transform: rotateY(180deg);
+        }
 
-    @media (max-width: 768px) {
-      .team-member {
-        width: 240px;
-        height: 340px;
-      }
+        .member-front,
+        .member-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            padding: 2rem;
+        }
 
-      .member-image {
-        width: 140px;
-        height: 140px;
-      }
+        .member-front {
+            background: rgba(57, 57, 57, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
 
-      .member-name {
-        font-size: 1.2rem;
-      }
+        .member-back {
+            background: rgba(124, 58, 237, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(167, 139, 250, 0.3);
+            transform: rotateY(180deg);
+        }
 
-      .member-role {
-        font-size: 1rem;
-      }
+        .member-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            border: 3px solid rgba(167, 139, 250, 0.5);
+        }
 
-      .member-bio {
-        font-size: 0.8rem;
-      }
-    }
-  </style>
+        .member-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .member-role {
+            font-size: 1.1rem;
+            color: #a78bfa;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .member-bio {
+            font-size: 0.95rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icons a {
+            color: #fff;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #a78bfa;
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 768px) {
+            .team-container {
+                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+                gap: 1.5rem;
+                padding: 1rem;
+            }
+
+            .team-member {
+                height: 360px;
+            }
+
+            .member-image {
+                width: 120px;
+                height: 120px;
+            }
+
+            .member-name {
+                font-size: 1.3rem;
+            }
+
+            .member-role {
+                font-size: 1rem;
+            }
+
+            .member-bio {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
 </head>
 
-<body class="min-h-screen overflow-y-auto text-white relative loading bg-black">
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
 
-  <!-- Preloader -->
-  <div id="preloader" class="absolute inset-0 flex items-center justify-center bg-black z-50">
-    <div class="flex flex-col items-center">
-      <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-purple-500 border-opacity-75"></div>
-      <p class="mt-4 text-white text-lg">Loading...</p>
+    <!-- Code Rain Canvas -->
+    <div class="code-rain">
+        <canvas id="codeCanvas"></canvas>
     </div>
-  </div>
 
-  <!-- 3D Spline Viewer -->
-  <spline-viewer url="https://prod.spline.design/6LTLSMAaLiIze7dn/scene.splinecode"
-    class="fixed inset-0 w-full h-full z-0">
-  </spline-viewer>
+    <!-- Floating Particles -->
+    <div class="particles" id="particles"></div>
 
-  <!-- CosmoHack Logo -->
-  <a href="index.html">
-    <div class="fixed top-4 left-4 z-50 flex items-center logo">
-        <img src="./images/logo.png" alt="Hackathon 2024 Logo" class="w-40 object-contain" />
+    <!-- Preloader -->
+    <div id="preloader" class="fixed inset-0 flex items-center justify-center bg-gradient-to-br from-purple-900 to-blue-900 z-50">
+        <div class="flex flex-col items-center">
+            <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-purple-300"></div>
+            <p class="mt-4 text-white text-lg">Loading...</p>
+        </div>
     </div>
-</a>
 
-
-  <!-- Mascot -->
-  <div class="relative floating-element">
-    <div class="absolute top-4 right-4 z-50">
-      <img src="./images/mascot1.png" alt="Mascot" class="w-20">
-    </div>
-  </div>
-
-  <!-- Content Section (Team) -->
-  <div id="content"
-    class="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 md:px-8 py-8 sm:py-12 text-center hidden content-wrapper animate-fadeInUp mt-2 pb-32">
-
-    <h1
-      class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 mt-12 sm:mt-0">
-      Meet Our Cosmic Crew
-    </h1>
-
-    <div class="team-container">
-      <!-- Team members will be dynamically added here -->
-    </div>
-  </div>
-
-  <canvas id="team-canvas"></canvas>
-
-  <!-- Footer -->
-  <footer class="absolute bottom-4 w-full text-center text-sm text-white/80 z-10 hidden" id="footer">
-    © 2024 CosmoHack. All Rights Reserved. | <a href="#privacy" class="hover:text-purple-300">Privacy Policy</a> | <a
-      href="#terms" class="hover:text-purple-300">Terms of Service</a>
-  </footer>
-
-  <!-- Floating Navigation Bar -->
-  <nav class="floating-bar">
+    <!-- Logo -->
     <a href="index.html">
-      <button>
-        <i class="fas fa-home"></i>
-        <span class="ml-2">Home</span>
-      </button>
+        <div class="fixed top-4 left-4 z-10 flex items-center justify-center rounded-lg cursor-pointer">
+            <img src="./images/logo.png" alt="Cosmohack Logo" class="w-32 md:w-40 object-contain" />
+        </div>
     </a>
-    <a href="Sponsors.html">
-      <button>
-        <i class="fa-solid fa-sack-dollar"></i>
-        <span class="ml-2">Sponsors</span>
-      </button>
-    </a>
-    <a href="Timeline.html">
-      <button>
-        <i class="fas fa-calendar-alt"></i>
-        <span class="ml-2">Timeline</span>
-      </button>
-    </a>
-    <a href="ProblemStatements.html">
-      <button>
-        <i class="fa-regular fa-star"></i><span>Tracks</span>
-      </button>
-    </a>
-    <a href="comingsoon.html">
-      <button>
-        <i class="fa-solid fa-trophy"></i><span>Prizes</span>
-      </button>
-    </a>
-    <a href="Aboutus.html">
-      <button>
-        <i class="fa-solid fa-people-group"></i>
-        <span class="ml-2">About</span>
-      </button>
-    </a>
-    <a href="Faq.html">
-      <button>
-        <i class="fas fa-question-circle"></i>
-        <span class="ml-2">FAQ</span>
-      </button>
-    </a>
-  </nav>
 
-  <!-- JavaScript -->
-  <script>
-    // Updated team members data with more details and social media links
-    const teamMembers = [
-      {
-        name: "Jane Doe",
-        role: "Founder & CEO",
-        image: "https://i.pravatar.cc/300?img=1",
-        bio: "Visionary leader with a passion for space exploration and technology. Jane has been pioneering innovative solutions in the aerospace industry for over a decade.",
-        linkedin: "https://linkedin.com/in/janedoe",
-        twitter: "https://twitter.com/janedoe"
-      },
-      {
-        name: "John Smith",
-        role: "CTO",
-        image: "https://i.pravatar.cc/300?img=2",
-        bio: "Innovative technologist driving our cutting-edge developments. John's expertise in quantum computing has revolutionized our approach to space technology.",
-        linkedin: "https://linkedin.com/in/johnsmith",
-        twitter: "https://twitter.com/johnsmith"
-      },
-      {
-        name: "Emily Johnson",
-        role: "Lead Engineer",
-        image: "https://i.pravatar.cc/300?img=3",
-        bio: "Brilliant engineer specializing in spacecraft systems and AI. Emily's work on autonomous navigation systems has set new industry standards.",
-        linkedin: "https://linkedin.com/in/emilyjohnson",
-        twitter: "https://twitter.com/emilyjohnson"
-      },
-      {
-        name: "Michael Brown",
-        role: "Head of Research",
-        image: "https://i.pravatar.cc/300?img=4",
-        bio: "Pioneering researcher in quantum computing and space physics. Michael's groundbreaking work on quantum entanglement has opened new possibilities for interstellar communication.",
-        linkedin: "https://linkedin.com/in/michaelbrown",
-        twitter: "https://twitter.com/michaelbrown"
-      },
-    ];
+    <!-- Mascot 1 -->
+    <div class="fixed top-4 right-4 z-10">
+        <img src="./images/mascot1.png" alt="Mascot" class="w-16 md:w-20 floating-animation drop-shadow-lg">
+    </div>
 
-    // Function to create team member cards
-    function createTeamMemberCards() {
-      const container = document.querySelector('.team-container');
-      teamMembers.forEach(member => {
-        const memberCard = document.createElement('div');
-        memberCard.className = 'team-member';
-        memberCard.innerHTML = `
-          <div class="member-card">
-            <div class="member-front">
-              <img src="${member.image}" alt="${member.name}" class="member-image">
-              <h3 class="member-name">${member.name}</h3>
-              <p class="member-role">${member.role}</p>
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="menuOverlay"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-white text-2xl font-bold">Menu</h2>
+                <button id="closeMenuBtn" class="text-white text-2xl">
+                    <i class="fas fa-times"></i>
+                </button>
             </div>
-            <div class="member-back">
-              <p class="member-bio">${member.bio}</p>
-              <div class="social-icons">
-                <a href="${member.linkedin}" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
-                <a href="${member.twitter}" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
-              </div>
-            </div>
-          </div>
-        `;
-        container.appendChild(memberCard);
-      });
-    }
+            <nav class="flex flex-col gap-4">
+                <a href="index.html" class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                    <i class="fas fa-home text-xl w-6"></i>
+                    <span>Home</span>
+                </a>
+                <a href="comingsoon.html" class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                    <i class="fa-solid fa-sack-dollar text-xl w-6"></i>
+                    <span>Sponsors</span>
+                </a>
+                <a href="comingsoon.html" class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                    <i class="fa-regular fa-star text-xl w-6"></i>
+                    <span>Tracks</span>
+                </a>
+                <a href="comingsoon.html" class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                    <i class="fa-solid fa-trophy text-xl w-6"></i>
+                    <span>Prizes</span>
+                </a>
+                <a href="Aboutus.html" class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                    <i class="fa-solid fa-people-group text-xl w-6"></i>
+                    <span>About</span>
+                </a>
+                <a href="Faq.html" class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                    <i class="fas fa-question-circle text-xl w-6"></i>
+                    <span>FAQ</span>
+                </a>
+            </nav>
+        </div>
+    </div>
 
-    // 3D animation setup
-    let scene, camera, renderer, particles;
+    <!-- Mobile Menu Button -->
+    <button class="mobile-menu-btn" id="menuBtn">
+        <i class="fas fa-bars"></i>
+    </button>
 
-    function init3DAnimation() {
-      scene = new THREE.Scene();
-      camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-      renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('team-canvas'), alpha: true });
-      renderer.setSize(window.innerWidth, window.innerHeight);
+    <!-- Main Content -->
+    <div id="content" class="relative z-10 min-h-screen px-4 py-20 text-center pb-32 animate-fadeInUp">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 mt-12 sm:mt-0">
+            Meet Our Cosmic Crew
+        </h1>
+        <p class="text-lg sm:text-xl text-white/80 mb-12">The brilliant minds behind Cosmohack</p>
 
-      const geometry = new THREE.BufferGeometry();
-      const vertices = [];
-      for (let i = 0; i < 5000; i++) {
-        vertices.push(
-          Math.random() * 2000 - 1000,
-          Math.random() * 2000 - 1000,
-          Math.random() * 2000 - 1000
-        );
-      }
-      geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+        <div class="team-container" id="teamContainer">
+            <!-- Team members will be dynamically loaded here -->
+        </div>
+    </div>
 
-      const material = new THREE.PointsMaterial({ color: 0xffffff, size: 2 });
-      particles = new THREE.Points(geometry, material);
-      scene.add(particles);
+    <!-- Desktop Floating Navigation Bar -->
+    <nav class="floating-bar">
+        <div class="flex justify-center items-center py-4 px-2 gap-2 flex-wrap">
+            <a href="index.html" class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+                <i class="fas fa-home text-xl"></i>
+                <span class="font-medium">Home</span>
+            </a>
+            <a href="comingsoon.html" class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+                <i class="fa-solid fa-sack-dollar text-xl"></i>
+                <span class="font-medium">Sponsors</span>
+            </a>
+            <a href="comingsoon.html" class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+                <i class="fa-regular fa-star text-xl"></i>
+                <span class="font-medium">Tracks</span>
+            </a>
+            <a href="comingsoon.html" class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+                <i class="fa-solid fa-trophy text-xl"></i>
+                <span class="font-medium">Prizes</span>
+            </a>
+            <a href="Aboutus.html" class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+                <i class="fa-solid fa-people-group text-xl"></i>
+                <span class="font-medium">About</span>
+            </a>
+            <a href="Faq.html" class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+                <i class="fas fa-question-circle text-xl"></i>
+                <span class="font-medium">FAQ</span>
+            </a>
+        </div>
+    </nav>
 
-      camera.position.z = 1000;
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
 
-      animate();
-    }
-
-    function animate() {
-      requestAnimationFrame(animate);
-      particles.rotation.x += 0.001;
-      particles.rotation.y += 0.002;
-      renderer.render(scene, camera);
-    }
-
-    window.addEventListener('resize', () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    });
-
-    // Initialize everything when the window loads
-    window.addEventListener('load', function () {
-      setTimeout(() => {
-        document.getElementById('preloader').style.opacity = '0';
-        document.getElementById('preloader').style.transition = 'opacity 0.5s ease';
-        setTimeout(() => {
-          document.getElementById('preloader').style.display = 'none';
-          document.getElementById('content').classList.remove('hidden');
-          document.getElementById('footer').classList.remove('hidden');
-          document.body.classList.remove('loading');
-          createTeamMemberCards();
-          init3DAnimation();
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
         });
-      });
-    });
 
-    function goBack() {
-      window.close();
-    }
-  </script>
+        closeMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        menuOverlay.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Default team members data (fallback)
+        const defaultTeamMembers = [
+            {
+                name: "Jane Doe",
+                role: "Founder & CEO",
+                image: "https://i.pravatar.cc/300?img=1",
+                bio: "Visionary leader with a passion for space exploration and technology. Jane has been pioneering innovative solutions in the aerospace industry for over a decade.",
+                linkedin: "https://linkedin.com/in/janedoe",
+                twitter: "https://twitter.com/janedoe"
+            },
+            {
+                name: "John Smith",
+                role: "CTO",
+                image: "https://i.pravatar.cc/300?img=2",
+                bio: "Innovative technologist driving our cutting-edge developments. John's expertise in quantum computing has revolutionized our approach to space technology.",
+                linkedin: "https://linkedin.com/in/johnsmith",
+                twitter: "https://twitter.com/johnsmith"
+            },
+            {
+                name: "Emily Johnson",
+                role: "Lead Engineer",
+                image: "https://i.pravatar.cc/300?img=3",
+                bio: "Brilliant engineer specializing in spacecraft systems and AI. Emily's work on autonomous navigation systems has set new industry standards.",
+                linkedin: "https://linkedin.com/in/emilyjohnson",
+                twitter: "https://twitter.com/emilyjohnson"
+            },
+            {
+                name: "Michael Brown",
+                role: "Head of Research",
+                image: "https://i.pravatar.cc/300?img=4",
+                bio: "Pioneering researcher in quantum computing and space physics. Michael's groundbreaking work on quantum entanglement has opened new possibilities for interstellar communication.",
+                linkedin: "https://linkedin.com/in/michaelbrown",
+                twitter: "https://twitter.com/michaelbrown"
+            }
+        ];
+
+        // Function to create team member cards
+        function createTeamMemberCards(members) {
+            const container = document.getElementById('teamContainer');
+            container.innerHTML = '';
+            
+            members.forEach(member => {
+                const memberCard = document.createElement('div');
+                memberCard.className = 'team-member';
+                memberCard.innerHTML = `
+                    <div class="member-card">
+                        <div class="member-front">
+                            <img src="${member.image}" alt="${member.name}" class="member-image" onerror="this.src='https://via.placeholder.com/150/7c3aed/ffffff?text=${member.name.charAt(0)}'">
+                            <h3 class="member-name">${member.name}</h3>
+                            <p class="member-role">${member.role}</p>
+                        </div>
+                        <div class="member-back">
+                            <p class="member-bio">${member.bio}</p>
+                            <div class="social-icons">
+                                ${member.linkedin ? `<a href="${member.linkedin}" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>` : ''}
+                                ${member.twitter ? `<a href="${member.twitter}" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>` : ''}
+                                ${member.github ? `<a href="${member.github}" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>` : ''}
+                                ${member.instagram ? `<a href="${member.instagram}" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>` : ''}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(memberCard);
+            });
+        }
+
+        // Load team members from JSON
+        fetch('organisers.json')
+            .then(response => response.json())
+            .then(data => {
+                createTeamMemberCards(data.organisers || data);
+            })
+            .catch(error => {
+                console.log('Loading default team members');
+                createTeamMemberCards(defaultTeamMembers);
+            });
+
+        // Preloader
+        window.onload = function () {
+            setTimeout(() => {
+                document.getElementById('preloader').style.display = 'none';
+            }, 500);
+        };
+
+        // Code Rain Animation
+        const canvas = document.getElementById('codeCanvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*(){}[]<>/';
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+
+        function drawCodeRain() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = '#fff';
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = characters[Math.floor(Math.random() * characters.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(drawCodeRain, 33);
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Create floating particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            particle.style.animationDelay = Math.random() * 5 + 's';
+            particlesContainer.appendChild(particle);
+        }
+    </script>
 </body>
 
 </html>
