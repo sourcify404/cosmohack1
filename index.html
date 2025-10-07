@@ -48,10 +48,12 @@
                 background: linear-gradient(45deg, #7c3aed, #a78bfa);
                 box-shadow: 0 0 10px rgba(167, 139, 250, 0.5), 0 0 20px rgba(124, 58, 237, 0.5);
             }
+
             50% {
                 background: linear-gradient(45deg, #a78bfa, #6d28d9);
                 box-shadow: 0 0 20px rgba(167, 139, 250, 0.8), 0 0 30px rgba(124, 58, 237, 0.8);
             }
+
             100% {
                 background: linear-gradient(45deg, #7c3aed, #a78bfa);
                 box-shadow: 0 0 10px rgba(167, 139, 250, 0.5), 0 0 20px rgba(124, 58, 237, 0.5);
@@ -62,9 +64,11 @@
             0% {
                 box-shadow: 0 0 15px rgba(167, 139, 250, 0.6), 0 0 25px rgba(124, 58, 237, 0.6);
             }
+
             50% {
                 box-shadow: 0 0 30px rgba(167, 139, 250, 1), 0 0 45px rgba(124, 58, 237, 1);
             }
+
             100% {
                 box-shadow: 0 0 15px rgba(167, 139, 250, 0.6), 0 0 25px rgba(124, 58, 237, 0.6);
             }
@@ -93,9 +97,11 @@
             0% {
                 background-position: 0% 50%;
             }
+
             50% {
                 background-position: 100% 50%;
             }
+
             100% {
                 background-position: 0% 50%;
             }
@@ -142,12 +148,15 @@
                 transform: translateY(100vh) translateX(0);
                 opacity: 0;
             }
+
             10% {
                 opacity: 1;
             }
+
             90% {
                 opacity: 1;
             }
+
             100% {
                 transform: translateY(-100vh) translateX(100px);
                 opacity: 0;
@@ -155,9 +164,12 @@
         }
 
         @keyframes float {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0);
             }
+
             50% {
                 transform: translateY(-10px);
             }
@@ -297,7 +309,8 @@
     <div class="particles" id="particles"></div>
 
     <!-- Preloader -->
-    <div id="preloader" class="fixed inset-0 flex items-center justify-center bg-gradient-to-br from-purple-900 to-blue-900 z-50">
+    <div id="preloader"
+        class="fixed inset-0 flex items-center justify-center bg-gradient-to-br from-purple-900 to-blue-900 z-50">
         <div class="flex flex-col items-center">
             <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-purple-300"></div>
             <p class="mt-4 text-white text-lg">Loading...</p>
@@ -306,7 +319,8 @@
 
     <!-- Logo -->
     <div class="fixed top-4 left-4 z-10 flex items-center justify-center rounded-lg">
-        <img src="./images/sourcifylogo.png" alt="Logo" class="w-16 h-16 md:w-20 md:h-20 object-contain border-2 border-purple-300 rounded-full shadow-lg" />
+        <img src="./images/sourcifylogo.png" alt="Logo"
+            class="w-16 h-16 md:w-20 md:h-20 object-contain border-2 border-purple-300 rounded-full shadow-lg" />
     </div>
 
     <!-- Mascot 1 -->
@@ -315,9 +329,10 @@
     </div>
 
     <!-- Mascot 2 -->
-    <div class="mascot-bottom fixed bottom-24  z-10 md:bottom-24">
-        <img src="./images/mascot2.png" alt="Mascot" class="w-24 md:w-32 h-auto drop-shadow-lg">
-    </div>
+    <div class="mascot-bottom hidden md:block fixed bottom-24 z-10">
+    <img src="./images/mascot2.png" alt="Mascot" class="w-24 md:w-32 h-auto drop-shadow-lg">
+</div>
+
 
     <!-- Mobile Menu Overlay -->
     <div class="mobile-menu-overlay" id="menuOverlay"></div>
@@ -332,31 +347,38 @@
                 </button>
             </div>
             <nav class="flex flex-col gap-4">
-                <a href="index.html" class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                <a href="index.html"
+                    class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
                     <i class="fas fa-home text-xl w-6"></i>
                     <span>Home</span>
                 </a>
-                <a href="comingsoon.html" class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                <a href="comingsoon.html"
+                    class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
                     <i class="fa-solid fa-sack-dollar text-xl w-6"></i>
                     <span>Sponsors</span>
                 </a>
-                <a href="Timeline.html" class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                <a href="Timeline.html"
+                    class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
                     <i class="fas fa-calendar-alt text-xl w-6"></i>
                     <span>Timeline</span>
                 </a>
-                <a href="comingsoon.html" class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                <a href="comingsoon.html"
+                    class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
                     <i class="fa-regular fa-star text-xl w-6"></i>
                     <span>Tracks</span>
                 </a>
-                <a href="comingsoon.html" class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                <a href="comingsoon.html"
+                    class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
                     <i class="fa-solid fa-trophy text-xl w-6"></i>
                     <span>Prizes</span>
                 </a>
-                <a href="Aboutus.html" class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                <a href="Aboutus.html"
+                    class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
                     <i class="fa-solid fa-people-group text-xl w-6"></i>
                     <span>About</span>
                 </a>
-                <a href="Faq.html" class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                <a href="Faq.html"
+                    class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
                     <i class="fas fa-question-circle text-xl w-6"></i>
                     <span>FAQ</span>
                 </a>
@@ -370,27 +392,28 @@
     </button>
 
     <!-- Main Content -->
-    <div id="content" class="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-20 text-center pb-32">
-        <img 
-  src="./images/logo.png" 
-  alt="Cosmohack Logo" 
-  class="floating-animation w-[95%] sm:w-[40%] max-w-full drop-shadow-2xl mx-auto"
-/>
+    <div id="content"
+        class="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-20 text-center pb-32">
+        <img src="./images/logo.png" alt="Cosmohack Logo"
+            class="floating-animation w-[100%] sm:w-[40%] max-w-full drop-shadow-2xl mx-auto" />
 
 
-        <p class="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl mb-8 drop-shadow-lg text-white font-bold mt-6 px-4">
-            Unlock the cosmos, hack the future 
+        <p
+            class="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl mb-8 drop-shadow-lg text-white font-bold mt-6 px-4">
+            Unlock the cosmos, hack the future
         </p>
 
         <div class="flex flex-col items-center gap-6 w-full max-w-md px-2">
-            <button id="registerBtn" class="w-full bg-white text-purple-600 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg shadow-lg hover:bg-purple-500 hover:text-white transition-all btn-glow">
+            <button id="registerBtn"
+                class="w-full bg-white text-purple-600 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg shadow-lg hover:bg-purple-500 hover:text-white transition-all btn-glow">
                 Register Now
             </button>
 
             <div class="glass-card rounded-2xl px-10 sm:px-6 py-4 w-full">
                 <div class="flex flex-col md:flex-row items-center justify-between gap-3">
                     <p class="text-xs sm:text-sm md:text-base font-semibold uppercase tracking-wide text-white">
-                        November 19-20, 2025 <i class="fa-solid fa-hourglass-end fa-flip ml-2" style="color: #FFD700;"></i>
+                        November 19-20, 2025 <i class="fa-solid fa-hourglass-end fa-flip ml-2"
+                            style="color: #FFD700;"></i>
                     </p>
                     <p id="countdown" class="text-base sm:text-lg md:text-xl font-bold text-yellow-300">
                         Loading...
@@ -403,19 +426,22 @@
     <!-- Become a Part Section -->
     <div class="relative z-10 max-w-6xl mx-auto px-4 mb-32 md:mb-32">
         <div class="glass-card rounded-3xl p-6 sm:p-8 md:p-12">
-            <h2 class="text-white text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-center">Become a Part</h2>
+            <h2 class="text-white text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-center">Become a Part
+            </h2>
             <p class="text-white text-sm sm:text-base md:text-lg text-center mb-8 sm:mb-10 opacity-90 px-2">
-                Join our vibrant community and help shape the future of innovation. Whether you're a leader or a connector,
+                Join our vibrant community and help shape the future of innovation. Whether you're a leader or a
+                connector,
                 there's a place for you in Cosmohack!
             </p>
-            
+
             <div class="grid sm:grid-cols-2 gap-6 sm:gap-8 max-w-3xl mx-auto">
                 <div class="glass-card rounded-2xl p-6 sm:p-8 hover:-translate-y-2 transition-transform duration-300">
                     <h3 class="text-white text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Cosmocaptain</h3>
                     <p class="text-white text-sm sm:text-base mb-4 sm:mb-6 opacity-80">
                         Join as a Cosmocaptain and lead your team to victory!
                     </p>
-                    <button id="cosmocaptainBtn" class="w-full bg-purple-500 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold text-sm sm:text-base hover:bg-purple-600 transition-all btn-glow">
+                    <button id="cosmocaptainBtn"
+                        class="w-full bg-purple-500 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold text-sm sm:text-base hover:bg-purple-600 transition-all btn-glow">
                         Apply as Cosmocaptain
                     </button>
                 </div>
@@ -425,7 +451,8 @@
                     <p class="text-white text-sm sm:text-base mb-4 sm:mb-6 opacity-80">
                         Become a Community Partner and help shape the future!
                     </p>
-                    <button id="partnerBtn" class="w-full bg-purple-500 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold text-sm sm:text-base hover:bg-purple-600 transition-all btn-glow">
+                    <button id="partnerBtn"
+                        class="w-full bg-purple-500 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold text-sm sm:text-base hover:bg-purple-600 transition-all btn-glow">
                         Apply as Partner
                     </button>
                 </div>
@@ -436,31 +463,38 @@
     <!-- Desktop Floating Navigation Bar -->
     <nav class="floating-bar">
         <div class="flex justify-center items-center py-4 px-2 gap-2 flex-wrap">
-            <a href="index.html" class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+            <a href="index.html"
+                class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
                 <i class="fas fa-home text-xl"></i>
                 <span class="font-medium">Home</span>
             </a>
-            <a href="comingsoon.html" class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+            <a href="comingsoon.html"
+                class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
                 <i class="fa-solid fa-sack-dollar text-xl"></i>
                 <span class="font-medium">Sponsors</span>
             </a>
-            <a href="Timeline.html" class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+            <a href="Timeline.html"
+                class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
                 <i class="fas fa-calendar-alt text-xl"></i>
                 <span class="font-medium">Timeline</span>
             </a>
-            <a href="comingsoon.html" class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+            <a href="comingsoon.html"
+                class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
                 <i class="fa-regular fa-star text-xl"></i>
                 <span class="font-medium">Tracks</span>
             </a>
-            <a href="comingsoon.html" class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+            <a href="comingsoon.html"
+                class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
                 <i class="fa-solid fa-trophy text-xl"></i>
                 <span class="font-medium">Prizes</span>
             </a>
-            <a href="Aboutus.html" class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+            <a href="Aboutus.html"
+                class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
                 <i class="fa-solid fa-people-group text-xl"></i>
                 <span class="font-medium">About</span>
             </a>
-            <a href="Faq.html" class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+            <a href="Faq.html"
+                class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
                 <i class="fas fa-question-circle text-xl"></i>
                 <span class="font-medium">FAQ</span>
             </a>
@@ -494,7 +528,7 @@
 
         // Load configuration from JSON
         let config = {};
-        
+
         const defaultConfig = {
             links: {
                 register: "https://lu.ma/aet2w219",
@@ -564,7 +598,7 @@
         function drawCodeRain() {
             ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
+
             ctx.fillStyle = '#fff';
             ctx.font = fontSize + 'px monospace';
 

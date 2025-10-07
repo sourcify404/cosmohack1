@@ -48,10 +48,12 @@
                 background: linear-gradient(45deg, #7c3aed, #a78bfa);
                 box-shadow: 0 0 10px rgba(167, 139, 250, 0.5), 0 0 20px rgba(124, 58, 237, 0.5);
             }
+
             50% {
                 background: linear-gradient(45deg, #a78bfa, #6d28d9);
                 box-shadow: 0 0 20px rgba(167, 139, 250, 0.8), 0 0 30px rgba(124, 58, 237, 0.8);
             }
+
             100% {
                 background: linear-gradient(45deg, #7c3aed, #a78bfa);
                 box-shadow: 0 0 10px rgba(167, 139, 250, 0.5), 0 0 20px rgba(124, 58, 237, 0.5);
@@ -62,9 +64,11 @@
             0% {
                 box-shadow: 0 0 15px rgba(167, 139, 250, 0.6), 0 0 25px rgba(124, 58, 237, 0.6);
             }
+
             50% {
                 box-shadow: 0 0 30px rgba(167, 139, 250, 1), 0 0 45px rgba(124, 58, 237, 1);
             }
+
             100% {
                 box-shadow: 0 0 15px rgba(167, 139, 250, 0.6), 0 0 25px rgba(124, 58, 237, 0.6);
             }
@@ -93,9 +97,11 @@
             0% {
                 background-position: 0% 50%;
             }
+
             50% {
                 background-position: 100% 50%;
             }
+
             100% {
                 background-position: 0% 50%;
             }
@@ -142,12 +148,15 @@
                 transform: translateY(100vh) translateX(0);
                 opacity: 0;
             }
+
             10% {
                 opacity: 1;
             }
+
             90% {
                 opacity: 1;
             }
+
             100% {
                 transform: translateY(-100vh) translateX(100px);
                 opacity: 0;
@@ -155,9 +164,12 @@
         }
 
         @keyframes float {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0);
             }
+
             50% {
                 transform: translateY(-10px);
             }
@@ -259,10 +271,13 @@
 
         /* Pulsing animation for coming soon text */
         @keyframes pulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 opacity: 1;
                 transform: scale(1);
             }
+
             50% {
                 opacity: 0.8;
                 transform: scale(1.05);
@@ -276,8 +291,8 @@
         /* Glow effect */
         .glow-text {
             text-shadow: 0 0 20px rgba(167, 139, 250, 0.8),
-                         0 0 40px rgba(124, 58, 237, 0.6),
-                         0 0 60px rgba(124, 58, 237, 0.4);
+                0 0 40px rgba(124, 58, 237, 0.6),
+                0 0 60px rgba(124, 58, 237, 0.4);
         }
 
         @media (max-width: 768px) {
@@ -301,7 +316,8 @@
     <div class="particles" id="particles"></div>
 
     <!-- Preloader -->
-    <div id="preloader" class="fixed inset-0 flex items-center justify-center bg-gradient-to-br from-purple-900 to-blue-900 z-50">
+    <div id="preloader"
+        class="fixed inset-0 flex items-center justify-center bg-gradient-to-br from-purple-900 to-blue-900 z-50">
         <div class="flex flex-col items-center">
             <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-purple-300"></div>
             <p class="mt-4 text-white text-lg">Loading...</p>
@@ -321,9 +337,10 @@
     </div>
 
     <!-- Mascot 2 -->
-    <div class="mascot-bottom fixed bottom-24 z-10 md:bottom-24">
+    <div class="mascot-bottom hidden md:block fixed bottom-24 z-10">
         <img src="./images/mascot2.png" alt="Mascot" class="w-24 md:w-32 h-auto drop-shadow-lg">
     </div>
+
 
     <!-- Mobile Menu Overlay -->
     <div class="mobile-menu-overlay" id="menuOverlay"></div>
@@ -338,27 +355,33 @@
                 </button>
             </div>
             <nav class="flex flex-col gap-4">
-                <a href="index.html" class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                <a href="index.html"
+                    class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
                     <i class="fas fa-home text-xl w-6"></i>
                     <span>Home</span>
                 </a>
-                <a href="comingsoon.html" class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                <a href="comingsoon.html"
+                    class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
                     <i class="fa-solid fa-sack-dollar text-xl w-6"></i>
                     <span>Sponsors</span>
                 </a>
-                <a href="comingsoon.html" class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                <a href="comingsoon.html"
+                    class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
                     <i class="fa-regular fa-star text-xl w-6"></i>
                     <span>Tracks</span>
                 </a>
-                <a href="comingsoon.html" class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                <a href="comingsoon.html"
+                    class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
                     <i class="fa-solid fa-trophy text-xl w-6"></i>
                     <span>Prizes</span>
                 </a>
-                <a href="Aboutus.html" class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                <a href="Aboutus.html"
+                    class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
                     <i class="fa-solid fa-people-group text-xl w-6"></i>
                     <span>About</span>
                 </a>
-                <a href="Faq.html" class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                <a href="Faq.html"
+                    class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
                     <i class="fas fa-question-circle text-xl w-6"></i>
                     <span>FAQ</span>
                 </a>
@@ -372,7 +395,8 @@
     </button>
 
     <!-- Main Content -->
-    <div id="content" class="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-20 text-center pb-32">
+    <div id="content"
+        class="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-20 text-center pb-32">
         <div class="space-y-8">
             <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white glow-text">
                 Coming Soon
@@ -392,7 +416,7 @@
                 </div>
             </div>
             <p class="text-base sm:text-lg md:text-xl text-gray-400 mt-8 max-w-2xl mx-auto">
-                Get ready for an extraordinary journey through space and code. 
+                Get ready for an extraordinary journey through space and code.
                 Something amazing is on the horizon!
             </p>
         </div>
@@ -401,27 +425,33 @@
     <!-- Desktop Floating Navigation Bar -->
     <nav class="floating-bar">
         <div class="flex justify-center items-center py-4 px-2 gap-2 flex-wrap">
-            <a href="index.html" class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+            <a href="index.html"
+                class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
                 <i class="fas fa-home text-xl"></i>
                 <span class="font-medium">Home</span>
             </a>
-            <a href="comingsoon.html" class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+            <a href="comingsoon.html"
+                class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
                 <i class="fa-solid fa-sack-dollar text-xl"></i>
                 <span class="font-medium">Sponsors</span>
             </a>
-            <a href="comingsoon.html" class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+            <a href="comingsoon.html"
+                class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
                 <i class="fa-regular fa-star text-xl"></i>
                 <span class="font-medium">Tracks</span>
             </a>
-            <a href="comingsoon.html" class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+            <a href="comingsoon.html"
+                class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
                 <i class="fa-solid fa-trophy text-xl"></i>
                 <span class="font-medium">Prizes</span>
             </a>
-            <a href="Aboutus.html" class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+            <a href="Aboutus.html"
+                class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
                 <i class="fa-solid fa-people-group text-xl"></i>
                 <span class="font-medium">About</span>
             </a>
-            <a href="Faq.html" class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+            <a href="Faq.html"
+                class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
                 <i class="fas fa-question-circle text-xl"></i>
                 <span class="font-medium">FAQ</span>
             </a>
@@ -475,7 +505,7 @@
         function drawCodeRain() {
             ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
+
             ctx.fillStyle = '#fff';
             ctx.font = fontSize + 'px monospace';
 
