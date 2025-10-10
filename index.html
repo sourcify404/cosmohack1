@@ -501,13 +501,16 @@
         </div>
     </nav>
 
+    <!-- Load Config First -->
+    <script src="config.js"></script>
+
     <!-- Load Data Manager First -->
     <script src="dataManager.js"></script>
 
     <script>
         // ========== CONFIGURATION ==========
         // IMPORTANT: Update this with your actual backend URL
-        const API_BASE_URL = 'https://cosmohackadmin.onrender.com'; 
+        // const API_BASE_URL = 'https://cosmohackadmin.onrender.com';
 
         // ========== PAGE DATA ==========
         let pageData = null;
@@ -561,26 +564,26 @@
 
         // ========== UPDATE EVENT DATE TEXT ==========
         function updateEventDateText(eventDateString) {
-    try {
-        // Clean up date string (remove "at" and extra spaces)
-        const cleanDateString = eventDateString.replace(/ at /i, " ");
-        const eventDate = new Date(cleanDateString);
+            try {
+                // Clean up date string (remove "at" and extra spaces)
+                const cleanDateString = eventDateString.replace(/ at /i, " ");
+                const eventDate = new Date(cleanDateString);
 
-        if (isNaN(eventDate.getTime())) {
-            // fallback display if still invalid
-            document.getElementById("eventDateText").textContent = "Invalid Date";
-            console.warn("Invalid event date string:", eventDateString);
-            return;
+                if (isNaN(eventDate.getTime())) {
+                    // fallback display if still invalid
+                    document.getElementById("eventDateText").textContent = "Invalid Date";
+                    console.warn("Invalid event date string:", eventDateString);
+                    return;
+                }
+
+                const options = { month: "long", day: "numeric", year: "numeric" };
+                const formattedDate = eventDate.toLocaleDateString("en-US", options);
+                document.getElementById("eventDateText").textContent = formattedDate;
+            } catch (error) {
+                console.error("Error formatting event date:", error);
+                document.getElementById("eventDateText").textContent = "Invalid Date";
+            }
         }
-
-        const options = { month: "long", day: "numeric", year: "numeric" };
-        const formattedDate = eventDate.toLocaleDateString("en-US", options);
-        document.getElementById("eventDateText").textContent = formattedDate;
-    } catch (error) {
-        console.error("Error formatting event date:", error);
-        document.getElementById("eventDateText").textContent = "Invalid Date";
-    }
-}
 
 
         // ========== COUNTDOWN TIMER ==========
