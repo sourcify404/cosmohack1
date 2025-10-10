@@ -3,7 +3,7 @@
 
 const AppConfig = {
     // Backend API URL
-    API_BASE_URL: 'https://cosmohack.tech', // Change this to your production URL
+    API_BASE_URL: 'https://cosmohackadmin.onrender.com', // Change this to your production URL
     
     // Cache settings
     CACHE_DURATION: 30 * 60 * 1000, // 30 minutes
