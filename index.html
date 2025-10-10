@@ -330,8 +330,8 @@
 
     <!-- Mascot 2 -->
     <div class="mascot-bottom hidden md:block fixed bottom-24 z-10">
-    <img src="./images/mascot2.png" alt="Mascot" class="w-24 md:w-32 h-auto drop-shadow-lg">
-</div>
+        <img src="./images/mascot2.png" alt="Mascot" class="w-24 md:w-32 h-auto drop-shadow-lg">
+    </div>
 
 
     <!-- Mobile Menu Overlay -->
@@ -412,8 +412,8 @@
             <div class="glass-card rounded-2xl px-10 sm:px-6 py-4 w-full">
                 <div class="flex flex-col md:flex-row items-center justify-between gap-3">
                     <p class="text-xs sm:text-sm md:text-base font-semibold uppercase tracking-wide text-white">
-                        November 19-20, 2025 <i class="fa-solid fa-hourglass-end fa-flip ml-2"
-                            style="color: #FFD700;"></i>
+                        <span id="eventDateText">November 19-20, 2025</span> <i
+                            class="fa-solid fa-hourglass-end fa-flip ml-2" style="color: #FFD700;"></i>
                     </p>
                     <p id="countdown" class="text-base sm:text-lg md:text-xl font-bold text-yellow-300">
                         Loading...
@@ -501,8 +501,154 @@
         </div>
     </nav>
 
+    <!-- Load Data Manager First -->
+    <script src="dataManager.js"></script>
+
     <script>
-        // Mobile Menu Toggle
+        // ========== CONFIGURATION ==========
+        // IMPORTANT: Update this with your actual backend URL
+        const API_BASE_URL = 'http://localhost:3000'; // Change this to your backend URL
+
+        // ========== PAGE DATA ==========
+        let pageData = null;
+
+        // ========== INITIALIZE DATA ==========
+        async function initializePage() {
+            try {
+                // Show preloader
+                document.getElementById('preloader').style.display = 'flex';
+
+                // Fetch data using DataManager
+                pageData = await DataManager.initializeData({
+                    onLoading: () => {
+                        console.log('Loading data...');
+                    },
+                    onSuccess: (data) => {
+                        console.log('Data loaded successfully:', data);
+                        updatePageContent(data);
+                    },
+                    onError: (error) => {
+                        console.error('Failed to load data:', error);
+                        // Use fallback data if available
+                        useFallbackData();
+                    }
+                });
+
+            } catch (error) {
+                console.error('Error initializing page:', error);
+                useFallbackData();
+            } finally {
+                // Hide preloader
+                setTimeout(() => {
+                    document.getElementById('preloader').style.display = 'none';
+                }, 500);
+            }
+        }
+
+        // ========== UPDATE PAGE CONTENT ==========
+        function updatePageContent(data) {
+            const config = DataManager.getConfig(data);
+
+            // Update countdown with event date from backend
+            if (config.eventDate) {
+                updateCountdown(config.eventDate);
+                updateEventDateText(config.eventDate);
+            }
+
+            // Setup buttons with links from backend
+            setupButtons(config);
+        }
+
+        // ========== UPDATE EVENT DATE TEXT ==========
+        function updateEventDateText(eventDateString) {
+    try {
+        // Clean up date string (remove "at" and extra spaces)
+        const cleanDateString = eventDateString.replace(/ at /i, " ");
+        const eventDate = new Date(cleanDateString);
+
+        if (isNaN(eventDate.getTime())) {
+            // fallback display if still invalid
+            document.getElementById("eventDateText").textContent = "Invalid Date";
+            console.warn("Invalid event date string:", eventDateString);
+            return;
+        }
+
+        const options = { month: "long", day: "numeric", year: "numeric" };
+        const formattedDate = eventDate.toLocaleDateString("en-US", options);
+        document.getElementById("eventDateText").textContent = formattedDate;
+    } catch (error) {
+        console.error("Error formatting event date:", error);
+        document.getElementById("eventDateText").textContent = "Invalid Date";
+    }
+}
+
+
+        // ========== COUNTDOWN TIMER ==========
+        let countdownInterval;
+        function updateCountdown(eventDateString) {
+            const countdownElement = document.getElementById('countdown');
+            const cleanDateString = eventDateString.replace(" at", "");
+            const endDate = new Date(cleanDateString).getTime();
+
+
+            // Clear existing interval if any
+            if (countdownInterval) {
+                clearInterval(countdownInterval);
+            }
+
+            countdownInterval = setInterval(() => {
+                const now = new Date().getTime();
+                const distance = endDate - now;
+
+                if (distance <= 0) {
+                    countdownElement.innerHTML = "Event Started!";
+                    clearInterval(countdownInterval);
+                    return;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            }, 1000);
+        }
+
+        // ========== SETUP BUTTONS ==========
+        function setupButtons(config) {
+            const registerBtn = document.getElementById('registerBtn');
+            const cosmocaptainBtn = document.getElementById('cosmocaptainBtn');
+            const partnerBtn = document.getElementById('partnerBtn');
+
+            if (config.registrationLink) {
+                registerBtn.onclick = () => window.open(config.registrationLink, '_blank');
+            }
+
+            if (config.cosmocaptainLink) {
+                cosmocaptainBtn.onclick = () => window.open(config.cosmocaptainLink, '_blank');
+            }
+
+            if (config.communityPartnerLink) {
+                partnerBtn.onclick = () => window.open(config.communityPartnerLink, '_blank');
+            }
+        }
+
+        // ========== FALLBACK DATA ==========
+        function useFallbackData() {
+            console.log('Using fallback configuration');
+            const fallbackConfig = {
+                eventDate: 'November 19, 2025 00:00:00',
+                registrationLink: 'https://lu.ma/aet2w219',
+                cosmocaptainLink: 'https://lu.ma/aet2w219',
+                communityPartnerLink: 'https://lu.ma/0yjtzbkr'
+            };
+
+            updateCountdown(fallbackConfig.eventDate);
+            setupButtons(fallbackConfig);
+        }
+
+        // ========== MOBILE MENU ==========
         const menuBtn = document.getElementById('menuBtn');
         const closeMenuBtn = document.getElementById('closeMenuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
@@ -526,64 +672,7 @@
             document.body.style.overflow = '';
         });
 
-        // Load configuration from JSON
-        let config = {};
-
-        const defaultConfig = {
-            links: {
-                register: "https://lu.ma/aet2w219",
-                cosmocaptain: "https://lu.ma/aet2w219",
-                partner: "https://lu.ma/0yjtzbkr"
-            }
-        };
-
-        fetch('config.json')
-            .then(response => response.json())
-            .then(data => {
-                config = data;
-                setupButtons();
-            })
-            .catch(() => {
-                console.log('Using default configuration');
-                config = defaultConfig;
-                setupButtons();
-            });
-
-        function setupButtons() {
-            document.getElementById('registerBtn').onclick = () => window.open(config.links.register, '_blank');
-            document.getElementById('cosmocaptainBtn').onclick = () => window.open(config.links.cosmocaptain, '_blank');
-            document.getElementById('partnerBtn').onclick = () => window.open(config.links.partner, '_blank');
-        }
-
-        // Preloader
-        window.onload = function () {
-            setTimeout(() => {
-                document.getElementById('preloader').style.display = 'none';
-            }, 0);
-        };
-
-        // Countdown timer
-        const countdownElement = document.getElementById('countdown');
-        const endDate = new Date('November 19, 2025 00:00:00').getTime();
-
-        setInterval(() => {
-            const now = new Date().getTime();
-            const distance = endDate - now;
-
-            if (distance <= 0) {
-                countdownElement.innerHTML = "Event Started!";
-                return;
-            }
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-        }, 1000);
-
-        // Code Rain Animation
+        // ========== CODE RAIN ANIMATION ==========
         const canvas = document.getElementById('codeCanvas');
         const ctx = canvas.getContext('2d');
 
@@ -620,7 +709,7 @@
             canvas.height = window.innerHeight;
         });
 
-        // Create floating particles
+        // ========== FLOATING PARTICLES ==========
         const particlesContainer = document.getElementById('particles');
         for (let i = 0; i < 50; i++) {
             const particle = document.createElement('div');
@@ -630,6 +719,9 @@
             particle.style.animationDelay = Math.random() * 5 + 's';
             particlesContainer.appendChild(particle);
         }
+
+        // ========== PAGE LOAD ==========
+        window.addEventListener('DOMContentLoaded', initializePage);
     </script>
 </body>
 
