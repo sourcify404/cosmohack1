@@ -2,6 +2,15 @@
 <html lang="en">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GLYGTWBJGC"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-GLYGTWBJGC');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Community Partners - Cosmohack</title>
@@ -48,10 +57,12 @@
                 background: linear-gradient(45deg, #7c3aed, #a78bfa);
                 box-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
             }
+
             50% {
                 background: linear-gradient(45deg, #a78bfa, #6d28d9);
                 box-shadow: 0 0 20px rgba(167, 139, 250, 0.8);
             }
+
             100% {
                 background: linear-gradient(45deg, #7c3aed, #a78bfa);
                 box-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
@@ -81,9 +92,11 @@
             0% {
                 background-position: 0% 50%;
             }
+
             50% {
                 background-position: 100% 50%;
             }
+
             100% {
                 background-position: 0% 50%;
             }
@@ -125,12 +138,15 @@
                 transform: translateY(100vh) translateX(0);
                 opacity: 0;
             }
+
             10% {
                 opacity: 1;
             }
+
             90% {
                 opacity: 1;
             }
+
             100% {
                 transform: translateY(-100vh) translateX(100px);
                 opacity: 0;
@@ -138,9 +154,12 @@
         }
 
         @keyframes float {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0);
             }
+
             50% {
                 transform: translateY(-10px);
             }
@@ -511,7 +530,7 @@
         function createPartnerCard(partner, isTop) {
             const cardSize = isTop ? 'p-8' : 'p-6';
             const logoSize = isTop ? 'h-32' : 'h-24';
-            
+
             return `
                 <div class="glass-card rounded-2xl ${cardSize} partner-card relative group">
                     ${isTop ? '<div class="top-partner-badge"><i class="fas fa-star"></i> Featured</div>' : ''}

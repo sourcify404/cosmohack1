@@ -2,6 +2,15 @@
 <html lang="en">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GLYGTWBJGC"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-GLYGTWBJGC');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cosmohack - Our Team</title>
@@ -48,10 +57,12 @@
                 background: linear-gradient(45deg, #7c3aed, #a78bfa);
                 box-shadow: 0 0 10px rgba(167, 139, 250, 0.5), 0 0 20px rgba(124, 58, 237, 0.5);
             }
+
             50% {
                 background: linear-gradient(45deg, #a78bfa, #6d28d9);
                 box-shadow: 0 0 20px rgba(167, 139, 250, 0.8), 0 0 30px rgba(124, 58, 237, 0.8);
             }
+
             100% {
                 background: linear-gradient(45deg, #7c3aed, #a78bfa);
                 box-shadow: 0 0 10px rgba(167, 139, 250, 0.5), 0 0 20px rgba(124, 58, 237, 0.5);
@@ -62,9 +73,11 @@
             0% {
                 box-shadow: 0 0 15px rgba(167, 139, 250, 0.6), 0 0 25px rgba(124, 58, 237, 0.6);
             }
+
             50% {
                 box-shadow: 0 0 30px rgba(167, 139, 250, 1), 0 0 45px rgba(124, 58, 237, 1);
             }
+
             100% {
                 box-shadow: 0 0 15px rgba(167, 139, 250, 0.6), 0 0 25px rgba(124, 58, 237, 0.6);
             }
@@ -93,9 +106,11 @@
             0% {
                 background-position: 0% 50%;
             }
+
             50% {
                 background-position: 100% 50%;
             }
+
             100% {
                 background-position: 0% 50%;
             }
@@ -142,12 +157,15 @@
                 transform: translateY(100vh) translateX(0);
                 opacity: 0;
             }
+
             10% {
                 opacity: 1;
             }
+
             90% {
                 opacity: 1;
             }
+
             100% {
                 transform: translateY(-100vh) translateX(100px);
                 opacity: 0;
@@ -155,9 +173,12 @@
         }
 
         @keyframes float {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0);
             }
+
             50% {
                 transform: translateY(-10px);
             }
@@ -270,6 +291,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -452,7 +474,8 @@
     <div class="particles" id="particles"></div>
 
     <!-- Preloader -->
-    <div id="preloader" class="fixed inset-0 flex items-center justify-center bg-gradient-to-br from-purple-900 to-blue-900 z-50">
+    <div id="preloader"
+        class="fixed inset-0 flex items-center justify-center bg-gradient-to-br from-purple-900 to-blue-900 z-50">
         <div class="flex flex-col items-center">
             <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-purple-300"></div>
             <p class="mt-4 text-white text-lg">Loading Team...</p>
@@ -484,27 +507,33 @@
                 </button>
             </div>
             <nav class="flex flex-col gap-4">
-                <a href="index.html" class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                <a href="index.html"
+                    class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
                     <i class="fas fa-home text-xl w-6"></i>
                     <span>Home</span>
                 </a>
-                <a href="Sponsors.html" class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                <a href="Sponsors.html"
+                    class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
                     <i class="fa-solid fa-sack-dollar text-xl w-6"></i>
                     <span>Sponsors</span>
                 </a>
-                <a href="tracks.html" class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                <a href="tracks.html"
+                    class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
                     <i class="fa-regular fa-star text-xl w-6"></i>
                     <span>Tracks</span>
                 </a>
-                <a href="prizes.html" class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                <a href="prizes.html"
+                    class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
                     <i class="fa-solid fa-trophy text-xl w-6"></i>
                     <span>Prizes</span>
                 </a>
-                <a href="Aboutus.html" class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                <a href="Aboutus.html"
+                    class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
                     <i class="fa-solid fa-people-group text-xl w-6"></i>
                     <span>About</span>
                 </a>
-                <a href="Faq.html" class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                <a href="Faq.html"
+                    class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
                     <i class="fas fa-question-circle text-xl w-6"></i>
                     <span>FAQ</span>
                 </a>
@@ -519,7 +548,8 @@
 
     <!-- Main Content -->
     <div id="content" class="relative z-10 min-h-screen px-4 py-20 text-center pb-32 animate-fadeInUp">
-        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 mt-12 sm:mt-0">
+        <h1
+            class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 mt-12 sm:mt-0">
             Meet Our Cosmic Crew
         </h1>
         <p class="text-lg sm:text-xl text-white/80 mb-12">The brilliant minds behind Cosmohack</p>
@@ -532,7 +562,7 @@
             </div>
             <div class="team-container" id="organizersContainer"></div>
         </div>
-        
+
         <!-- Core Team Section -->
         <div id="coreTeamSection" class="mb-16" style="display: none;">
             <div class="section-divider">
@@ -542,7 +572,7 @@
             <div class="team-container" id="coreTeamContainer"></div>
         </div>
 
-        
+
 
         <!-- No Data Message -->
         <div id="noDataMessage" class="text-white text-xl" style="display: none;">
@@ -553,27 +583,33 @@
     <!-- Desktop Floating Navigation Bar -->
     <nav class="floating-bar">
         <div class="flex justify-center items-center py-4 px-2 gap-2 flex-wrap">
-            <a href="index.html" class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+            <a href="index.html"
+                class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
                 <i class="fas fa-home text-xl"></i>
                 <span class="font-medium">Home</span>
             </a>
-            <a href="Sponsors.html" class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+            <a href="Sponsors.html"
+                class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
                 <i class="fa-solid fa-sack-dollar text-xl"></i>
                 <span class="font-medium">Sponsors</span>
             </a>
-            <a href="tracks.html" class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+            <a href="tracks.html"
+                class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
                 <i class="fa-regular fa-star text-xl"></i>
                 <span class="font-medium">Tracks</span>
             </a>
-            <a href="prizes.html" class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+            <a href="prizes.html"
+                class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
                 <i class="fa-solid fa-trophy text-xl"></i>
                 <span class="font-medium">Prizes</span>
             </a>
-            <a href="Aboutus.html" class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+            <a href="Aboutus.html"
+                class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
                 <i class="fa-solid fa-people-group text-xl w-6"></i>
                 <span class="font-medium">About</span>
             </a>
-            <a href="Faq.html" class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+            <a href="Faq.html"
+                class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
                 <i class="fas fa-question-circle text-xl"></i>
                 <span class="font-medium">FAQ</span>
             </a>
@@ -613,7 +649,7 @@
             } finally {
                 setTimeout(() => {
                     document.getElementById('preloader').style.display = 'none';
-                },0);
+                }, 0);
             }
         }
 
@@ -632,7 +668,7 @@
 
             organizers.forEach(member => {
                 const position = (member.position || '').toLowerCase().trim();
-                
+
                 // Check if position contains "core" keyword
                 if (position.includes('core')) {
                     coreTeam.push(member);
@@ -768,7 +804,7 @@
         function drawCodeRain() {
             ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
+
             ctx.fillStyle = '#fff';
             ctx.font = fontSize + 'px monospace';
 
