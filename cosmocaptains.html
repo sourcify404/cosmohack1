@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cosmohack - Our Team</title>
+    <title>Cosmocaptains - Cosmohack</title>
     <link rel="shortcut icon" href="./images/CosmoHACK-Round-W.webp" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" rel="stylesheet">
@@ -35,38 +35,26 @@
         ::-webkit-scrollbar-thumb {
             background: linear-gradient(45deg, #7c3aed, #a78bfa);
             border-radius: 10px;
-            animation: glowingPulse 2s infinite alternate, glowingShadow 1.5s infinite alternate;
+            animation: glowingPulse 2s infinite alternate;
         }
 
         ::-webkit-scrollbar-thumb:hover {
             background: linear-gradient(45deg, #a78bfa, #7c3aed);
-            box-shadow: 0 0 40px rgba(167, 139, 250, 1), 0 0 60px rgba(124, 58, 237, 1);
+            box-shadow: 0 0 40px rgba(167, 139, 250, 1);
         }
 
         @keyframes glowingPulse {
             0% {
                 background: linear-gradient(45deg, #7c3aed, #a78bfa);
-                box-shadow: 0 0 10px rgba(167, 139, 250, 0.5), 0 0 20px rgba(124, 58, 237, 0.5);
+                box-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
             }
             50% {
                 background: linear-gradient(45deg, #a78bfa, #6d28d9);
-                box-shadow: 0 0 20px rgba(167, 139, 250, 0.8), 0 0 30px rgba(124, 58, 237, 0.8);
+                box-shadow: 0 0 20px rgba(167, 139, 250, 0.8);
             }
             100% {
                 background: linear-gradient(45deg, #7c3aed, #a78bfa);
-                box-shadow: 0 0 10px rgba(167, 139, 250, 0.5), 0 0 20px rgba(124, 58, 237, 0.5);
-            }
-        }
-
-        @keyframes glowingShadow {
-            0% {
-                box-shadow: 0 0 15px rgba(167, 139, 250, 0.6), 0 0 25px rgba(124, 58, 237, 0.6);
-            }
-            50% {
-                box-shadow: 0 0 30px rgba(167, 139, 250, 1), 0 0 45px rgba(124, 58, 237, 1);
-            }
-            100% {
-                box-shadow: 0 0 15px rgba(167, 139, 250, 0.6), 0 0 25px rgba(124, 58, 237, 0.6);
+                box-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
             }
         }
 
@@ -113,11 +101,6 @@
             opacity: 0.15;
         }
 
-        .code-rain canvas {
-            display: block;
-        }
-
-        /* Floating particles */
         .particles {
             position: fixed;
             top: 0;
@@ -167,7 +150,6 @@
             animation: float 3s ease-in-out infinite;
         }
 
-        /* Desktop Floating Bar */
         .floating-bar {
             position: fixed;
             bottom: 0;
@@ -175,7 +157,6 @@
             width: 100%;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
             border-top: 1px solid rgba(255, 255, 255, 0.2);
             z-index: 1000;
             display: none;
@@ -187,7 +168,6 @@
             }
         }
 
-        /* Mobile Hamburger Menu */
         .mobile-menu-btn {
             position: fixed;
             bottom: 20px;
@@ -219,7 +199,6 @@
             }
         }
 
-        /* Mobile Menu Overlay */
         .mobile-menu {
             position: fixed;
             top: 0;
@@ -228,7 +207,6 @@
             height: 100vh;
             background: rgba(15, 12, 41, 0.98);
             backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
             z-index: 1000;
             transition: right 0.3s ease;
             overflow-y: auto;
@@ -260,181 +238,103 @@
         .glass-card {
             background: rgba(57, 57, 57, 0.062);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-fadeInUp {
-            animation: fadeInUp 0.6s ease-out;
-        }
-
-        /* Team Member Cards */
-        .team-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .team-member {
-            perspective: 1000px;
-            cursor: pointer;
-            height: 400px;
-        }
-
-        .member-card {
-            width: 100%;
-            height: 100%;
+        .captain-card {
+            transition: all 0.3s ease;
             position: relative;
-            transform-style: preserve-3d;
-            transition: transform 0.8s;
+            overflow: visible;
         }
 
-        .team-member:hover .member-card {
-            transform: rotateY(180deg);
+        .captain-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(124, 58, 237, 0.5);
         }
 
-        .member-front,
-        .member-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border-radius: 20px;
-            padding: 2rem;
-        }
-
-        .member-front {
-            background: rgba(57, 57, 57, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .member-back {
-            background: rgba(124, 58, 237, 0.2);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(167, 139, 250, 0.3);
-            transform: rotateY(180deg);
-        }
-
-        .member-image {
+        .profile-img-container {
+            position: relative;
             width: 150px;
             height: 150px;
+            margin: 0 auto 20px;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            margin-bottom: 1.5rem;
-            border: 3px solid rgba(167, 139, 250, 0.5);
-        }
-
-        .member-name {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            text-align: center;
-            color: #fff;
-        }
-
-        .member-role {
-            font-size: 1.1rem;
-            color: #a78bfa;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        .member-bio {
-            font-size: 0.95rem;
-            text-align: center;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .social-icons a {
-            color: #fff;
-            font-size: 1.5rem;
+            border: 4px solid rgba(124, 58, 237, 0.5);
             transition: all 0.3s ease;
         }
 
-        .social-icons a:hover {
-            color: #a78bfa;
-            transform: scale(1.2);
+        .captain-card:hover .profile-img {
+            border-color: rgba(167, 139, 250, 1);
+            box-shadow: 0 0 30px rgba(167, 139, 250, 0.8);
         }
 
-        .section-divider {
-            margin: 4rem 0;
-            text-align: center;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
+        .top-captain-badge {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 13px;
             font-weight: bold;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1rem;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.6);
+            z-index: 10;
+            animation: pulse-badge 2s infinite;
         }
 
-        .section-subtitle {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 1.1rem;
+        @keyframes pulse-badge {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
         }
 
-        @media (max-width: 768px) {
-            .team-container {
-                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-                gap: 1.5rem;
-                padding: 1rem;
-            }
+        .social-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 15px;
+        }
 
-            .team-member {
-                height: 360px;
-            }
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(124, 58, 237, 0.3);
+            color: white;
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
 
-            .member-image {
-                width: 120px;
-                height: 120px;
-            }
+        .social-link:hover {
+            background: rgba(167, 139, 250, 1);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(167, 139, 250, 0.5);
+        }
 
-            .member-name {
-                font-size: 1.3rem;
-            }
-
-            .member-role {
-                font-size: 1rem;
-            }
-
-            .member-bio {
-                font-size: 0.85rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
+        .captain-badge-icon {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            background: linear-gradient(135deg, #7c3aed, #a78bfa);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(124, 58, 237, 0.5);
         }
     </style>
 </head>
@@ -452,10 +352,11 @@
     <div class="particles" id="particles"></div>
 
     <!-- Preloader -->
-    <div id="preloader" class="fixed inset-0 flex items-center justify-center bg-gradient-to-br from-purple-900 to-blue-900 z-50">
+    <div id="preloader"
+        class="fixed inset-0 flex items-center justify-center bg-gradient-to-br from-purple-900 to-blue-900 z-50">
         <div class="flex flex-col items-center">
             <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-purple-300"></div>
-            <p class="mt-4 text-white text-lg">Loading Team...</p>
+            <p class="mt-4 text-white text-lg">Loading Cosmocaptains...</p>
         </div>
     </div>
 
@@ -471,6 +372,7 @@
         <img src="./images/mascot1.webp" alt="Mascot" class="w-16 md:w-20 floating-animation drop-shadow-lg">
     </div>
 
+
     <!-- Mobile Menu Overlay -->
     <div class="mobile-menu-overlay" id="menuOverlay"></div>
 
@@ -484,27 +386,38 @@
                 </button>
             </div>
             <nav class="flex flex-col gap-4">
-                <a href="index.html" class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                <a href="index.html"
+                    class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
                     <i class="fas fa-home text-xl w-6"></i>
                     <span>Home</span>
                 </a>
-                <a href="Sponsors.html" class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                <a href="Sponsors.html"
+                    class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
                     <i class="fa-solid fa-sack-dollar text-xl w-6"></i>
                     <span>Sponsors</span>
                 </a>
-                <a href="tracks.html" class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                <a href="Timeline.html"
+                    class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                    <i class="fas fa-calendar-alt text-xl w-6"></i>
+                    <span>Timeline</span>
+                </a>
+                <a href="tracks.html"
+                    class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
                     <i class="fa-regular fa-star text-xl w-6"></i>
                     <span>Tracks</span>
                 </a>
-                <a href="prizes.html" class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                <a href="prizes.html"
+                    class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
                     <i class="fa-solid fa-trophy text-xl w-6"></i>
                     <span>Prizes</span>
                 </a>
-                <a href="Aboutus.html" class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                <a href="Aboutus.html"
+                    class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
                     <i class="fa-solid fa-people-group text-xl w-6"></i>
                     <span>About</span>
                 </a>
-                <a href="Faq.html" class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                <a href="Faq.html"
+                    class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
                     <i class="fas fa-question-circle text-xl w-6"></i>
                     <span>FAQ</span>
                 </a>
@@ -518,218 +431,221 @@
     </button>
 
     <!-- Main Content -->
-    <div id="content" class="relative z-10 min-h-screen px-4 py-20 text-center pb-32 animate-fadeInUp">
-        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 mt-12 sm:mt-0">
-            Meet Our Cosmic Crew
-        </h1>
-        <p class="text-lg sm:text-xl text-white/80 mb-12">The brilliant minds behind Cosmohack</p>
-
-        <!-- Organizers Section -->
-        <div id="organizersSection" class="mb-16" style="display: none;">
-            <div class="section-divider">
-                <h2 class="section-title">Organizers</h2>
-                <p class="section-subtitle">The visionaries leading our mission</p>
+    <div class="relative z-10 px-4 py-20 pb-32">
+        <!-- Page Header -->
+        <div class="max-w-6xl mx-auto text-center mb-12">
+            <div class="inline-block mb-4">
+                <div class="glass-card rounded-full px-6 py-2 inline-flex items-center gap-2">
+                    <i class="fas fa-rocket text-purple-400"></i>
+                    <span class="text-white font-bold">Meet Our Leaders</span>
+                </div>
             </div>
-            <div class="team-container" id="organizersContainer"></div>
-        </div>
-        
-        <!-- Core Team Section -->
-        <div id="coreTeamSection" class="mb-16" style="display: none;">
-            <div class="section-divider">
-                <h2 class="section-title">Core Team</h2>
-                <p class="section-subtitle">The dedicated team making it all happen</p>
-            </div>
-            <div class="team-container" id="coreTeamContainer"></div>
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg">
+                Cosmocaptains
+            </h1>
+            <p class="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto">
+                Our passionate evangelists leading communities and inspiring innovation across the cosmos
+            </p>
         </div>
 
-        
+        <!-- Cosmocaptains Grid -->
+        <div id="captainsContainer" class="max-w-7xl mx-auto">
+            <!-- Captains will be loaded here dynamically -->
+        </div>
 
-        <!-- No Data Message -->
-        <div id="noDataMessage" class="text-white text-xl" style="display: none;">
-            <p>Team information will be available soon!</p>
+        <!-- Empty State -->
+        <div id="emptyState" class="hidden max-w-2xl mx-auto text-center">
+            <div class="glass-card rounded-3xl p-12">
+                <i class="fas fa-user-astronaut text-6xl text-purple-400 mb-4"></i>
+                <h3 class="text-2xl font-bold text-white mb-2">No Cosmocaptains Yet</h3>
+                <p class="text-white/70">Our amazing evangelists will be announced soon. Stay tuned!</p>
+            </div>
         </div>
     </div>
 
     <!-- Desktop Floating Navigation Bar -->
     <nav class="floating-bar">
         <div class="flex justify-center items-center py-4 px-2 gap-2 flex-wrap">
-            <a href="index.html" class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+            <a href="index.html"
+                class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
                 <i class="fas fa-home text-xl"></i>
                 <span class="font-medium">Home</span>
             </a>
-            <a href="Sponsors.html" class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+            <a href="Sponsors.html"
+                class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
                 <i class="fa-solid fa-sack-dollar text-xl"></i>
                 <span class="font-medium">Sponsors</span>
             </a>
-            <a href="tracks.html" class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+            <a href="Timeline.html"
+                class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+                <i class="fas fa-calendar-alt text-xl"></i>
+                <span class="font-medium">Timeline</span>
+            </a>
+            <a href="tracks.html"
+                class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
                 <i class="fa-regular fa-star text-xl"></i>
                 <span class="font-medium">Tracks</span>
             </a>
-            <a href="prizes.html" class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+            <a href="prizes.html"
+                class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
                 <i class="fa-solid fa-trophy text-xl"></i>
                 <span class="font-medium">Prizes</span>
             </a>
-            <a href="Aboutus.html" class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
-                <i class="fa-solid fa-people-group text-xl w-6"></i>
+            <a href="Aboutus.html"
+                class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+                <i class="fa-solid fa-people-group text-xl"></i>
                 <span class="font-medium">About</span>
             </a>
-            <a href="Faq.html" class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+            <a href="Faq.html"
+                class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
                 <i class="fas fa-question-circle text-xl"></i>
                 <span class="font-medium">FAQ</span>
             </a>
         </div>
     </nav>
 
-    <!-- Load Configuration First -->
+    <!-- Load Config First -->
     <script src="config.js"></script>
 
-    <!-- Load Data Manager -->
+    <!-- Load Data Manager First -->
     <script src="dataManager.js"></script>
 
     <script>
-        // ========== PAGE DATA ==========
         let pageData = null;
 
-        // ========== INITIALIZE DATA ==========
+        // Initialize Page
         async function initializePage() {
             try {
                 document.getElementById('preloader').style.display = 'flex';
 
                 pageData = await DataManager.initializeData({
-                    onLoading: () => console.log('Loading team data...'),
+                    onLoading: () => {
+                        console.log('Loading cosmocaptains data...');
+                    },
                     onSuccess: (data) => {
-                        console.log('Team data loaded:', data);
-                        updatePageContent(data);
+                        console.log('Data loaded successfully:', data);
+                        displayCaptains(data);
                     },
                     onError: (error) => {
-                        console.error('Failed to load team data:', error);
-                        showNoDataMessage();
+                        console.error('Failed to load data:', error);
+                        showEmptyState();
                     }
                 });
-
             } catch (error) {
                 console.error('Error initializing page:', error);
-                showNoDataMessage();
+                showEmptyState();
             } finally {
                 setTimeout(() => {
                     document.getElementById('preloader').style.display = 'none';
-                },0);
+                }, 0);
             }
         }
 
-        // ========== UPDATE PAGE CONTENT ==========
-        function updatePageContent(data) {
-            const organizers = DataManager.getOrganizers(data);
+        // Display Cosmocaptains
+        function displayCaptains(data) {
+            const captains = DataManager.getCosmocaptains(data);
+            const container = document.getElementById('captainsContainer');
+            const emptyState = document.getElementById('emptyState');
 
-            if (!organizers || organizers.length === 0) {
-                showNoDataMessage();
+            if (!captains || captains.length === 0) {
+                showEmptyState();
                 return;
             }
 
-            // Separate organizers by position
-            const coreTeam = [];
-            const regularOrganizers = [];
+            // Separate top captains and regular captains
+            const topCaptains = captains.filter(c => c.isTop);
+            const regularCaptains = captains.filter(c => !c.isTop);
 
-            organizers.forEach(member => {
-                const position = (member.position || '').toLowerCase().trim();
-                
-                // Check if position contains "core" keyword
-                if (position.includes('core')) {
-                    coreTeam.push(member);
-                } else {
-                    regularOrganizers.push(member);
+            let html = '';
+
+            // Display top captains first
+            if (topCaptains.length > 0) {
+                html += '<div class="mb-16">';
+                html += '<h2 class="text-3xl font-bold text-white text-center mb-8 flex items-center justify-center gap-3">';
+                html += '<i class="fas fa-star text-yellow-400"></i>';
+                html += 'Featured Cosmocaptains';
+                html += '<i class="fas fa-star text-yellow-400"></i>';
+                html += '</h2>';
+                html += '<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">';
+                topCaptains.forEach(captain => {
+                    html += createCaptainCard(captain, true);
+                });
+                html += '</div></div>';
+            }
+
+            // Display regular captains
+            if (regularCaptains.length > 0) {
+                html += '<div>';
+                if (topCaptains.length > 0) {
+                    html += '<h2 class="text-3xl font-bold text-white text-center mb-8">All Cosmocaptains</h2>';
                 }
-            });
-
-            // Render Core Team
-            if (coreTeam.length > 0) {
-                document.getElementById('coreTeamSection').style.display = 'block';
-                renderTeamMembers(coreTeam, 'coreTeamContainer');
+                html += '<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">';
+                regularCaptains.forEach(captain => {
+                    html += createCaptainCard(captain, false);
+                });
+                html += '</div></div>';
             }
 
-            // Render Organizers
-            if (regularOrganizers.length > 0) {
-                document.getElementById('organizersSection').style.display = 'block';
-                renderTeamMembers(regularOrganizers, 'organizersContainer');
-            }
-
-            // Hide no data message
-            document.getElementById('noDataMessage').style.display = 'none';
+            container.innerHTML = html;
+            emptyState.classList.add('hidden');
         }
 
-        // ========== RENDER TEAM MEMBERS ==========
-        function renderTeamMembers(members, containerId) {
-            const container = document.getElementById(containerId);
-            container.innerHTML = '';
-
-            members.forEach(member => {
-                const memberCard = createMemberCard(member);
-                container.appendChild(memberCard);
-            });
-        }
-
-        // ========== CREATE MEMBER CARD ==========
-        function createMemberCard(member) {
-            const memberDiv = document.createElement('div');
-            memberDiv.className = 'team-member';
-
-            // Get first letter of name for placeholder
-            const firstLetter = member.name ? member.name.charAt(0).toUpperCase() : '?';
-            const placeholderImage = `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=7c3aed&color=fff&size=300`;
-
-            // Create bio/quote
-            const bio = member.quote || `${member.name} is a dedicated member of the Cosmohack team, bringing expertise and passion to make this event extraordinary.`;
-
-            // Build social icons HTML
-            let socialIconsHTML = '';
-            if (member.github) {
-                socialIconsHTML += `<a href="${member.github}" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="fab fa-github"></i></a>`;
-            }
-            if (member.linkedin) {
-                socialIconsHTML += `<a href="${member.linkedin}" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fab fa-linkedin"></i></a>`;
-            }
-            if (member.instagram) {
-                socialIconsHTML += `<a href="${member.instagram}" target="_blank" rel="noopener noreferrer" title="Instagram"><i class="fab fa-instagram"></i></a>`;
-            }
-
-            // If no social links, add a placeholder message
-            if (!socialIconsHTML) {
-                socialIconsHTML = '<p class="text-white/70 text-sm">Connect with us!</p>';
-            }
-
-            memberDiv.innerHTML = `
-                <div class="member-card">
-                    <div class="member-front">
-                        <img 
-                            src="${member.profilePicUrl || placeholderImage}" 
-                            alt="${member.name}" 
-                            class="member-image" 
-                            onerror="this.src='${placeholderImage}'"
-                            loading="lazy"
-                        >
-                        <h3 class="member-name">${member.name}</h3>
-                        <p class="member-role">${member.position || 'Team Member'}</p>
+        // Create Captain Card
+        function createCaptainCard(captain, isTop) {
+            const cardPadding = isTop ? 'p-8' : 'p-6';
+            const imgSize = isTop ? 'width: 180px; height: 180px;' : 'width: 150px; height: 150px;';
+            
+            return `
+                <div class="glass-card rounded-3xl ${cardPadding} captain-card relative">
+                    ${isTop ? '<div class="top-captain-badge"><i class="fas fa-crown"></i> Top Captain</div>' : ''}
+                    <div class="captain-badge-icon">
+                        <i class="fas fa-rocket"></i> Captain
                     </div>
-                    <div class="member-back">
-                        <p class="member-bio">${bio}</p>
-                        <div class="social-icons">
-                            ${socialIconsHTML}
+                    
+                    <div class="text-center">
+                        <div class="profile-img-container" style="${imgSize} margin: 30px auto 20px;">
+                            <img src="${captain.profilePicUrl}" 
+                                 alt="${captain.name}" 
+                                 class="profile-img"
+                                 onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(captain.name)}&size=200&background=7c3aed&color=fff'">
+                        </div>
+                        
+                        <h3 class="text-white text-xl sm:text-2xl font-bold mb-2">${captain.name}</h3>
+                        
+                        <div class="social-links">
+                            ${captain.github ? `
+                                <a href="${captain.github}" target="_blank" rel="noopener noreferrer" 
+                                   class="social-link" title="GitHub">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            ` : ''}
+                            
+                            ${captain.linkedin ? `
+                                <a href="${captain.linkedin}" target="_blank" rel="noopener noreferrer" 
+                                   class="social-link" title="LinkedIn">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            ` : ''}
+                            
+                            ${captain.instagram ? `
+                                <a href="${captain.instagram}" target="_blank" rel="noopener noreferrer" 
+                                   class="social-link" title="Instagram">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            ` : ''}
                         </div>
                     </div>
                 </div>
             `;
-
-            return memberDiv;
         }
 
-        // ========== SHOW NO DATA MESSAGE ==========
-        function showNoDataMessage() {
-            document.getElementById('coreTeamSection').style.display = 'none';
-            document.getElementById('organizersSection').style.display = 'none';
-            document.getElementById('noDataMessage').style.display = 'block';
+        // Show Empty State
+        function showEmptyState() {
+            document.getElementById('captainsContainer').classList.add('hidden');
+            document.getElementById('emptyState').classList.remove('hidden');
         }
 
-        // ========== MOBILE MENU ==========
+        // Mobile Menu
         const menuBtn = document.getElementById('menuBtn');
         const closeMenuBtn = document.getElementById('closeMenuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
@@ -753,7 +669,7 @@
             document.body.style.overflow = '';
         });
 
-        // ========== CODE RAIN ANIMATION ==========
+        // Code Rain Animation
         const canvas = document.getElementById('codeCanvas');
         const ctx = canvas.getContext('2d');
 
@@ -768,7 +684,6 @@
         function drawCodeRain() {
             ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
             ctx.fillStyle = '#fff';
             ctx.font = fontSize + 'px monospace';
 
@@ -790,7 +705,7 @@
             canvas.height = window.innerHeight;
         });
 
-        // ========== FLOATING PARTICLES ==========
+        // Floating Particles
         const particlesContainer = document.getElementById('particles');
         for (let i = 0; i < 50; i++) {
             const particle = document.createElement('div');
@@ -801,7 +716,7 @@
             particlesContainer.appendChild(particle);
         }
 
-        // ========== PAGE LOAD ==========
+        // Initialize on page load
         window.addEventListener('DOMContentLoaded', initializePage);
     </script>
 </body>

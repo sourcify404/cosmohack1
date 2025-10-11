@@ -4,501 +4,615 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cosmohack</title>
-    <link rel="shortcut icon" href="./images/CosmoHACK-Round-W.png" type="image/x-icon">
+    <title>Community Partners - Cosmohack</title>
+    <link rel="shortcut icon" href="./images/CosmoHACK-Round-W.webp" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.48/build/spline-viewer.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
-        integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" rel="stylesheet">
+
     <style>
-        body {
-            min-height: 100vh;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            background-color: #000;
-            color: #fff;
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cinzel:wght@400..900&family=Orbitron&family=Pacifico&family=Playwrite+US+Trad+Guides&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Salsa&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Salsa", serif;
+            font-weight: 400;
+            font-style: normal;
         }
 
-        .content-wrapper {
-            flex-grow: 1;
-            overflow-y: auto;
-            padding: 20px;
-            position: relative;
-            z-index: 10;
-            opacity: 1;
-            transition: opacity 0.5s ease;
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 12px;
         }
 
-        /* Floating bar at the bottom with glass effect */
-        .floating-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.05);
-            /* Reduced background intensity */
-            backdrop-filter: blur(10px);
-            display: flex;
-            justify-content: center;
-            /* Center-align buttons */
-            align-items: center;
-            padding: 10px 0;
-            border-radius: 20px 20px 0 0;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            z-index: 10;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .floating-bar button {
-            color: white;
-            background: rgba(255, 255, 255, 0.2);
-            /* Increased button intensity */
-            border: none;
-            padding: 10px 15px;
-            margin: 0 5px;
-            /* Reduced gap between buttons */
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
+        ::-webkit-scrollbar-track {
+            background: #1a1a2e;
             border-radius: 10px;
         }
 
-        .floating-bar button i {
-            margin-right: 5px;
-            font-size: 1.2rem;
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #7c3aed, #a78bfa);
+            border-radius: 10px;
+            animation: glowingPulse 2s infinite alternate;
         }
 
-        .floating-bar button span {
-            font-size: 1.3rem;
-            /* Increased from 1.1rem */
-            font-weight: 500;
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, #a78bfa, #7c3aed);
+            box-shadow: 0 0 40px rgba(167, 139, 250, 1);
         }
 
-        @media (max-width: 768px) {
-            .floating-bar button span {
-                display: none;
+        @keyframes glowingPulse {
+            0% {
+                background: linear-gradient(45deg, #7c3aed, #a78bfa);
+                box-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
+            }
+            50% {
+                background: linear-gradient(45deg, #a78bfa, #6d28d9);
+                box-shadow: 0 0 20px rgba(167, 139, 250, 0.8);
+            }
+            100% {
+                background: linear-gradient(45deg, #7c3aed, #a78bfa);
+                box-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
             }
         }
 
-        .floating-bar button:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        body {
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
         }
 
-        @media (max-width: 640px) {
-            .floating-bar {
-                padding: 8px 0;
-            }
-
-            .floating-bar button {
-                padding: 8px 10px;
-                margin: 0 2px;
-            }
-
-            .floating-bar button span {
-                display: none;
-            }
-
-            .floating-bar button i {
-                font-size: 1.1rem;
-                margin-right: 0;
-            }
-        }
-
-        .sponsor-category {
-            margin-bottom: 2rem;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        .sponsor-category.animate {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        #preloader {
+        /* Animated Gradient Background */
+        .animated-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            background: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease;
+            height: 100vh;
+            z-index: -2;
+            background: linear-gradient(-45deg, #05040e, #231f4e, #1a1a28, #11111e, #0e162a);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
         }
 
-        footer {
-            margin-bottom: 70px;
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
-        .floating-element {
+        /* Code Rain Animation */
+        .code-rain {
             position: fixed;
-            inset: 0;
-            z-index: 0;
-            opacity: 1;
-            filter: brightness(0.9);
-            animation: float 3s ease-in-out infinite;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            opacity: 0.15;
+        }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgb(125, 61, 255);
+            border-radius: 50%;
+            animation: float-particle linear infinite;
+        }
+
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
         }
 
         @keyframes float {
-
-            0%,
-            100% {
+            0%, 100% {
                 transform: translateY(0);
             }
-
             50% {
                 transform: translateY(-10px);
             }
         }
 
-        .sponsor-tier-icon {
-            font-size: 2rem;
-            margin-right: 0.5rem;
-            vertical-align: middle;
+        .floating-animation {
+            animation: float 3s ease-in-out infinite;
         }
 
-        .sponsor-tier-title {
-            display: inline-flex;
+        .floating-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 1000;
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            .floating-bar {
+                display: block;
+            }
+        }
+
+        .mobile-menu-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1001;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #7c3aed, #a78bfa);
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.5);
+            transition: all 0.3s ease;
+            display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0.5rem 1rem;
-            border-radius: 9999px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(5px);
-            transition: all 0.3s ease;
         }
 
-        .sponsor-tier-title:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+        .mobile-menu-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(124, 58, 237, 0.7);
         }
 
-        .form-container {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 2rem;
-            margin-top: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+        @media (min-width: 768px) {
+            .mobile-menu-btn {
+                display: none;
+            }
         }
 
-        .form-input {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: white;
-            padding: 0.75rem 1rem;
-            border-radius: 5px;
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100vh;
+            background: rgba(15, 12, 41, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            margin-bottom: 1rem;
-            font-size: 1rem;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .glass-card {
+            background: rgba(57, 57, 57, 0.062);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+
+        .partner-card {
             transition: all 0.3s ease;
         }
 
-        .form-input:focus {
-            outline: none;
-            border-color: #ff6f61;
-            box-shadow: 0 0 0 2px rgba(255, 111, 97, 0.2);
+        .partner-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(124, 58, 237, 0.4);
         }
 
-        .form-input::placeholder {
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        .form-submit {
-            background: linear-gradient(to right, #ff6f61, #ff8e53);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 5px;
-            border: none;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            font-size: 1rem;
+        .top-partner-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
             font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .form-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(255, 111, 97, 0.3);
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: rgba(255, 255, 255, 0.8);
-            font-weight: 500;
-        }
-
-        .loading {
-            display: none;
-            text-align: center;
-            margin-top: 10px;
-        }
-
-        .success,
-        .error {
-            margin-top: 10px;
-            padding: 10px;
-            border-radius: 4px;
-            display: none;
-        }
-
-        .success {
-            background-color: #d4edda;
-            color: #155724;
-        }
-
-        .error {
-            background-color: #f8d7da;
-            color: #721c24;
+            box-shadow: 0 4px 10px rgba(255, 215, 0, 0.5);
+            z-index: 10;
         }
     </style>
-    <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
-    <div id="preloader">
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+
+    <!-- Code Rain Canvas -->
+    <div class="code-rain">
+        <canvas id="codeCanvas"></canvas>
+    </div>
+
+    <!-- Floating Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Preloader -->
+    <div id="preloader"
+        class="fixed inset-0 flex items-center justify-center bg-gradient-to-br from-purple-900 to-blue-900 z-50">
         <div class="flex flex-col items-center">
-            <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-purple-500 border-opacity-75"></div>
-            <p class="mt-4 text-white text-lg">Loading...</p>
+            <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-purple-300"></div>
+            <p class="mt-4 text-white text-lg">Loading Community Partners...</p>
         </div>
     </div>
 
-    <spline-viewer url="https://prod.spline.design/6LTLSMAaLiIze7dn/scene.splinecode"
-        class="fixed inset-0 w-full h-full z-0">
-    </spline-viewer>
-
-    <div class="content-wrapper">
-        <a href="/">
-            <div class="fixed top-4 left-4 z-50 flex items-center logo" onclick="goBack()">
-                <img src="./images/logo.png" alt="Hackathon 2024 Logo" class="w-40 object-contain" />
-            </div>
-        </a>
-        
-
-        <div class="relative floating-element">
-            <div class="absolute top-4 right-4 z-50">
-                <img src="./images/mascot1.png" alt="Mascot" class="w-20">
-            </div>
+    <!-- Logo -->
+    <a href="index.html">
+        <div class="fixed top-4 left-4 z-10 flex items-center justify-center rounded-lg cursor-pointer">
+            <img src="./images/logo.webp" alt="Cosmohack Logo" class="w-32 md:w-40 object-contain" />
         </div>
+    </a>
 
-        <main class="mt-8">
-            <h1
-                class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-center mt-20">
-                Apply for Community Partnership</h1>
-
-            <div class="form-container">
-                <form id="communityPartnerForm" class="space-y-4">
-                    <div>
-                        <label for="communityName" class="form-label">Community Name</label>
-                        <input type="text" id="communityName" name="entry.425119372"
-                            placeholder="Enter your community name" required class="form-input">
-                    </div>
-
-                    <div>
-                        <label for="communityEmail" class="form-label">Community Email</label>
-                        <input type="email" id="communityEmail" name="entry.985643883"
-                            placeholder="Enter your community email address" required class="form-input">
-                    </div>
-
-                    <div>
-                        <label for="yourName" class="form-label">Your Name</label>
-                        <input type="text" id="yourName" name="entry.1052804035" placeholder="Enter your name" required
-                            class="form-input">
-                    </div>
-
-                    <div>
-                        <label for="yourPosition" class="form-label">Your Position in Community</label>
-                        <input type="text" id="yourPosition" name="entry.1053080663"
-                            placeholder="Enter your position in the community" required class="form-input">
-                    </div>
-
-                    <div>
-                        <label for="yourEmail" class="form-label">Your Email</label>
-                        <input type="email" id="yourEmail" name="entry.1191368089"
-                            placeholder="Enter your email address" required class="form-input">
-                    </div>
-
-                    <div>
-                        <label for="whatsappNumber" class="form-label">Your WhatsApp Number</label>
-                        <input type="tel" id="whatsappNumber" name="entry.896888183"
-                            placeholder="Enter your WhatsApp number" required class="form-input">
-                    </div>
-
-                    <div>
-                        <label for="communitySocials" class="form-label">Community Socials (linktr.ee link)</label>
-                        <input type="url" id="communitySocials" name="entry.728368598"
-                            placeholder="Enter your linktr.ee link" class="form-input">
-                    </div>
-
-                    <div>
-                        <label for="communityDescription" class="form-label">Community Description</label>
-                        <textarea id="communityDescription" name="entry.925250765"
-                            placeholder="Tell us about your community" rows="4" required class="form-input"></textarea>
-                    </div>
-
-                    <div>
-                        <label for="communityWebsite" class="form-label">Community Website (if any)</label>
-                        <input type="url" id="communityWebsite" name="entry.1019618673"
-                            placeholder="https://www.example.com" class="form-input">
-                    </div>
-
-                    <button type="submit" class="form-submit w-full">Apply Now</button>
-                </form>
-
-                <div id="loading" class="loading">Submitting...</div>
-                <div id="success" class="success">Form submitted successfully!</div>
-                <div id="error" class="error">An error occurred. Please try again.</div>
-            </div>
-        </main>
-
-        <footer class="text-center text-sm text-white/80 mt-8 mb-20">
-            © 2024 Hackathon. All Rights Reserved.
-        </footer>
+    <!-- Mascot 1 -->
+    <div class="fixed top-4 right-4 z-10">
+        <img src="./images/mascot1.webp" alt="Mascot" class="w-16 md:w-20 floating-animation drop-shadow-lg">
     </div>
 
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="menuOverlay"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-white text-2xl font-bold">Menu</h2>
+                <button id="closeMenuBtn" class="text-white text-2xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <nav class="flex flex-col gap-4">
+                <a href="index.html"
+                    class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                    <i class="fas fa-home text-xl w-6"></i>
+                    <span>Home</span>
+                </a>
+                <a href="Sponsors.html"
+                    class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                    <i class="fa-solid fa-sack-dollar text-xl w-6"></i>
+                    <span>Sponsors</span>
+                </a>
+                <a href="Timeline.html"
+                    class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                    <i class="fas fa-calendar-alt text-xl w-6"></i>
+                    <span>Timeline</span>
+                </a>
+                <a href="tracks.html"
+                    class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                    <i class="fa-regular fa-star text-xl w-6"></i>
+                    <span>Tracks</span>
+                </a>
+                <a href="prizes.html"
+                    class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                    <i class="fa-solid fa-trophy text-xl w-6"></i>
+                    <span>Prizes</span>
+                </a>
+                <a href="Aboutus.html"
+                    class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                    <i class="fa-solid fa-people-group text-xl w-6"></i>
+                    <span>About</span>
+                </a>
+                <a href="Faq.html"
+                    class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+                    <i class="fas fa-question-circle text-xl w-6"></i>
+                    <span>FAQ</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button class="mobile-menu-btn" id="menuBtn">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Main Content -->
+    <div class="relative z-10 px-4 py-20 pb-32">
+        <!-- Page Header -->
+        <div class="max-w-6xl mx-auto text-center mb-12">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg">
+                Our Community Partners
+            </h1>
+            <p class="text-lg sm:text-xl text-white/80 max-w-2xl mx-auto">
+                Amazing communities that support and collaborate with Cosmohack
+            </p>
+        </div>
+
+        <!-- Community Partners Grid -->
+        <div id="partnersContainer" class="max-w-6xl mx-auto">
+            <!-- Partners will be loaded here dynamically -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="emptyState" class="hidden max-w-2xl mx-auto text-center">
+            <div class="glass-card rounded-3xl p-12">
+                <i class="fas fa-users text-6xl text-purple-400 mb-4"></i>
+                <h3 class="text-2xl font-bold text-white mb-2">No Partners Yet</h3>
+                <p class="text-white/70">Community partners will be announced soon. Stay tuned!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Desktop Floating Navigation Bar -->
     <nav class="floating-bar">
-        <a href="/index">
-            <button>
-                <i class="fas fa-home"></i>
-                <span class="ml-2">Home</span>
-            </button>
-        </a>
-        <a href="/comingsoon">
-            <button>
-                <i class="fa-solid fa-sack-dollar"></i>
-                <span class="ml-2">Sponsors</span>
-            </button>
-        </a>
-        <a href="/Timeline">
-            <button>
-                <i class="fas fa-calendar-alt"></i>
-                <span class="ml-2">Timeline</span>
-            </button>
-        </a>
-        <a href="/comingsoon">
-            <button>
-                <i class="fa-regular fa-star"></i><span>Tracks</span>
-            </button>
-        </a>
-        <a href="/comingsoon">
-            <button>
-                <i class="fa-solid fa-trophy"></i><span>Prizes</span>
-            </button>
-        </a>
-        <a href="/Aboutus">
-            <button>
-                <i class="fa-solid fa-people-group"></i>
-                <span class="ml-2">About</span>
-            </button>
-        </a>
-        <a href="/Faq">
-            <button>
-                <i class="fas fa-question-circle"></i>
-                <span class="ml-2">FAQ</span>
-            </button>
-        </a>
+        <div class="flex justify-center items-center py-4 px-2 gap-2 flex-wrap">
+            <a href="index.html"
+                class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+                <i class="fas fa-home text-xl"></i>
+                <span class="font-medium">Home</span>
+            </a>
+            <a href="Sponsors.html"
+                class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+                <i class="fa-solid fa-sack-dollar text-xl"></i>
+                <span class="font-medium">Sponsors</span>
+            </a>
+            <a href="Timeline.html"
+                class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+                <i class="fas fa-calendar-alt text-xl"></i>
+                <span class="font-medium">Timeline</span>
+            </a>
+            <a href="tracks.html"
+                class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+                <i class="fa-regular fa-star text-xl"></i>
+                <span class="font-medium">Tracks</span>
+            </a>
+            <a href="prizes.html"
+                class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+                <i class="fa-solid fa-trophy text-xl"></i>
+                <span class="font-medium">Prizes</span>
+            </a>
+            <a href="Aboutus.html"
+                class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+                <i class="fa-solid fa-people-group text-xl"></i>
+                <span class="font-medium">About</span>
+            </a>
+            <a href="Faq.html"
+                class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+                <i class="fas fa-question-circle text-xl"></i>
+                <span class="font-medium">FAQ</span>
+            </a>
+        </div>
     </nav>
 
+    <!-- Load Config First -->
+    <script src="config.js"></script>
+
+    <!-- Load Data Manager First -->
+    <script src="dataManager.js"></script>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            gsap.registerPlugin(ScrollTrigger);
+        let pageData = null;
 
-            // Preloader
-            setTimeout(() => {
-                const preloader = document.getElementById('preloader');
-                const content = document.querySelector('.content-wrapper');
+        // Initialize Page
+        async function initializePage() {
+            try {
+                document.getElementById('preloader').style.display = 'flex';
 
-                if (preloader && content) {
-                    gsap.to(preloader, {
-                        opacity: 0,
-                        duration: 0.5,
-                        onComplete: () => {
-                            preloader.style.display = 'none';
-                            content.style.opacity = '1';
-                        }
-                    });
-                }
-            });
-
-            // Form animations
-            gsap.from('.form-container', {
-                opacity: 0,
-                y: 50,
-                duration: 1,
-                scrollTrigger: {
-                    trigger: '.form-container',
-                    start: 'top bottom-=100',
-                    toggleActions: 'play none none reverse'
-                }
-            });
-
-            // Form input animations
-            gsap.utils.toArray('.form-input').forEach((input) => {
-                input.addEventListener('focus', () => {
-                    gsap.to(input, { scale: 1.05, duration: 0.2 });
+                pageData = await DataManager.initializeData({
+                    onLoading: () => {
+                        console.log('Loading community partners data...');
+                    },
+                    onSuccess: (data) => {
+                        console.log('Data loaded successfully:', data);
+                        displayPartners(data);
+                    },
+                    onError: (error) => {
+                        console.error('Failed to load data:', error);
+                        showEmptyState();
+                    }
                 });
-                input.addEventListener('blur', () => {
-                    gsap.to(input, { scale: 1, duration: 0.2 });
-                });
-            });
-
-
-
-            // Form submission handle 
-            const form = document.getElementById('communityPartnerForm');
-            const loading = document.getElementById('loading');
-            const success = document.getElementById('success');
-            const error = document.getElementById('error');
-
-
-            const googleFormUrl = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSf2DiitO92_UPtyYOytsjrRMSRVSg3t00eg1GStwRc4iSazYQ/formResponse';
-
-            form.addEventListener('submit', function (e) {
-                e.preventDefault();
-                loading.style.display = 'block';
-                success.style.display = 'none';
-                error.style.display = 'none';
-
-                const formData = new FormData(form);
-
-                fetch(googleFormUrl, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    body: formData
-                })
-                    .then(() => {
-                        loading.style.display = 'none';
-                        form.reset();
-                        success.style.display = 'block';
-                    })
-                    .catch(() => {
-                        loading.style.display = 'none';
-                        error.style.display = 'block';
-                    });
-            });
-        });
-
-        function goBack() {
-            window.close();
+            } catch (error) {
+                console.error('Error initializing page:', error);
+                showEmptyState();
+            } finally {
+                setTimeout(() => {
+                    document.getElementById('preloader').style.display = 'none';
+                }, 0);
+            }
         }
 
+        // Display Partners
+        function displayPartners(data) {
+            const partners = DataManager.getCommunityPartners(data);
+            const container = document.getElementById('partnersContainer');
+            const emptyState = document.getElementById('emptyState');
+
+            if (!partners || partners.length === 0) {
+                showEmptyState();
+                return;
+            }
+
+            // Separate top partners and regular partners
+            const topPartners = partners.filter(p => p.isTop);
+            const regularPartners = partners.filter(p => !p.isTop);
+
+            let html = '';
+
+            // Display top partners first
+            if (topPartners.length > 0) {
+                html += '<div class="mb-12">';
+                html += '<h2 class="text-3xl font-bold text-white text-center mb-8">Featured Partners</h2>';
+                html += '<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">';
+                topPartners.forEach(partner => {
+                    html += createPartnerCard(partner, true);
+                });
+                html += '</div></div>';
+            }
+
+            // Display regular partners
+            if (regularPartners.length > 0) {
+                html += '<div>';
+                if (topPartners.length > 0) {
+                    html += '<h2 class="text-3xl font-bold text-white text-center mb-8">Community Partners</h2>';
+                }
+                html += '<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">';
+                regularPartners.forEach(partner => {
+                    html += createPartnerCard(partner, false);
+                });
+                html += '</div></div>';
+            }
+
+            container.innerHTML = html;
+            emptyState.classList.add('hidden');
+        }
+
+        // Create Partner Card
+        function createPartnerCard(partner, isTop) {
+            const cardSize = isTop ? 'p-8' : 'p-6';
+            const logoSize = isTop ? 'h-32' : 'h-24';
+            
+            return `
+                <div class="glass-card rounded-2xl ${cardSize} partner-card relative group">
+                    ${isTop ? '<div class="top-partner-badge"><i class="fas fa-star"></i> Featured</div>' : ''}
+                    <a href="${partner.socialLink || '#'}" target="_blank" rel="noopener noreferrer" class="block">
+                        <div class="flex flex-col items-center justify-center text-center h-full">
+                            <div class="mb-4 ${logoSize} w-full flex items-center justify-center">
+                                <img src="${partner.logoUrl}" 
+                                     alt="${partner.name}" 
+                                     class="max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-110"
+                                     onerror="this.src='./images/placeholder-logo.webp'">
+                            </div>
+                            <h3 class="text-white text-xl font-bold mb-2">${partner.name}</h3>
+                            <div class="flex items-center gap-2 text-purple-300 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <i class="fas fa-external-link-alt text-sm"></i>
+                                <span class="text-sm">Visit Website</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            `;
+        }
+
+        // Show Empty State
+        function showEmptyState() {
+            document.getElementById('partnersContainer').classList.add('hidden');
+            document.getElementById('emptyState').classList.remove('hidden');
+        }
+
+        // Mobile Menu
+        const menuBtn = document.getElementById('menuBtn');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        menuOverlay.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Code Rain Animation
+        const canvas = document.getElementById('codeCanvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*(){}[]<>/';
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+
+        function drawCodeRain() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#fff';
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = characters[Math.floor(Math.random() * characters.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(drawCodeRain, 33);
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Floating Particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            particle.style.animationDelay = Math.random() * 5 + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // Initialize on page load
+        window.addEventListener('DOMContentLoaded', initializePage);
     </script>
 </body>
 

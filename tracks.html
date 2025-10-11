@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cosmohack</title>
+    <title>Tracks - Cosmohack</title>
     <link rel="shortcut icon" href="./images/CosmoHACK-Round-W.webp" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" rel="stylesheet">
@@ -35,42 +35,28 @@
         ::-webkit-scrollbar-thumb {
             background: linear-gradient(45deg, #7c3aed, #a78bfa);
             border-radius: 10px;
-            animation: glowingPulse 2s infinite alternate, glowingShadow 1.5s infinite alternate;
+            animation: glowingPulse 2s infinite alternate;
         }
 
         ::-webkit-scrollbar-thumb:hover {
             background: linear-gradient(45deg, #a78bfa, #7c3aed);
-            box-shadow: 0 0 40px rgba(167, 139, 250, 1), 0 0 60px rgba(124, 58, 237, 1);
+            box-shadow: 0 0 40px rgba(167, 139, 250, 1);
         }
 
         @keyframes glowingPulse {
             0% {
                 background: linear-gradient(45deg, #7c3aed, #a78bfa);
-                box-shadow: 0 0 10px rgba(167, 139, 250, 0.5), 0 0 20px rgba(124, 58, 237, 0.5);
+                box-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
             }
 
             50% {
                 background: linear-gradient(45deg, #a78bfa, #6d28d9);
-                box-shadow: 0 0 20px rgba(167, 139, 250, 0.8), 0 0 30px rgba(124, 58, 237, 0.8);
+                box-shadow: 0 0 20px rgba(167, 139, 250, 0.8);
             }
 
             100% {
                 background: linear-gradient(45deg, #7c3aed, #a78bfa);
-                box-shadow: 0 0 10px rgba(167, 139, 250, 0.5), 0 0 20px rgba(124, 58, 237, 0.5);
-            }
-        }
-
-        @keyframes glowingShadow {
-            0% {
-                box-shadow: 0 0 15px rgba(167, 139, 250, 0.6), 0 0 25px rgba(124, 58, 237, 0.6);
-            }
-
-            50% {
-                box-shadow: 0 0 30px rgba(167, 139, 250, 1), 0 0 45px rgba(124, 58, 237, 1);
-            }
-
-            100% {
-                box-shadow: 0 0 15px rgba(167, 139, 250, 0.6), 0 0 25px rgba(124, 58, 237, 0.6);
+                box-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
             }
         }
 
@@ -119,11 +105,6 @@
             opacity: 0.15;
         }
 
-        .code-rain canvas {
-            display: block;
-        }
-
-        /* Floating particles */
         .particles {
             position: fixed;
             top: 0;
@@ -179,7 +160,6 @@
             animation: float 3s ease-in-out infinite;
         }
 
-        /* Desktop Floating Bar */
         .floating-bar {
             position: fixed;
             bottom: 0;
@@ -187,7 +167,6 @@
             width: 100%;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
             border-top: 1px solid rgba(255, 255, 255, 0.2);
             z-index: 1000;
             display: none;
@@ -199,7 +178,6 @@
             }
         }
 
-        /* Mobile Hamburger Menu */
         .mobile-menu-btn {
             position: fixed;
             bottom: 20px;
@@ -231,7 +209,6 @@
             }
         }
 
-        /* Mobile Menu Overlay */
         .mobile-menu {
             position: fixed;
             top: 0;
@@ -240,7 +217,6 @@
             height: 100vh;
             background: rgba(15, 12, 41, 0.98);
             backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
             z-index: 1000;
             transition: right 0.3s ease;
             overflow-y: auto;
@@ -272,26 +248,130 @@
         .glass-card {
             background: rgba(57, 57, 57, 0.062);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
         }
 
-        .btn-glow {
-            box-shadow: 0 0 20px rgba(177, 151, 252, 0.5);
+        .track-card {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .track-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(124, 58, 237, 0.5);
+            border-color: rgba(167, 139, 250, 0.5);
+        }
+
+        .track-poster {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border: 2px solid rgba(124, 58, 237, 0.3);
             transition: all 0.3s ease;
         }
 
-        .btn-glow:hover {
-            box-shadow: 0 0 30px rgba(177, 151, 252, 0.8);
-            transform: translateY(-2px);
+        .track-card:hover .track-poster {
+            border-color: rgba(167, 139, 250, 0.8);
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.4);
         }
 
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .mascot-bottom {
-                bottom: 100px !important;
+        .sponsored-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 12px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.6);
+            z-index: 10;
+            animation: pulse-badge 2s infinite;
+        }
+
+        @keyframes pulse-badge {
+
+            0%,
+            100% {
+                transform: scale(1);
             }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .track-type-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .badge-sponsored {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000;
+        }
+
+        .badge-general {
+            background: linear-gradient(135deg, #7c3aed, #a78bfa);
+            color: #fff;
+        }
+
+        .track-details {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: start;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .detail-icon {
+            color: #a78bfa;
+            font-size: 18px;
+            min-width: 25px;
+            margin-top: 2px;
+        }
+
+        .sponsor-info {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(124, 58, 237, 0.2);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: #a78bfa;
+            margin-top: 10px;
+        }
+
+        .no-poster-placeholder {
+            width: 100%;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(167, 139, 250, 0.2));
+            border-radius: 15px;
+            border: 2px dashed rgba(167, 139, 250, 0.4);
+            margin-bottom: 20px;
+        }
+
+        .no-poster-icon {
+            font-size: 60px;
+            color: rgba(167, 139, 250, 0.5);
         }
     </style>
 </head>
@@ -313,15 +393,16 @@
         class="fixed inset-0 flex items-center justify-center bg-gradient-to-br from-purple-900 to-blue-900 z-50">
         <div class="flex flex-col items-center">
             <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-purple-300"></div>
-            <p class="mt-4 text-white text-lg">Loading...</p>
+            <p class="mt-4 text-white text-lg">Loading Tracks...</p>
         </div>
     </div>
 
     <!-- Logo -->
-    <div class="fixed top-4 left-4 z-10 flex items-center justify-center rounded-lg">
-        <img src="./images/sourcifylogo.webp" alt="Logo"
-            class="w-16 h-16 md:w-20 md:h-20 object-contain border-2 border-purple-300 rounded-full shadow-lg" />
-    </div>
+    <a href="index.html">
+        <div class="fixed top-4 left-4 z-10 flex items-center justify-center rounded-lg cursor-pointer">
+            <img src="./images/logo.webp" alt="Cosmohack Logo" class="w-32 md:w-40 object-contain" />
+        </div>
+    </a>
 
     <!-- Mascot 1 -->
     <div class="fixed top-4 right-4 z-10">
@@ -329,10 +410,9 @@
     </div>
 
     <!-- Mascot 2 -->
-    <div class="mascot-bottom hidden md:block fixed bottom-24 z-10">
+    <div class="hidden md:block fixed bottom-24 z-10">
         <img src="./images/mascot2.webp" alt="Mascot" class="w-24 md:w-32 h-auto drop-shadow-lg">
     </div>
-
 
     <!-- Mobile Menu Overlay -->
     <div class="mobile-menu-overlay" id="menuOverlay"></div>
@@ -362,7 +442,7 @@
                     <i class="fas fa-calendar-alt text-xl w-6"></i>
                     <span>Timeline</span>
                 </a>
-                <a href="tracks.html"
+                <a href="Tracks.html"
                     class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
                     <i class="fa-regular fa-star text-xl w-6"></i>
                     <span>Tracks</span>
@@ -392,82 +472,34 @@
     </button>
 
     <!-- Main Content -->
-    <div id="content"
-        class="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-20 text-center pb-32">
-
-        <!-- Main Cosmohack Logo -->
-        <img src="./images/logo.webp" alt="Cosmohack Logo"
-            class="floating-animation w-[100%] sm:w-[40%] max-w-full drop-shadow-2xl mx-auto" />
-
-        <!-- Tagline -->
-        <p
-            class="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl mb-8 drop-shadow-lg text-white font-bold mt-6 px-4">
-            Unlock the cosmos, hack the future
-        </p>
-
-        <!-- Powered by Unstop -->
-        <div class="flex items-center justify-center gap-2 mb-10 bg-white px-4 py-2 rounded-full shadow-md">
-            <p class="text-gray-800 text-sm sm:text-base font-semibold">Powered by</p>
-            <img src="https://images.g2crowd.com/uploads/product/image/75402e890aa4fea82119f975a2d95e3c/unstop.png"
-                alt="Unstop Logo" class="h-6 sm:h-8 md:h-10 object-contain" />
-        </div>
-
-
-        <!-- Buttons and Countdown -->
-        <div class="flex flex-col items-center gap-6 w-full max-w-md px-2">
-            <button id="registerBtn"
-                class="w-full bg-white text-purple-600 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg shadow-lg hover:bg-purple-500 hover:text-white transition-all btn-glow">
-                Register Now
-            </button>
-
-            <div class="glass-card rounded-2xl px-10 sm:px-6 py-4 w-full">
-                <div class="flex flex-col md:flex-row items-center justify-between gap-3">
-                    <p class="text-xs sm:text-sm md:text-base font-semibold uppercase tracking-wide text-white">
-                        <span id="eventDateText">November 19-20, 2025</span>
-                        <i class="fa-solid fa-hourglass-end fa-flip ml-2" style="color: #FFD700;"></i>
-                    </p>
-                    <p id="countdown" class="text-base sm:text-lg md:text-xl font-bold text-yellow-300">
-                        Loading...
-                    </p>
+    <div class="relative z-10 px-4 py-20 pb-32">
+        <!-- Page Header -->
+        <div class="max-w-6xl mx-auto text-center mb-12">
+            <div class="inline-block mb-4">
+                <div class="glass-card rounded-full px-6 py-2 inline-flex items-center gap-2">
+                    <i class="fas fa-route text-purple-400"></i>
+                    <span class="text-white font-bold">Choose Your Path</span>
                 </div>
             </div>
-        </div>
-    </div>
-
-
-    <!-- Become a Part Section -->
-    <div class="relative z-10 max-w-6xl mx-auto px-4 mb-32 md:mb-32">
-        <div class="glass-card rounded-3xl p-6 sm:p-8 md:p-12">
-            <h2 class="text-white text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-center">Become a Part
-            </h2>
-            <p class="text-white text-sm sm:text-base md:text-lg text-center mb-8 sm:mb-10 opacity-90 px-2">
-                Join our vibrant community and help shape the future of innovation. Whether you're a leader or a
-                connector,
-                there's a place for you in Cosmohack!
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg">
+                Competition Tracks
+            </h1>
+            <p class="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto">
+                Explore different tracks and find the perfect challenge for your team
             </p>
+        </div>
 
-            <div class="grid sm:grid-cols-2 gap-6 sm:gap-8 max-w-3xl mx-auto">
-                <div class="glass-card rounded-2xl p-6 sm:p-8 hover:-translate-y-2 transition-transform duration-300">
-                    <h3 class="text-white text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Cosmocaptain</h3>
-                    <p class="text-white text-sm sm:text-base mb-4 sm:mb-6 opacity-80">
-                        Join as a Cosmocaptain and lead your team to victory!
-                    </p>
-                    <button id="cosmocaptainBtn"
-                        class="w-full bg-purple-500 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold text-sm sm:text-base hover:bg-purple-600 transition-all btn-glow">
-                        Apply as Cosmocaptain
-                    </button>
-                </div>
+        <!-- Tracks Grid -->
+        <div id="tracksContainer" class="max-w-7xl mx-auto">
+            <!-- Tracks will be loaded here dynamically -->
+        </div>
 
-                <div class="glass-card rounded-2xl p-6 sm:p-8 hover:-translate-y-2 transition-transform duration-300">
-                    <h3 class="text-white text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Community Partner</h3>
-                    <p class="text-white text-sm sm:text-base mb-4 sm:mb-6 opacity-80">
-                        Become a Community Partner and help shape the future!
-                    </p>
-                    <button id="partnerBtn"
-                        class="w-full bg-purple-500 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold text-sm sm:text-base hover:bg-purple-600 transition-all btn-glow">
-                        Apply as Partner
-                    </button>
-                </div>
+        <!-- Empty State -->
+        <div id="emptyState" class="hidden max-w-2xl mx-auto text-center">
+            <div class="glass-card rounded-3xl p-12">
+                <i class="fas fa-map-marked-alt text-6xl text-purple-400 mb-4"></i>
+                <h3 class="text-2xl font-bold text-white mb-2">No Tracks Yet</h3>
+                <p class="text-white/70">Competition tracks will be announced soon. Stay tuned!</p>
             </div>
         </div>
     </div>
@@ -490,7 +522,7 @@
                 <i class="fas fa-calendar-alt text-xl"></i>
                 <span class="font-medium">Timeline</span>
             </a>
-            <a href="tracks.html"
+            <a href="Tracks.html"
                 class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
                 <i class="fa-regular fa-star text-xl"></i>
                 <span class="font-medium">Tracks</span>
@@ -520,150 +552,160 @@
     <script src="dataManager.js"></script>
 
     <script>
-        // ========== CONFIGURATION ==========
-        // IMPORTANT: Update this with your actual backend URL
-        // const API_BASE_URL = 'https://cosmohackadmin.onrender.com';
-
-        // ========== PAGE DATA ==========
         let pageData = null;
+        let sponsorsMap = {};
 
-        // ========== INITIALIZE DATA ==========
+        // Initialize Page
         async function initializePage() {
             try {
-                // Show preloader
                 document.getElementById('preloader').style.display = 'flex';
 
-                // Fetch data using DataManager
                 pageData = await DataManager.initializeData({
                     onLoading: () => {
-                        console.log('Loading data...');
+                        console.log('Loading tracks data...');
                     },
                     onSuccess: (data) => {
                         console.log('Data loaded successfully:', data);
-                        updatePageContent(data);
+                        createSponsorsMap(data);
+                        displayTracks(data);
                     },
                     onError: (error) => {
                         console.error('Failed to load data:', error);
-                        // Use fallback data if available
-                        useFallbackData();
+                        showEmptyState();
                     }
                 });
-
             } catch (error) {
                 console.error('Error initializing page:', error);
-                useFallbackData();
+                showEmptyState();
             } finally {
-                // Hide preloader
                 setTimeout(() => {
                     document.getElementById('preloader').style.display = 'none';
                 }, 0);
             }
         }
 
-        // ========== UPDATE PAGE CONTENT ==========
-        function updatePageContent(data) {
-            const config = DataManager.getConfig(data);
-
-            // Update countdown with event date from backend
-            if (config.eventDate) {
-                updateCountdown(config.eventDate);
-                updateEventDateText(config.eventDate);
-            }
-
-            // Setup buttons with links from backend
-            setupButtons(config);
+        // Create sponsors map for quick lookup
+        function createSponsorsMap(data) {
+            const sponsors = DataManager.getSponsors(data);
+            sponsors.forEach(sponsor => {
+                sponsorsMap[sponsor.id] = sponsor;
+            });
         }
 
-        // ========== UPDATE EVENT DATE TEXT ==========
-        function updateEventDateText(eventDateString) {
-            try {
-                // Clean up date string (remove "at" and extra spaces)
-                const cleanDateString = eventDateString.replace(/ at /i, " ");
-                const eventDate = new Date(cleanDateString);
+        // Display Tracks
+        function displayTracks(data) {
+            const tracks = DataManager.getTracks(data);
+            const container = document.getElementById('tracksContainer');
+            const emptyState = document.getElementById('emptyState');
 
-                if (isNaN(eventDate.getTime())) {
-                    // fallback display if still invalid
-                    document.getElementById("eventDateText").textContent = "Invalid Date";
-                    console.warn("Invalid event date string:", eventDateString);
-                    return;
+            if (!tracks || tracks.length === 0) {
+                showEmptyState();
+                return;
+            }
+
+            // Separate sponsored and general tracks
+            const sponsoredTracks = tracks.filter(t => t.type === 'sponsored');
+            const generalTracks = tracks.filter(t => t.type === 'general');
+
+            let html = '';
+
+            // Display sponsored tracks first
+            if (sponsoredTracks.length > 0) {
+                html += '<div class="mb-16">';
+                html += '<h2 class="text-3xl font-bold text-white text-center mb-8 flex items-center justify-center gap-3">';
+                html += '<i class="fas fa-award text-yellow-400"></i>';
+                html += 'Sponsored Tracks';
+                html += '<i class="fas fa-award text-yellow-400"></i>';
+                html += '</h2>';
+                html += '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">';
+                sponsoredTracks.forEach(track => {
+                    html += createTrackCard(track);
+                });
+                html += '</div></div>';
+            }
+
+            // Display general tracks
+            if (generalTracks.length > 0) {
+                html += '<div>';
+                if (sponsoredTracks.length > 0) {
+                    html += '<h2 class="text-3xl font-bold text-white text-center mb-8">General Tracks</h2>';
                 }
-
-                const options = { month: "long", day: "numeric", year: "numeric" };
-                const formattedDate = eventDate.toLocaleDateString("en-US", options);
-                document.getElementById("eventDateText").textContent = formattedDate;
-            } catch (error) {
-                console.error("Error formatting event date:", error);
-                document.getElementById("eventDateText").textContent = "Invalid Date";
+                html += '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">';
+                generalTracks.forEach(track => {
+                    html += createTrackCard(track);
+                });
+                html += '</div></div>';
             }
+
+            container.innerHTML = html;
+            emptyState.classList.add('hidden');
         }
 
+        // Create Track Card
+        function createTrackCard(track) {
+            const sponsor = track.sponsorId ? sponsorsMap[track.sponsorId] : null;
+            const isSponsored = track.type === 'sponsored';
 
-        // ========== COUNTDOWN TIMER ==========
-        let countdownInterval;
-        function updateCountdown(eventDateString) {
-            const countdownElement = document.getElementById('countdown');
-            const cleanDateString = eventDateString.replace(" at", "");
-            const endDate = new Date(cleanDateString).getTime();
-
-
-            // Clear existing interval if any
-            if (countdownInterval) {
-                clearInterval(countdownInterval);
-            }
-
-            countdownInterval = setInterval(() => {
-                const now = new Date().getTime();
-                const distance = endDate - now;
-
-                if (distance <= 0) {
-                    countdownElement.innerHTML = "Event Started!";
-                    clearInterval(countdownInterval);
-                    return;
-                }
-
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-            }, 1000);
+            return `
+                <div class="glass-card rounded-3xl p-6 track-card relative">
+                    ${isSponsored ? '<div class="sponsored-badge"><i class="fas fa-star"></i> Sponsored</div>' : ''}
+                    
+                    ${track.posterUrl ? `
+                        <img src="${track.posterUrl}" 
+                             alt="${track.title}" 
+                             class="track-poster"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="no-poster-placeholder" style="display: none;">
+                            <i class="fas fa-image no-poster-icon"></i>
+                        </div>
+                    ` : `
+                        <div class="no-poster-placeholder">
+                            <i class="fas fa-image no-poster-icon"></i>
+                        </div>
+                    `}
+                    
+                    <div>
+                        <span class="track-type-badge ${isSponsored ? 'badge-sponsored' : 'badge-general'}">
+                            ${isSponsored ? '<i class="fas fa-medal"></i> Sponsored Track' : '<i class="fas fa-flag"></i> General Track'}
+                        </span>
+                        
+                        <h3 class="text-white text-2xl font-bold mb-3">${track.title}</h3>
+                        
+                        ${track.description ? `
+                            <div class="detail-item">
+                                <i class="fas fa-info-circle detail-icon"></i>
+                                <p class="text-white/80 text-sm">${track.description}</p>
+                            </div>
+                        ` : ''}
+                        
+                        ${track.guideline ? `
+                            <div class="detail-item">
+                                <i class="fas fa-list-check detail-icon"></i>
+                                <div>
+                                    <p class="text-white/60 text-xs font-semibold mb-1">GUIDELINES</p>
+                                    <p class="text-white/80 text-sm">${track.guideline}</p>
+                                </div>
+                            </div>
+                        ` : ''}
+                        
+                        ${sponsor ? `
+                            <div class="sponsor-info">
+                                <i class="fas fa-handshake"></i>
+                                <span>Sponsored by ${sponsor.name}</span>
+                            </div>
+                        ` : ''}
+                    </div>
+                </div>
+            `;
         }
 
-        // ========== SETUP BUTTONS ==========
-        function setupButtons(config) {
-            const registerBtn = document.getElementById('registerBtn');
-            const cosmocaptainBtn = document.getElementById('cosmocaptainBtn');
-            const partnerBtn = document.getElementById('partnerBtn');
-
-            if (config.registrationLink) {
-                registerBtn.onclick = () => window.open(config.registrationLink, '_blank');
-            }
-
-            if (config.cosmocaptainLink) {
-                cosmocaptainBtn.onclick = () => window.open(config.cosmocaptainLink, '_blank');
-            }
-
-            if (config.communityPartnerLink) {
-                partnerBtn.onclick = () => window.open(config.communityPartnerLink, '_blank');
-            }
+        // Show Empty State
+        function showEmptyState() {
+            document.getElementById('tracksContainer').classList.add('hidden');
+            document.getElementById('emptyState').classList.remove('hidden');
         }
 
-        // ========== FALLBACK DATA ==========
-        function useFallbackData() {
-            console.log('Using fallback configuration');
-            const fallbackConfig = {
-                eventDate: 'November 19, 2025 00:00:00',
-                registrationLink: 'https://lu.ma/aet2w219',
-                cosmocaptainLink: 'https://lu.ma/aet2w219',
-                communityPartnerLink: 'https://lu.ma/0yjtzbkr'
-            };
-
-            updateCountdown(fallbackConfig.eventDate);
-            setupButtons(fallbackConfig);
-        }
-
-        // ========== MOBILE MENU ==========
+        // Mobile Menu
         const menuBtn = document.getElementById('menuBtn');
         const closeMenuBtn = document.getElementById('closeMenuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
@@ -687,7 +729,7 @@
             document.body.style.overflow = '';
         });
 
-        // ========== CODE RAIN ANIMATION ==========
+        // Code Rain Animation
         const canvas = document.getElementById('codeCanvas');
         const ctx = canvas.getContext('2d');
 
@@ -702,7 +744,6 @@
         function drawCodeRain() {
             ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-
             ctx.fillStyle = '#fff';
             ctx.font = fontSize + 'px monospace';
 
@@ -724,7 +765,7 @@
             canvas.height = window.innerHeight;
         });
 
-        // ========== FLOATING PARTICLES ==========
+        // Floating Particles
         const particlesContainer = document.getElementById('particles');
         for (let i = 0; i < 50; i++) {
             const particle = document.createElement('div');
@@ -735,9 +776,7 @@
             particlesContainer.appendChild(particle);
         }
 
-        // ========== PAGE LOAD ==========
+        // Initialize on page load
         window.addEventListener('DOMContentLoaded', initializePage);
     </script>
 </body>
-
-</html>

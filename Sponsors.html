@@ -4,161 +4,163 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cosmohack</title>
-  <link rel="shortcut icon" href="./images/CosmoHACK-Round-W.png" type="image/x-icon">
+  <title>Cosmohack - Sponsors</title>
+  <link rel="shortcut icon" href="./images/CosmoHACK-Round-W.webp" type="image/x-icon">
   <script src="https://cdn.tailwindcss.com"></script>
-  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.48/build/spline-viewer.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" rel="stylesheet">
+
   <style>
-    body {
-      min-height: 100vh;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      background-color: #000;
-      color: #fff;
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cinzel:wght@400..900&family=Orbitron&family=Pacifico&family=Playwrite+US+Trad+Guides&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Salsa&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Salsa", serif;
+      font-weight: 400;
+      font-style: normal;
     }
 
-    .content-wrapper {
-      flex-grow: 1;
-      overflow-y: auto;
-      padding: 20px;
-      position: relative;
-      z-index: 10;
-      opacity: 1;
-      transition: opacity 0.5s ease;
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 12px;
     }
 
-    /* Floating bar at the bottom with glass effect */
-    .floating-bar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.05);
-      /* Reduced background intensity */
-      backdrop-filter: blur(10px);
-      display: flex;
-      justify-content: center;
-      /* Center-align buttons */
-      align-items: center;
-      padding: 10px 0;
-      border-radius: 20px 20px 0 0;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      z-index: 10;
-      transition: all 0.3s ease-in-out;
-    }
-
-    .floating-bar button {
-      color: white;
-      background: rgba(255, 255, 255, 0.2);
-      /* Increased button intensity */
-      border: none;
-      padding: 10px 15px;
-      margin: 0 5px;
-      /* Reduced gap between buttons */
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
+    ::-webkit-scrollbar-track {
+      background: #1a1a2e;
       border-radius: 10px;
     }
 
-    .floating-bar button i {
-      margin-right: 5px;
-      font-size: 1.2rem;
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(45deg, #7c3aed, #a78bfa);
+      border-radius: 10px;
+      animation: glowingPulse 2s infinite alternate, glowingShadow 1.5s infinite alternate;
     }
 
-    .floating-bar button span {
-      font-size: 1.3rem;
-      /* Increased from 1.1rem */
-      font-weight: 500;
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(45deg, #a78bfa, #7c3aed);
+      box-shadow: 0 0 40px rgba(167, 139, 250, 1), 0 0 60px rgba(124, 58, 237, 1);
     }
 
-    @media (max-width: 768px) {
-      .floating-bar button span {
-        display: none;
+    @keyframes glowingPulse {
+      0% {
+        background: linear-gradient(45deg, #7c3aed, #a78bfa);
+        box-shadow: 0 0 10px rgba(167, 139, 250, 0.5), 0 0 20px rgba(124, 58, 237, 0.5);
+      }
+
+      50% {
+        background: linear-gradient(45deg, #a78bfa, #6d28d9);
+        box-shadow: 0 0 20px rgba(167, 139, 250, 0.8), 0 0 30px rgba(124, 58, 237, 0.8);
+      }
+
+      100% {
+        background: linear-gradient(45deg, #7c3aed, #a78bfa);
+        box-shadow: 0 0 10px rgba(167, 139, 250, 0.5), 0 0 20px rgba(124, 58, 237, 0.5);
       }
     }
 
-    .floating-bar button:hover {
-      background: rgba(255, 255, 255, 0.3);
-      transform: translateY(-3px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    @media (max-width: 640px) {
-      .floating-bar {
-        padding: 8px 0;
+    @keyframes glowingShadow {
+      0% {
+        box-shadow: 0 0 15px rgba(167, 139, 250, 0.6), 0 0 25px rgba(124, 58, 237, 0.6);
       }
 
-      .floating-bar button {
-        padding: 8px 10px;
-        margin: 0 2px;
+      50% {
+        box-shadow: 0 0 30px rgba(167, 139, 250, 1), 0 0 45px rgba(124, 58, 237, 1);
       }
 
-      .floating-bar button span {
-        display: none;
-      }
-
-      .floating-bar button i {
-        font-size: 1.1rem;
-        margin-right: 0;
+      100% {
+        box-shadow: 0 0 15px rgba(167, 139, 250, 0.6), 0 0 25px rgba(124, 58, 237, 0.6);
       }
     }
 
-    .sponsor-category {
-      margin-bottom: 2rem;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
+    body {
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
     }
 
-    .sponsor-category.animate {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .sponsor-logo {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .sponsor-logo:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-    }
-
-    #preloader {
+    /* Animated Gradient Background */
+    .animated-bg {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
-      background: #000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      transition: opacity 0.5s ease;
+      height: 100vh;
+      z-index: -2;
+      background: linear-gradient(-45deg, #05040e, #231f4e, #1a1a28, #11111e, #0e162a);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
     }
 
-    footer {
-      margin-bottom: 70px;
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
     }
 
-    .floating-element {
+    /* Code Rain Animation */
+    .code-rain {
       position: fixed;
-      inset: 0;
-      z-index: 0;
-      opacity: 1;
-      filter: brightness(0.9);
-      animation: float 3s ease-in-out infinite;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: -1;
+      overflow: hidden;
+      opacity: 0.15;
+    }
+
+    .code-rain canvas {
+      display: block;
+    }
+
+    /* Floating particles */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgb(125, 61, 255);
+      border-radius: 50%;
+      animation: float-particle linear infinite;
+    }
+
+    @keyframes float-particle {
+      0% {
+        transform: translateY(100vh) translateX(0);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 1;
+      }
+
+      90% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-100vh) translateX(100px);
+        opacity: 0;
+      }
     }
 
     @keyframes float {
@@ -173,6 +175,171 @@
       }
     }
 
+    .floating-animation {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    /* Desktop Floating Bar */
+    .floating-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      z-index: 1000;
+      display: none;
+    }
+
+    @media (min-width: 768px) {
+      .floating-bar {
+        display: block;
+      }
+    }
+
+    /* Mobile Hamburger Menu */
+    .mobile-menu-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1001;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #7c3aed, #a78bfa);
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(124, 58, 237, 0.5);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mobile-menu-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 30px rgba(124, 58, 237, 0.7);
+    }
+
+    @media (min-width: 768px) {
+      .mobile-menu-btn {
+        display: none;
+      }
+    }
+
+    /* Mobile Menu Overlay */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 280px;
+      height: 100vh;
+      background: rgba(15, 12, 41, 0.98);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 1000;
+      transition: right 0.3s ease;
+      overflow-y: auto;
+      border-left: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .mobile-menu.active {
+      right: 0;
+    }
+
+    .mobile-menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .mobile-menu-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .glass-card {
+      background: rgba(57, 57, 57, 0.062);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    }
+
+    .sponsor-category {
+      margin-bottom: 3rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .sponsor-logo {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      width: 250px;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(57, 57, 57, 0.3);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 15px;
+      padding: 1.5rem;
+    }
+
+    .sponsor-logo:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(167, 139, 250, 0.5);
+      border-color: rgba(167, 139, 250, 0.5);
+    }
+
+    .sponsor-logo img {
+      max-width: 100%;
+      max-height: 100%;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: brightness(1.1);
+    }
+
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(-45deg, #05040e, #231f4e, #1a1a28, #11111e, #0e162a);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+
     .sponsor-tier-icon {
       font-size: 2rem;
       margin-right: 0.5rem;
@@ -183,251 +350,580 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 0.5rem 1rem;
+      padding: 0.75rem 1.5rem;
       border-radius: 9999px;
       background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(5px);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       transition: all 0.3s ease;
+      font-size: 1.5rem;
     }
 
     .sponsor-tier-title:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+      box-shadow: 0 0 20px rgba(167, 139, 250, 0.4);
+    }
+
+    @media (max-width: 768px) {
+      .sponsor-tier-title {
+        font-size: 1.2rem;
+        padding: 0.5rem 1rem;
+      }
+
+      .sponsor-tier-icon {
+        font-size: 1.5rem;
+      }
+    }
+
+    /* Center all content */
+    #content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 100vh;
+      padding-bottom: 8rem;
+    }
+
+    /* Center sponsor grids */
+    .sponsor-grid-wrapper {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .sponsor-grid-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      max-width: 1200px;
+    }
+
+    /* Responsive sponsor logo widths */
+    .sponsor-logo-diamond,
+    .sponsor-logo-platinum,
+    .sponsor-logo-gold,
+    .sponsor-logo-hosting,
+    .sponsor-logo-silver,
+    .sponsor-logo-bronze {
+      /* All sponsors same size now - controlled by .sponsor-logo */
+    }
+
+    @media (max-width: 768px) {
+      .sponsor-logo {
+        width: 200px;
+        height: 160px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .sponsor-logo {
+        width: 150px;
+        height: 120px;
+      }
     }
   </style>
-  <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
+  <!-- Animated Background -->
+  <div class="animated-bg"></div>
+
+  <!-- Code Rain Canvas -->
+  <div class="code-rain">
+    <canvas id="codeCanvas"></canvas>
+  </div>
+
+  <!-- Floating Particles -->
+  <div class="particles" id="particles"></div>
+
+  <!-- Preloader -->
   <div id="preloader">
     <div class="flex flex-col items-center">
-      <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-purple-500 border-opacity-75"></div>
-      <p class="mt-4 text-white text-lg">Loading...</p>
+      <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-purple-300"></div>
+      <p class="mt-4 text-white text-lg">Loading Sponsors...</p>
     </div>
   </div>
 
-  <spline-viewer url="https://prod.spline.design/6LTLSMAaLiIze7dn/scene.splinecode"
-    class="fixed inset-0 w-full h-full z-0">
-  </spline-viewer>
-
-  <div class="content-wrapper">
-    <a href="index.html">
-      <div class="fixed top-4 left-4 z-50 flex items-center logo" >
-          <img src="./images/logo.png" alt="Hackathon 2024 Logo" class="w-40 object-contain" />
-      </div>
+  <!-- Logo -->
+  <a href="index.html">
+    <div class="fixed top-4 left-4 z-10 flex items-center justify-center rounded-lg cursor-pointer">
+      <img src="./images/logo.webp" alt="Cosmohack Logo" class="w-32 md:w-40 object-contain" />
+    </div>
   </a>
-  
 
-    <div class="relative floating-element">
-      <div class="absolute top-4 right-4 z-50">
-        <img src="./images/mascot1.png" alt="Mascot" class="w-20">
+  <!-- Mascot 1 -->
+  <div class="fixed top-4 right-4 z-10">
+    <img src="./images/mascot1.webp" alt="Mascot" class="w-16 md:w-20 floating-animation drop-shadow-lg">
+  </div>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay" id="menuOverlay"></div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="p-6">
+      <div class="flex justify-between items-center mb-8">
+        <h2 class="text-white text-2xl font-bold">Menu</h2>
+        <button id="closeMenuBtn" class="text-white text-2xl">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <nav class="flex flex-col gap-4">
+        <a href="index.html"
+          class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+          <i class="fas fa-home text-xl w-6"></i>
+          <span>Home</span>
+        </a>
+        <a href="Sponsors.html"
+          class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+          <i class="fa-solid fa-sack-dollar text-xl w-6"></i>
+          <span>Sponsors</span>
+        </a>
+        <a href="Timeline.html"
+          class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+          <i class="fas fa-calendar-alt text-xl w-6"></i>
+          <span>Timeline</span>
+        </a>
+        <a href="tracks.html"
+          class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+          <i class="fa-regular fa-star text-xl w-6"></i>
+          <span>Tracks</span>
+        </a>
+        <a href="prizes.html"
+          class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+          <i class="fa-solid fa-trophy text-xl w-6"></i>
+          <span>Prizes</span>
+        </a>
+        <a href="Aboutus.html"
+          class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+          <i class="fa-solid fa-people-group text-xl w-6"></i>
+          <span>About</span>
+        </a>
+        <a href="Faq.html"
+          class="flex items-center gap-4 text-white text-lg px-4 py-3 rounded-lg hover:bg-white/10 transition-all">
+          <i class="fas fa-question-circle text-xl w-6"></i>
+          <span>FAQ</span>
+        </a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Button -->
+  <button class="mobile-menu-btn" id="menuBtn">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <!-- Main Content -->
+  <div id="content" class="relative z-10 px-4 py-20">
+    <h1
+      class="text-3xl sm:text-4xl md:text-5xl font-bold mb-12 drop-shadow-lg bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-center mt-12 sm:mt-0">
+      Our Sponsors
+    </h1>
+
+    <!-- Diamond Sponsors -->
+    <div class="sponsor-category" id="diamondSection" style="display: none;">
+      <h2 class="text-2xl font-bold mb-6 text-center">
+        <span class="sponsor-tier-title text-cyan-300">
+          <i class="fas fa-gem sponsor-tier-icon text-cyan-400"></i>
+          Diamond Sponsors
+        </span>
+      </h2>
+      <div class="sponsor-grid-wrapper">
+        <div class="sponsor-grid-container" id="diamondSponsors"></div>
       </div>
     </div>
 
-    <main class="mt-8">
-      <h1
-        class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-center mt-20">
-        Our Sponsors</h1>
-
-      <div class="sponsor-category">
-        <h2 class="text-2xl font-bold mb-4 text-center">
-          <span class="sponsor-tier-title text-purple-300">
-            <i class="fas fa-crown sponsor-tier-icon text-yellow-400"></i>
-            Platinum Sponsors
-          </span>
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div class="sponsor-logo flex items-center justify-center bg-white bg-opacity-10 rounded-lg p-4">
-            <img src="./images/_Colored.webp" alt="DEVFOLIO LOGO" class="max-h-24">
-          </div>
-          <div class="sponsor-logo flex items-center justify-center bg-white bg-opacity-10 rounded-lg p-4">
-            <img src="./images/Colored_polygon.webp" alt="POLYGON LOGO" class="max-h-24">
-          </div>
-          <div class="sponsor-logo flex items-center justify-center bg-white bg-opacity-10 rounded-lg p-4">
-            <img src="./images/ethindia.webp" alt="ETHINDIA LOGO" class="max-h-24">
-          </div>
-        </div>
+    <!-- Platinum Sponsors -->
+    <div class="sponsor-category" id="platinumSection" style="display: none;">
+      <h2 class="text-2xl font-bold mb-6 text-center">
+        <span class="sponsor-tier-title text-purple-300">
+          <i class="fas fa-crown sponsor-tier-icon text-yellow-400"></i>
+          Platinum Sponsors
+        </span>
+      </h2>
+      <div class="sponsor-grid-wrapper">
+        <div class="sponsor-grid-container" id="platinumSponsors"></div>
       </div>
+    </div>
 
-      <div class="sponsor-category flex flex-col items-center justify-center">
-        <h2 class="text-2xl font-bold mb-4 text-center">
-          <span class="sponsor-tier-title text-yellow-300">
-            <i class="fas fa-medal sponsor-tier-icon text-yellow-500"></i>
-            Gold Sponsors
-          </span>
-        </h2>
-        <div class="flex flex-wrap justify-center gap-6 mx-auto">
-          <div class="sponsor-logo flex items-center justify-center bg-white bg-opacity-10 rounded-lg p-4">
-            <img src="./images/DEVFOLIO LOGO.webp" alt="DEVFOLIO LOGO" class="max-h-20">
-          </div>
-          <div class="sponsor-logo flex items-center justify-center bg-white bg-opacity-10 rounded-lg p-4">
-            <img src="./images/POLYGON LOGO.webp" alt="POLYGON LOGO" class="max-h-20">
-          </div>
-          <div class="sponsor-logo flex items-center justify-center bg-white bg-opacity-10 rounded-lg p-4">
-            <img src="./images/ETHINDIA LOGO.webp" alt="ETHINDIA LOGO" class="max-h-20">
-          </div>
-        </div>
+    <!-- Gold Sponsors -->
+    <div class="sponsor-category" id="goldSection" style="display: none;">
+      <h2 class="text-2xl font-bold mb-6 text-center">
+        <span class="sponsor-tier-title text-yellow-300">
+          <i class="fas fa-medal sponsor-tier-icon text-yellow-500"></i>
+          Gold Sponsors
+        </span>
+      </h2>
+      <div class="sponsor-grid-wrapper">
+        <div class="sponsor-grid-container" id="goldSponsors"></div>
       </div>
+    </div>
 
-      <div class="sponsor-category">
-        <h2 class="text-2xl font-bold mb-4 text-center">
-          <span class="sponsor-tier-title text-gray-300">
-            <i class="fas fa-award sponsor-tier-icon text-gray-400"></i>
-            Silver Sponsors
-          </span>
-        </h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-          <div class="sponsor-logo flex items-center justify-center bg-white bg-opacity-10 rounded-lg p-3">
-            <img src="/placeholder.svg?height=60&width=120" alt="Silver Sponsor 1" class="max-h-16">
-          </div>
-          <div class="sponsor-logo flex items-center justify-center bg-white bg-opacity-10 rounded-lg p-3">
-            <img src="/placeholder.svg?height=60&width=120" alt="Silver Sponsor 2" class="max-h-16">
-          </div>
-          <div class="sponsor-logo flex items-center justify-center bg-white bg-opacity-10 rounded-lg p-3">
-            <img src="/placeholder.svg?height=60&width=120" alt="Silver Sponsor 3" class="max-h-16">
-          </div>
-          <div class="sponsor-logo flex items-center justify-center bg-white bg-opacity-10 rounded-lg p-3">
-            <img src="/placeholder.svg?height=60&width=120" alt="Silver Sponsor 4" class="max-h-16">
-          </div>
-          <div class="sponsor-logo flex items-center justify-center bg-white bg-opacity-10 rounded-lg p-3">
-            <img src="/placeholder.svg?height=60&width=120" alt="Silver Sponsor 5" class="max-h-16">
-          </div>
-          <div class="sponsor-logo flex items-center justify-center bg-white bg-opacity-10 rounded-lg p-3">
-            <img src="/placeholder.svg?height=60&width=120" alt="Silver Sponsor 6" class="max-h-16">
-          </div>
-        </div>
+    <!-- Silver Sponsors -->
+    <div class="sponsor-category" id="silverSection" style="display: none;">
+      <h2 class="text-2xl font-bold mb-6 text-center">
+        <span class="sponsor-tier-title text-gray-300">
+          <i class="fas fa-award sponsor-tier-icon text-gray-400"></i>
+          Silver Sponsors
+        </span>
+      </h2>
+      <div class="sponsor-grid-wrapper">
+        <div class="sponsor-grid-container" id="silverSponsors"></div>
       </div>
-    </main>
+    </div>
 
-    <footer class="text-center text-sm text-white/80 mt-8 mb-20">
-      © 2024 Hackathon. All Rights Reserved.
-    </footer>
+    <!-- Bronze Sponsors -->
+    <div class="sponsor-category" id="bronzeSection" style="display: none;">
+      <h2 class="text-2xl font-bold mb-6 text-center">
+        <span class="sponsor-tier-title text-orange-300">
+          <i class="fas fa-certificate sponsor-tier-icon text-orange-400"></i>
+          Bronze Sponsors
+        </span>
+      </h2>
+      <div class="sponsor-grid-wrapper">
+        <div class="sponsor-grid-container" id="bronzeSponsors"></div>
+      </div>
+    </div>
+
+    <!-- InKind Sponsors -->
+    <div class="sponsor-category" id="inkindSection" style="display: none;">
+      <h2 class="text-2xl font-bold mb-6 text-center">
+        <span class="sponsor-tier-title text-orange-300">
+          <i class="fas fa-hands-helping sponsor-tier-icon text-teal-400"></i>
+
+          In Kind Sponsors
+        </span>
+      </h2>
+      <div class="sponsor-grid-wrapper">
+        <div class="sponsor-grid-container" id="inkindSponsors"></div>
+      </div>
+    </div>
+
+    <!-- Hosting Sponsors -->
+    <div class="sponsor-category" id="hostingSection" style="display: none;">
+      <h2 class="text-2xl font-bold mb-6 text-center">
+        <span class="sponsor-tier-title text-blue-300">
+          <i class="fas fa-server sponsor-tier-icon text-blue-400"></i>
+          Hosting Partner
+        </span>
+      </h2>
+      <div class="sponsor-grid-wrapper">
+        <div class="sponsor-grid-container" id="hostingSponsors"></div>
+      </div>
+    </div>
+
+    <!-- No Sponsors Message -->
+    <div id="noSponsorsMessage" class="text-center text-white py-12" style="display: none;">
+      <i class="fas fa-handshake text-5xl mb-4 text-purple-400"></i>
+      <p class="text-2xl font-bold mb-2">Sponsor information will be available soon!</p>
+      <p class="text-lg text-white/60">Stay tuned for updates</p>
+    </div>
   </div>
 
+  <!-- Desktop Floating Navigation Bar -->
   <nav class="floating-bar">
-    <a href="index.html">
-      <button>
-        <i class="fas fa-home"></i>
-        <span class="ml-2">Home</span>
-      </button>
-    </a>
-    <a href="Sponsors.html">
-      <button>
-        <i class="fa-solid fa-sack-dollar"></i>
-        <span class="ml-2">Sponsors</span>
-      </button>
-    </a>
-    <a href="Timeline.html">
-      <button>
-        <i class="fas fa-calendar-alt"></i>
-        <span class="ml-2">Timeline</span>
-      </button>
-    </a>
-    <a href="ProblemStatements.html">
-      <button>
-        <i class="fa-regular fa-star"></i><span>Tracks</span>
-      </button>
-    </a>
-    <a href="comingsoon.html">
-      <button>
-        <i class="fa-solid fa-trophy"></i><span>Prizes</span>
-      </button>
-    </a>
-    <a href="Aboutus.html">
-      <button>
-        <i class="fa-solid fa-people-group"></i>
-        <span class="ml-2">About</span>
-      </button>
-    </a>
-    <a href="Faq.html">
-      <button>
-        <i class="fas fa-question-circle"></i>
-        <span class="ml-2">FAQ</span>
-      </button>
-    </a>
+    <div class="flex justify-center items-center py-4 px-2 gap-2 flex-wrap">
+      <a href="index.html"
+        class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+        <i class="fas fa-home text-xl"></i>
+        <span class="font-medium">Home</span>
+      </a>
+      <a href="Sponsors.html"
+        class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+        <i class="fa-solid fa-sack-dollar text-xl"></i>
+        <span class="font-medium">Sponsors</span>
+      </a>
+      <a href="Timeline.html"
+        class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+        <i class="fas fa-calendar-alt text-xl"></i>
+        <span class="font-medium">Timeline</span>
+      </a>
+      <a href="tracks.html"
+        class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+        <i class="fa-regular fa-star text-xl"></i>
+        <span class="font-medium">Tracks</span>
+      </a>
+      <a href="prizes.html"
+        class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+        <i class="fa-solid fa-trophy text-xl"></i>
+        <span class="font-medium">Prizes</span>
+      </a>
+      <a href="Aboutus.html"
+        class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+        <i class="fa-solid fa-people-group text-xl"></i>
+        <span class="font-medium">About</span>
+      </a>
+      <a href="Faq.html"
+        class="flex items-center gap-2 text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all">
+        <i class="fas fa-question-circle text-xl"></i>
+        <span class="font-medium">FAQ</span>
+      </a>
+    </div>
   </nav>
 
+  <!-- Load Configuration First -->
+  <script src="config.js"></script>
+
+  <!-- Load Data Manager -->
+  <script src="dataManager.js"></script>
+
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      gsap.registerPlugin(ScrollTrigger);
+    // ========== PAGE DATA ==========
+    let pageData = null;
 
-      // Preloader
-      setTimeout(() => {
-        const preloader = document.getElementById('preloader');
-        const content = document.querySelector('.content-wrapper');
+    // Category configuration with size classes
+    const categoryConfig = {
+      'Diamond': {
+        section: 'diamondSection',
+        container: 'diamondSponsors',
+        logoClass: 'sponsor-logo-diamond'
+      },
+      'Platinum': {
+        section: 'platinumSection',
+        container: 'platinumSponsors',
+        logoClass: 'sponsor-logo-platinum'
+      },
+      'Gold': {
+        section: 'goldSection',
+        container: 'goldSponsors',
+        logoClass: 'sponsor-logo-gold'
+      },
+      'Silver': {
+        section: 'silverSection',
+        container: 'silverSponsors',
+        logoClass: 'sponsor-logo-silver'
+      },
+      'Bronze': {
+        section: 'bronzeSection',
+        container: 'bronzeSponsors',
+        logoClass: 'sponsor-logo-bronze'
+      },
+      'InKind': {
+        section: 'inkindSection',
+        container: 'inkindSponsors',
+        logoClass: 'sponsor-logo-inkind'
+      },
+      'Hosting': {
+        section: 'hostingSection',
+        container: 'hostingSponsors',
+        logoClass: 'sponsor-logo-hosting'
+      }
+    };
 
-        if (preloader && content) {
-          gsap.to(preloader, {
-            opacity: 0,
-            duration: 0.5,
-            onComplete: () => {
-              preloader.style.display = 'none';
-              content.style.opacity = '1';
-            }
-          });
-        }
-      }, 1000);
+    // ========== INITIALIZE DATA ==========
+    async function initializePage() {
+      try {
+        document.getElementById('preloader').style.display = 'flex';
 
-      // Sponsor category animations
-      gsap.utils.toArray('.sponsor-category').forEach((category, index) => {
-        gsap.to(category, {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          scrollTrigger: {
-            trigger: category,
-            start: 'top bottom-=100',
-            toggleActions: 'play none none reverse'
+        pageData = await DataManager.initializeData({
+          onLoading: () => console.log('Loading sponsors...'),
+          onSuccess: (data) => {
+            console.log('Sponsors data loaded:', data);
+            updatePageContent(data);
           },
-          delay: index * 0.2
+          onError: (error) => {
+            console.error('Failed to load sponsors:', error);
+            showNoSponsorsMessage();
+          }
         });
-      });
 
-      // Sponsor logo animations
-      gsap.utils.toArray('.sponsor-logo').forEach((logo, index) => {
-        gsap.from(logo, {
-          opacity: 0,
-          y: 50,
-          duration: 0.8,
-          scrollTrigger: {
-            trigger: logo,
-            start: 'top bottom-=100',
-            toggleActions: 'play none none reverse'
-          },
-          delay: index * 0.1
-        });
-      });
-
-      // Floating bar animation
-      // gsap.from('.floating-bar', {
-      //   y: 100,
-      //   opacity: 0,
-      //   duration: 1,
-      //   ease: 'power3.out',
-      //   scrollTrigger: {
-      //     trigger: 'body',
-      //     start: 'top top',
-      //     end: '+=100',
-      //     toggleActions: 'play none none reverse'
-      //   }
-      // });
-
-      // Sponsor tier title animations
-      gsap.utils.toArray('.sponsor-tier-title').forEach((title) => {
-        gsap.to(title, {
-          scale: 1.05,
-          duration: 0.5,
-          yoyo: true,
-          repeat: -1,
-          ease: 'power1.inOut'
-        });
-      });
-    });
-
-    function goBack() {
-      window.close();
+      } catch (error) {
+        console.error('Error initializing page:', error);
+        showNoSponsorsMessage();
+      } finally {
+        setTimeout(() => {
+          document.getElementById('preloader').style.display = 'none';
+        }, 0);
+      }
     }
 
+    // ========== UPDATE PAGE CONTENT ==========
+    function updatePageContent(data) {
+      const sponsors = DataManager.getSponsors(data);
+
+      if (!sponsors || sponsors.length === 0) {
+        showNoSponsorsMessage();
+        return;
+      }
+
+      // Group sponsors by category
+      const sponsorsByCategory = groupSponsorsByCategory(sponsors);
+
+      // Render each category
+      let hasSponsors = false;
+      Object.keys(categoryConfig).forEach((category, index) => {
+        const sponsorsInCategory = sponsorsByCategory[category] || [];
+        if (sponsorsInCategory.length > 0) {
+          renderSponsorCategory(category, sponsorsInCategory, index);
+          hasSponsors = true;
+        }
+      });
+
+      if (!hasSponsors) {
+        showNoSponsorsMessage();
+      } else {
+        document.getElementById('noSponsorsMessage').style.display = 'none';
+      }
+    }
+
+    // ========== GROUP SPONSORS BY CATEGORY ==========
+    function groupSponsorsByCategory(sponsors) {
+      const grouped = {};
+
+      sponsors.forEach(sponsor => {
+        const category = sponsor.category || 'Other';
+        if (!grouped[category]) {
+          grouped[category] = [];
+        }
+        grouped[category].push(sponsor);
+      });
+
+      return grouped;
+    }
+
+    // ========== RENDER SPONSOR CATEGORY ==========
+    function renderSponsorCategory(category, sponsors, index) {
+      const config = categoryConfig[category];
+      if (!config) return;
+
+      const section = document.getElementById(config.section);
+      const container = document.getElementById(config.container);
+
+      if (!section || !container) return;
+
+      // Show section with staggered animation
+      section.style.display = 'block';
+      section.style.animationDelay = `${index * 0.2}s`;
+
+      // Clear container
+      container.innerHTML = '';
+
+      // Render sponsors
+      sponsors.forEach((sponsor, sponsorIndex) => {
+        const sponsorElement = createSponsorElement(sponsor, config, sponsorIndex);
+        container.appendChild(sponsorElement);
+      });
+    }
+
+    // ========== CREATE SPONSOR ELEMENT ==========
+    function createSponsorElement(sponsor, config, index) {
+      const div = document.createElement('div');
+      div.className = `sponsor-logo ${config.logoClass}`;
+      div.style.animationDelay = `${index * 0.1}s`;
+
+      // Add click handler if link exists
+      if (sponsor.link) {
+        div.style.cursor = 'pointer';
+        div.onclick = () => window.open(sponsor.link, '_blank', 'noopener,noreferrer');
+        div.title = `Visit ${sponsor.name}`;
+      }
+
+      // Create image
+      const img = document.createElement('img');
+      img.src = sponsor.logoUrl || `https://via.placeholder.com/250x200/7c3aed/ffffff?text=${encodeURIComponent(sponsor.name)}`;
+      img.alt = sponsor.name + ' Logo';
+      img.loading = 'lazy';
+
+      // Error handler for broken images
+      img.onerror = function () {
+        this.src = `https://via.placeholder.com/250x200/7c3aed/ffffff?text=${encodeURIComponent(sponsor.name)}`;
+      };
+
+      div.appendChild(img);
+
+      return div;
+    }
+
+    // ========== SHOW NO SPONSORS MESSAGE ==========
+    function showNoSponsorsMessage() {
+      // Hide all sections
+      Object.values(categoryConfig).forEach(config => {
+        const section = document.getElementById(config.section);
+        if (section) section.style.display = 'none';
+      });
+
+      // Show message
+      document.getElementById('noSponsorsMessage').style.display = 'block';
+    }
+
+    // ========== MOBILE MENU ==========
+    const menuBtn = document.getElementById('menuBtn');
+    const closeMenuBtn = document.getElementById('closeMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.add('active');
+      menuOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+
+    closeMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.remove('active');
+      menuOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+
+    menuOverlay.addEventListener('click', () => {
+      mobileMenu.classList.remove('active');
+      menuOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+
+    // ========== CODE RAIN ANIMATION ==========
+    const canvas = document.getElementById('codeCanvas');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*(){}[]<>/';
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+    const drops = Array(Math.floor(columns)).fill(1);
+
+    function drawCodeRain() {
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = '#fff';
+      ctx.font = fontSize + 'px monospace';
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = characters[Math.floor(Math.random() * characters.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+
+    setInterval(drawCodeRain, 33);
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    // ========== FLOATING PARTICLES ==========
+    const particlesContainer = document.getElementById('particles');
+    for (let i = 0; i < 50; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+      particle.style.animationDelay = Math.random() * 5 + 's';
+      particlesContainer.appendChild(particle);
+    }
+
+    // ========== PAGE LOAD ==========
+    window.addEventListener('DOMContentLoaded', initializePage);
   </script>
 </body>
 
