@@ -11,7 +11,7 @@ const AppConfig = {
     // Fallback configuration (used when API is unavailable)
     FALLBACK: {
         eventDate: 'November 19, 2025 00:00:00',
-        registrationLink: 'https://lu.ma/aet2w219',
+        registrationLink: 'https://unstop.com/hackathons/cosmohack1-sourcify-community-1572431',
         cosmocaptainLink: 'https://lu.ma/aet2w219',
         communityPartnerLink: 'https://lu.ma/0yjtzbkr'
     },
@@ -20,7 +20,7 @@ const AppConfig = {
     ENABLE_OFFLINE_MODE: true,
     ENABLE_DEBUG_LOGS: false,
     
-    // API endpoints
+    // API endpoi 
     ENDPOINTS: {
         ALL_DATA: '/api/all-data',
         EVENT_DATE: '/api/event-date',
