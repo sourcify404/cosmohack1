@@ -335,6 +335,37 @@
       filter: brightness(1.1);
     }
 
+    /* Doamin sponsor specific styling: white card with subtle shadow and dark title */
+    #doaminSection .sponsor-tier-title {
+      background: #f8fafc; /* gray-50 */
+      color: #0f172a; /* slate-900 */
+      border: 1px solid #e5e7eb; /* gray-200 */
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+      backdrop-filter: none;
+    }
+
+    #domainSection .sponsor-logo {
+      background: #ffffff;
+      border: 1px solid #0f0f0f;
+      /* box-shadow: 0 12px 30px rgba(2,6,23,0.08); */
+      padding: 1rem;
+      border-radius: 16px;
+      width: 280px;
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: default;
+    }
+
+    #domainSection .sponsor-logo img {
+      max-width: 85%;
+      max-height: 85%;
+      width: auto;
+      height: auto;
+      filter: none;
+    }
+
     #preloader {
       position: fixed;
       top: 0;
@@ -622,6 +653,23 @@
       </h2>
       <div class="sponsor-grid-wrapper">
         <div class="sponsor-grid-container" id="hostingSponsors"></div>
+      </div>
+    </div>
+
+    <!-- Domain Sponsor (static entry) -->
+    <div class="sponsor-category" id="domainSection">
+      <h2 class="text-2xl font-bold mb-6 text-center">
+        <span class="sponsor-tier-title text-emerald-300">
+          <i class="fas fa-hand-holding-dollar sponsor-tier-icon text-emerald-400"></i>
+          Domain sponsor
+        </span>
+      </h2>
+      <div class="sponsor-grid-wrapper rounded-lg ">
+        <div class="sponsor-grid-container rounded-l">
+          <div class="sponsor-logo">
+            <img src="https://logodix.com/logo/1603673.png" alt="Doamin sponsor" loading="lazy" />
+          </div>
+        </div>
       </div>
     </div>
 
