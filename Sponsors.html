@@ -337,9 +337,12 @@
 
     /* Doamin sponsor specific styling: white card with subtle shadow and dark title */
     #doaminSection .sponsor-tier-title {
-      background: #f8fafc; /* gray-50 */
-      color: #0f172a; /* slate-900 */
-      border: 1px solid #e5e7eb; /* gray-200 */
+      background: #f8fafc;
+      /* gray-50 */
+      color: #0f172a;
+      /* slate-900 */
+      border: 1px solid #e5e7eb;
+      /* gray-200 */
       box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
       backdrop-filter: none;
     }
@@ -656,6 +659,20 @@
       </div>
     </div>
 
+
+    <!-- Hiring Partners -->
+    <div class="sponsor-category" id="hiringSection" style="display: none;">
+      <h2 class="text-2xl font-bold mb-6 text-center">
+        <span class="sponsor-tier-title text-green-300">
+          <i class="fas fa-briefcase sponsor-tier-icon text-green-400"></i>
+          Hiring Partners
+        </span>
+      </h2>
+      <div class="sponsor-grid-wrapper">
+        <div class="sponsor-grid-container" id="hiringSponsors"></div>
+      </div>
+    </div>
+
     <!-- Domain Sponsor (static entry) -->
     <div class="sponsor-category" id="domainSection">
       <h2 class="text-2xl font-bold mb-6 text-center">
@@ -768,6 +785,11 @@
         section: 'hostingSection',
         container: 'hostingSponsors',
         logoClass: 'sponsor-logo-hosting'
+      },
+      'hp': {
+        section: 'hiringSection',
+        container: 'hiringSponsors',
+        logoClass: 'sponsor-logo-hiring'
       }
     };
 
